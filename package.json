@@ -1,0 +1,38 @@
+{
+  "name": "yote-cli",
+  "version": "0.0.1",
+  "description": "cli to generate yoti apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fugitivelabs/yote-cli.git"
+  },
+  "keywords": [
+    "yote",
+    "cli",
+    "generate",
+    "app",
+    "mean",
+    "node",
+    "mongo",
+    "mongoose",
+    "angular",
+    "angularjs",
+    "coyote"
+  ],
+  "author": "Grant Fowler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fugitivelabs/yote-cli/issues"
+  },
+  "homepage": "https://github.com/fugitivelabs/yote-cli",
+  "bin": {
+    "yote": "yote-cli.js"
+  },
+  "dependencies": {
+    "commander": "^2.3.0"
+  }
+}
