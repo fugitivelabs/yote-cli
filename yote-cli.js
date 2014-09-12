@@ -30,7 +30,7 @@ if(program.create) {
     // doing it this way sets fugitivelabs/yote.git as the upstream master and
     // allows the user to pull from the upstream remote 
 
-    shell.exec("git clone --bare https://github.com/fugitivelabs/yote.git " + program.create);
+    shell.exec("git clone https://github.com/fugitivelabs/yote.git " + program.create);
     shell.cd(program.create);
     shell.exec('git remote rename origin upstream');
     
