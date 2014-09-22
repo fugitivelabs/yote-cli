@@ -5,6 +5,7 @@ var program     = require('commander')
     , chalk     = require('chalk')
     , shell     = require('shelljs')
     , promptly  = require('promptly')
+    , builder   = require('./lib/yote-builder')
   ;
 
 function howl() {
@@ -69,15 +70,18 @@ program
     console.log('');
     console.log(chalk.bgCyan("        Success!        "));
     console.log('');
-    console.log(chalk.green("     Now cd into " + cmd + " and run ") + chalk.bgGreen("[sudo] npm install") + chalk.green(" to get started"));
+    console.log(chalk.green("     Now install your dependencies to get started"));
+    console.log('');
+    console.log(chalk.green("         $ cd " + cmd));
+    console.log(chalk.green("         $ [sudo] npm install"));
     console.log('');
     console.log('');
     console.log(chalk.dim("     To setup your github repository:"));
     console.log('');
     console.log(chalk.dim("         - Create a repository on https://github.com"));
     console.log(chalk.dim("         - Copy the respository URL "));
-    console.log(chalk.dim("         - cd into the " + cmd + " directory"));
-    console.log(chalk.dim("         - run 'git remote add origin [repository URL]"));
+    console.log(chalk.dim("         - $ cd " + cmd));
+    console.log(chalk.dim("         - $ git remote add origin [repository URL]"));
     console.log('');
     console.log(chalk.dim("     Then you're good to go."))
 
@@ -101,8 +105,10 @@ program
     if(options.resource) {
       if(options.resource == 'api') {
         apiResource(cmd);
+        // builder.ng(cmd,options);
       } else if(options.resource == 'ng' || options.resource == 'angular') {
-        ngResource(cmd);
+        // ngResource(cmd);
+        builder.ng(cmd, options);
       } else {
         console.log("");
         console.log(chalk.red('Whoops'));
@@ -117,6 +123,7 @@ program
     } else if(options.scaffold) {
       ngResource(cmd);
       apiResource(cmd);
+      scaffold(cmd);
     } else {
       shell.exec("yote gen -h");
     }
