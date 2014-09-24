@@ -101,14 +101,14 @@ program
   .description('generate a new Yote resource.')
   .option('-s,    --scaffold', 'generate a scaffold')
   .option('-r,    --resource <type>', "generate either a server-side 'api' resource or a client side 'angular' ('ng' also acceptable) resource")
-  .action(function(cmd, options){
+  .action(function(name, options){
     if(options.resource) {
       if(options.resource == 'api') {
-        apiResource(cmd);
-        // builder.ng(cmd,options);
+        apiResource(name);
+        // builder.ng(name,options);
       } else if(options.resource == 'ng' || options.resource == 'angular') {
-        // ngResource(cmd);
-        builder.ng(cmd, options);
+        // ngResource(name);
+        builder.ng(name, options);
       } else {
         console.log("");
         console.log(chalk.red('Whoops'));
@@ -121,9 +121,9 @@ program
         console.log("");
       }
     } else if(options.scaffold) {
-      ngResource(cmd);
-      apiResource(cmd);
-      scaffold(cmd);
+      ngResource(name);
+      apiResource(name);
+      scaffold(name);
     } else {
       shell.exec("yote gen -h");
     }
