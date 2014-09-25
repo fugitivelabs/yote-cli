@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0
+    , "title": "First item in __pronoun__"
+    , "message": "Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? "
+  }
+  , {
+    "id": 1
+    , "title": "Second item in __pronoun__"
+    , "message": "You think water moves fast? You should see ice. It moves like it has a mind."
+  }
+  , {
+    "id": 2
+    , "title": "Third item in __pronoun__"
+    , "message": "Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year."
+  }
+]

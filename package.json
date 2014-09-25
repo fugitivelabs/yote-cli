@@ -24,6 +24,20 @@
     "coyote"
   ],
   "author": "Fugitive Labs",
+  "contributors": [
+    {
+      "name": "Erik Guffrey",
+      "email": "erik@fugitivelabs.com"
+    },
+    {
+      "name": "Grant Fowler",
+      "email": "grant@fugitivelabs.com"
+    },
+    {
+      "name": "Chance Griffin",
+      "email": "chance@fugitivelabs.com"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fugitivelabs/yote-cli/issues"
