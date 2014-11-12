@@ -48,12 +48,17 @@ program
 
     // -----------------------------------------------
     // doing it this way sets fugitivelabs/yote.git as the upstream master and
-    // allows the user to pull from the upstream remote 
+    // allows the user to pull from the upstream remote -- do we want this?
 
     shell.exec("git clone https://github.com/fugitivelabs/yote.git " + cmd);
     shell.cd(cmd);
+
+    // set the repo with a clean origin
     shell.exec('git remote rename origin upstream');
     
+    // remove the upstream master to unlink yote master repo
+    // shell.exec('git remote rm upstream');
+
 
     // *************  ALTERNATIVELY ********************
 
