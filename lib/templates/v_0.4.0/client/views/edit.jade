@@ -1,0 +1,8 @@
+section(yt-container)
+  form(name="edit__Proper__Form" ng-submit="updateAction(__name__)")
+    h2 Update __Proper__
+    .input-group
+      label Title
+      input(type="text" name="title" ng-model="__name__.title" placeholder="__Proper__ Title" required)
+    .input-group
+      button(yt-btn type="submit" ng-disabled="!edit__Proper__Form.$valid") Submit
