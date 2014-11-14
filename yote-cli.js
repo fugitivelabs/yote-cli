@@ -12,23 +12,13 @@ function howl() {
   shell.exec("say 'owooooooooooooooo'");
 }
 
-function ngResource(name) {
-  console.log(chalk.green("creating an angular resource called " + name));
-  console.log(chalk.bgRed("THIS DOESN'T WORK YET " ));
-}
-
-function apiResource(name) {
-  console.log(chalk.green("creating an api resource called " + name));
-  console.log(chalk.bgRed("THIS DOESN'T WORK YET " ));
-}
-
-
 
 program
   .version('0.0.1')
   .usage('<command> [options]')
   .option('-b,    --build     <buildNum>', 'Select which version of Yote to install')
   .option('-H,    --howl', '', howl)
+
 
 program
   .command('create <appName>')
@@ -148,7 +138,37 @@ program
     console.log();
   });
 
-
+program.on('--help', function() {
+    console.log('     Create Examples:');
+    console.log();
+    console.log('       $ yote create myApp');
+    console.log(chalk.dim('              - OR - '));
+    console.log('       $ yote C myApp');
+    console.log(chalk.dim('      - will create a new Yote application in the myApp directory'));
+    console.log();
+    console.log();
+    console.log('     Generate help:');
+    console.log();
+    console.log('       $ yote gen -h ');
+    console.log(chalk.dim('         - generate command helper'));
+    console.log();
+    console.log();
+    console.log('     Generate Examples:');
+    console.log();
+    console.log('       $ yote gen myResource ');
+    console.log(chalk.dim('         - will generate an integrated Yote scaffold'));
+    console.log();
+    console.log('       $ yote gen myResource -c ');
+    console.log(chalk.dim('              - OR - '));
+    console.log('       $ yote gen myResource --client ');
+    console.log(chalk.dim('         - will generate a Yote client with dummy data'));
+    console.log();
+    console.log('       $ yote gen myResource -a');
+    console.log(chalk.dim('              - OR - '));
+    console.log('       $ yote gen myResource --api');
+    console.log(chalk.dim('          - will generate a Yote API that can be hit by any client'));
+    console.log();
+  });
 
 program.parse(process.argv);
 
