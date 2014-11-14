@@ -103,28 +103,26 @@ program
 program
   .command('generate <name>')
   .alias('gen')
-  .description('generate a new Yote resource.')
-  .option('-s,    --scaffold', 'generate a scaffold')
-  .option('-r,    --resource <type>', "generate either a server-side 'api' resource or a client side 'angular' ('ng' also acceptable) resource")
+  .description('Generate a new Yote resource.')
+  .option('-s,    --scaffold', 'Generate a scaffold.')
+  .option('-c,    --client <type>', "Generate an api agnostic client resource.  Currently accepting: 'angular' ('ng')")
+  .option('-a,    --api', "Generate a client agnostic api resource.")
   .action(function(name, options){
-    if(options.resource) {
-      if(options.resource == 'api') {
-        apiResource(name);
-        // builder.ng(name,options);
-      } else if(options.resource == 'ng' || options.resource == 'angular') {
-        // ngResource(name);
+    if(options.client) {
+      if(options.client == 'ng' || options.client == 'angular') {
         builder.ng(name, options);
       } else {
         console.log("");
         console.log(chalk.red('Whoops'));
-        console.log(chalk.red("Can't understand your resource type"));
+        console.log(chalk.red("Can't understand your client type"));
         console.log("");
-        console.log(chalk.yellow("Acceptable resource types:"));
+        console.log(chalk.yellow("Acceptable client types (so far):"));
         console.log("");
-        console.log(chalk.yellow("        'api' ...... Server-side NodeJS/API resource"));
-        console.log(chalk.yellow("        'ng'  ...... Client-side AngularJS MVC resource (can also spell out 'angular' "));
+        console.log(chalk.yellow("        'ng'  ...... Client-side AngularJS MVC resource (can also spell out as 'angular') "));
         console.log("");
       }
+    } else if(options.api) {
+      builder.api(name, options);
     } else if(options.scaffold) {
       ngResource(name);
       apiResource(name);
