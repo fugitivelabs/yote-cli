@@ -1,0 +1,10 @@
+section(yt-container)
+  form(name="new__Proper__Form" ng-submit="createAction(__name__Data)")
+    h2 Create __Proper__
+    .input-group
+      label Title
+      input(type="text" name="title" ng-model="__name__Data.title" placeholder="__Proper__ Title" required)
+    .input-group
+      button(yt-btn type="submit" ng-disabled="!new__Proper__Form.$valid") Submit
+
+    
