@@ -90,6 +90,14 @@ program
   });
 
 program
+  .command('run')
+  .alias('start')
+  .description('Fire up the local server.')
+  .action(function(){
+    shell.exec('nodemon');
+  });
+
+program
   .command('generate <name>')
   .alias('gen')
   .description('Generate a new Yote resource.')
