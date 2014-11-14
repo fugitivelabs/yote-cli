@@ -34,7 +34,7 @@ program
   .command('create <appName>')
   .alias('C')
   .description('Create a new Yote applicaion directory called <appName>')
-  .option('-b, --build [buildNum]', 'Select which version of Yote to install. Defaults to most recent stable.')
+  // .option('-b, --build [buildNum]', 'Select which version of Yote to install. Defaults to most recent stable.')
   .action(function(cmd, options){
     // creating a new yote project might need to be done by 
     // creating a fork through the github api in the future.  
@@ -95,43 +95,57 @@ program
     console.log('  Examples:');
     console.log();
     console.log('    $ yote create myApp');
-    console.log('    $ yote C myApp -b 0.1.0.0');
-    console.log('    $ yote create myApp build 0.1.0.1');
+    console.log('    $ yote C myApp');
     console.log();
-  });;
+  });
 
 program
   .command('generate <name>')
   .alias('gen')
   .description('Generate a new Yote resource.')
   .option('-s,    --scaffold', 'Generate a scaffold.')
-  .option('-c,    --client <type>', "Generate an api agnostic client resource.  Currently accepting: 'angular' ('ng')")
+  .option('-c,    --client [type]', "Generate an api agnostic client resource.  Currently accepting: 'angular' ('ng')")
   .option('-a,    --api', "Generate a client agnostic api resource.")
   .action(function(name, options){
     if(options.client) {
       if(options.client == 'ng' || options.client == 'angular') {
         builder.ng(name, options);
       } else {
-        console.log("");
-        console.log(chalk.red('Whoops'));
-        console.log(chalk.red("Can't understand your client type"));
-        console.log("");
-        console.log(chalk.yellow("Acceptable client types (so far):"));
-        console.log("");
-        console.log(chalk.yellow("        'ng'  ...... Client-side AngularJS MVC resource (can also spell out as 'angular') "));
-        console.log("");
+        builder.ng(name, options);
+        // if we end up with more than one client type, we can add this back in
+        // console.log("");
+        // console.log(chalk.red('Whoops'));
+        // console.log(chalk.red("Can't understand your client type"));
+        // console.log("");
+        // console.log(chalk.yellow("Acceptable client types (so far):"));
+        // console.log("");
+        // console.log(chalk.yellow("        'ng'  ...... Client-side AngularJS MVC resource (can also spell out as 'angular') "));
+        // console.log("");
       }
     } else if(options.api) {
       builder.api(name, options);
     } else if(options.scaffold) {
-      ngResource(name);
-      apiResource(name);
-      scaffold(name);
+      builder.scaffold(name, options);
     } else {
-      shell.exec("yote gen -h");
+      builder.scaffold(name, options);
     }
 
-
+  }).on('--help', function() {
+    console.log('  Examples:');
+    console.log();
+    console.log('    $ yote gen myResource ');
+    console.log(chalk.dim('      - will generate an integrated Yote scaffold'));
+    console.log();
+    console.log('    $ yote gen myResource -c ');
+    console.log(chalk.dim('           - OR - '));
+    console.log('    $ yote gen myResource --client ');
+    console.log(chalk.dim('      - will generate a Yote client with dummy data'));
+    console.log();
+    console.log('    $ yote gen myResource -a');
+    console.log(chalk.dim('           - OR - '));
+    console.log('    $ yote gen myResource --api');
+    console.log(chalk.dim('      - will generate a Yote API that can be hit by any client'));
+    console.log();
   });
 
 
