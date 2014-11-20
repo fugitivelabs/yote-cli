@@ -71,14 +71,14 @@ program
     console.log(chalk.green("         $ [sudo] npm install"));
     console.log('');
     console.log('');
-    console.log(chalk.dim("     To setup your github repository:"));
+    console.log(chalk.magenta("     To setup your github repository:"));
     console.log('');
-    console.log(chalk.dim("         - Create a repository on https://github.com"));
-    console.log(chalk.dim("         - Copy the respository URL "));
-    console.log(chalk.dim("         - $ cd " + cmd));
-    console.log(chalk.dim("         - $ git remote add origin [repository URL]"));
+    console.log(chalk.magenta("         - Create a repository on https://github.com"));
+    console.log(chalk.magenta("         - Copy the respository URL "));
+    console.log(chalk.magenta("         - $ cd " + cmd));
+    console.log(chalk.magenta("         - $ git remote add origin [repository URL]"));
     console.log('');
-    console.log(chalk.dim("     Then you're good to go."))
+    console.log(chalk.magenta("     Then you're good to go."))
 
     // process.exit(0); 
   }).on('--help', function() {
