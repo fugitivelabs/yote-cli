@@ -1,7 +1,7 @@
 {
   "name": "yote",
   "version": "0.1.1",
-  "description": "cli to generate yoti apps",
+  "description": "cli to generate yote apps",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
