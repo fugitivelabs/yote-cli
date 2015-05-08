@@ -1,7 +1,7 @@
 {
-  "name": "yote-cli",
-  "version": "0.0.1",
-  "description": "cli to generate yoti apps",
+  "name": "yote",
+  "version": "0.1.2",
+  "description": "cli to generate yote apps",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,18 +25,9 @@
   ],
   "author": "Fugitive Labs",
   "contributors": [
-    {
-      "name": "Erik Guffrey",
-      "email": "erik@fugitivelabs.com"
-    },
-    {
-      "name": "Grant Fowler",
-      "email": "grant@fugitivelabs.com"
-    },
-    {
-      "name": "Chance Griffin",
-      "email": "chance@fugitivelabs.com"
-    }
+    "Erik Guffrey <erik@fugitivelabs.com>",
+    "Grant Fowler <grant@fugitivelabs.com>",
+    "Chance Griffin <chance@fugitivelabs.com>"
   ],
   "license": "ISC",
   "bugs": {
