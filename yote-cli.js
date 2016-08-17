@@ -6,15 +6,17 @@ var program     = require('commander')
     , shell     = require('shelljs')
     , promptly  = require('promptly')
     , builder   = require('./lib/yote-builder')
+    , config    = require('./package.json')
   ;
 
 function howl() {
+  console.log(chalk.bgCyan("        test howl        "));
   shell.exec("say 'owooooooooooooooo'");
 }
 
 
 program
-  .version('0.0.1')
+  .version(config.version)
   .usage('<command> [options]')
   .option('-b,    --build     <buildNum>', 'Select which version of Yote to install')
   .option('-H,    --howl', '', howl)
@@ -37,10 +39,10 @@ program
     // console.log(value);
 
     // -----------------------------------------------
-    // doing it this way sets fugitivelabs/yote.git as the upstream master and
+    // doing it this way sets fugitivelabs/yote-react.git as the upstream master and
     // allows the user to pull from the upstream remote -- do we want this?
 
-    shell.exec("git clone https://github.com/fugitivelabs/yote.git " + cmd);
+    shell.exec("git clone https://github.com/fugitivelabs/yote-react.git " + cmd);
     shell.cd(cmd);
 
     // set the repo with a clean origin
@@ -53,9 +55,9 @@ program
     // *************  ALTERNATIVELY ********************
 
     // doing it this way creates a brand new git directory that is not associated
-    // with the fugitivelabs/yote.git upstream master at all.  
+    // with the fugitivelabs/yote-react.git upstream master at all.  
     
-    // shell.exec("git clone --bare https://github.com/fugitivelabs/yote.git " + program.create);
+    // shell.exec("git clone --bare https://github.com/fugitivelabs/yote-react.git " + program.create);
     // shell.cd(program.create);
     // shell.exec("git init");
 
@@ -102,14 +104,20 @@ program
   .alias('gen')
   .description('Generate a new Yote resource.')
   .option('-s,    --scaffold', 'Generate a scaffold.')
-  .option('-c,    --client [type]', "Generate an api agnostic client resource.  Currently accepting: 'angular' ('ng')")
+  .option('-c,    --client [type]', "Generate an api agnostic client resource.  Currently accepting: 'react' ('r'), 'angular' ('ng'). Default 'react'.")
   .option('-a,    --api', "Generate a client agnostic api resource.")
   .action(function(name, options){
+    console.log("DEBUG");
+    console.log(builder);
+    console.log(builder.react);
+
     if(options.client) {
       if(options.client == 'ng' || options.client == 'angular') {
         builder.ng(name, options);
+      } if(options.client == 'r' || options.client == 'react') {
+        builder.react(name, options);
       } else {
-        builder.ng(name, options);
+        builder.react(name, options); //default to react
         // if we end up with more than one client type, we can add this back in
         // console.log("");
         // console.log(chalk.red('Whoops'));
