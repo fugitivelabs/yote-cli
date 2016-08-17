@@ -1,6 +1,6 @@
 {
   "name": "yote",
-  "version": "0.1.2",
+  "version": "0.2.3",
   "description": "cli to generate yote apps",
   "main": "index.js",
   "scripts": {
@@ -16,18 +16,20 @@
     "generate",
     "app",
     "mean",
+    "mern",
     "node",
     "mongo",
     "mongoose",
     "angular",
     "angularjs",
+    "react",
+    "reactjs",
     "coyote"
   ],
   "author": "Fugitive Labs",
   "contributors": [
     "Erik Guffrey <erik@fugitivelabs.com>",
-    "Grant Fowler <grant@fugitivelabs.com>",
-    "Chance Griffin <chance@fugitivelabs.com>"
+    "Grant Fowler <grant@fugitivelabs.com>"
   ],
   "license": "ISC",
   "bugs": {
