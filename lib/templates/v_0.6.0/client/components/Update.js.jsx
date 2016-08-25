@@ -37,8 +37,6 @@ class Update__Proper__ extends Base {
   }
 
   _handleFormChange(e) {
-    //this works WAY better than having a separate onChange for every input box
-    // just make sure input name attr == state name
     var new__Proper__State = this.state.item;
     new__Proper__State[e.target.name] = e.target.value;
     new__Proper__State.status = new__Proper__State.isPublished ? "published" : "draft";
@@ -67,7 +65,7 @@ class Update__Proper__ extends Base {
             handleFormChange={this._handleFormChange}
             cancelLink={`/__name__s/${item._id}`}
             formTitle="Update __Proper__"
-            />
+          />
         }
       </div>
     )

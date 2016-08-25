@@ -21,9 +21,6 @@ class Create__Proper__ extends Base {
   componentWillMount() {
     const { dispatch } = this.props;
     dispatch(singleActions.setupNew__Proper__())
-    // this.props.dispatch(singleActions.setupNew__Proper__()).then(() =>{
-    //     console.log(this.props);
-    //   });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,13 +33,11 @@ class Create__Proper__ extends Base {
   }
 
   _handleFormChange(e) {
-    //this works WAY better than having a separate onChange for every input box
-    // just make sure input name attr == state name
+    // console.log("_handleFormChange");
+    // console.log(e);
     var new__Proper__State = this.state.item;
     new__Proper__State[e.target.name] = e.target.value;
     this.setState(new__Proper__State);
-    // console.log("_handleFormChange");
-    // console.log(e);
   }
 
   _handleFormSubmit(e) {
@@ -67,7 +62,7 @@ class Create__Proper__ extends Base {
             handleFormChange={this._handleFormChange}
             cancelLink="/__name__s"
             formTitle="Create __Proper__"
-            />
+          />
         }
       </div>
     )
