@@ -20,7 +20,7 @@ const __Proper__Form = ({__name__, formType, handleFormSubmit, handleFormChange,
               change={handleFormChange}
               placeholder="Title (required)"
               required={true}
-              />
+            />
             <TextAreaInput
               name="description"
               label="Description"
@@ -28,7 +28,7 @@ const __Proper__Form = ({__name__, formType, handleFormSubmit, handleFormChange,
               change={handleFormChange}
               required={false}
               placeholder="This is where the content goes..."
-              />
+            />
             <div className="input-group">
               <div className="yt-row space-between">
                 <Link className="yt-btn link" to={cancelLink}>Cancel</Link>
