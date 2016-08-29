@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 // import actions
 import { singleActions } from '../actions';
@@ -36,13 +37,14 @@ class Update__Proper__ extends Base {
     this.setState(nextProps);
   }
 
-  _handleFormChange(e) {
-    var new__Proper__State = this.state.item;
-    new__Proper__State[e.target.name] = e.target.value;
-    new__Proper__State.status = new__Proper__State.isPublished ? "published" : "draft";
-    this.setState(new__Proper__State);
 
+  _handleFormChange(e) {
+    var newState = _.update( this.state.item, e.target.name, function() {
+      return e.target.value;
+    });
+    this.setState(newState);
   }
+
 
   _handleFormSubmit(e) {
     e.preventDefault();
