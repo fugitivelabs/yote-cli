@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 // import actions
 import { singleActions } from '../actions';
@@ -32,12 +33,12 @@ class Create__Proper__ extends Base {
     }
   }
 
+
   _handleFormChange(e) {
-    // console.log("_handleFormChange");
-    // console.log(e);
-    var new__Proper__State = this.state.item;
-    new__Proper__State[e.target.name] = e.target.value;
-    this.setState(new__Proper__State);
+    var newState = _.update( this.state.item, e.target.name, function() {
+      return e.target.value;
+    });
+    this.setState(newState);
   }
 
   _handleFormSubmit(e) {
