@@ -25,21 +25,25 @@ class __Proper__List extends Base {
     const { list } = this.props;
     const isEmpty = list.items.length === 0;
     return(
-      <div className="yt-container">
-        <h1> __Proper__ List
-          <Link className="yt-btn small u-pullRight" to={'/__name__s/new'}> New __Proper__ </Link>
-        </h1>
-        <hr/>
-          {isEmpty
-            ? (list.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-            : <div style={{ opacity: list.isFetching ? 0.5 : 1 }}>
-              <ul>
-                {Object.keys(list.itemMap).map((id, i) =>
-                  <__Proper__ListItem key={i} __name__={list.itemMap[id]} />
-                )}
-              </ul>
-            </div>
-          }
+      <div className="flex ">
+        <section className="section ">
+          <div className="yt-container">
+            <h1> __Proper__ List
+              <Link className="yt-btn small u-pullRight" to={'/__name__s/new'}> New __Proper__ </Link>
+            </h1>
+            <hr/>
+            {isEmpty
+              ? (list.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+                : <div style={{ opacity: list.isFetching ? 0.5 : 1 }}>
+                  <ul>
+                    {Object.keys(list.itemMap).map((id, i) =>
+                      <__Proper__ListItem key={i} __name__={list.itemMap[id]} />
+                    )}
+                  </ul>
+                </div>
+            }
+          </div>
+        </section>
       </div>
     )
   }
