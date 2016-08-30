@@ -1,6 +1,6 @@
 {
   "name": "yote",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "cli to generate yote apps",
   "main": "index.js",
   "scripts": {
