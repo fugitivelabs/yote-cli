@@ -18,7 +18,7 @@ class Update__Proper__ extends Base {
       , '_handleFormSubmit'
     );
   }
-  componentWillMount() {
+  componentDidMount() {
     console.log("Single item mounting");
     // console.log(this.context);
 
@@ -55,7 +55,7 @@ class Update__Proper__ extends Base {
 
   render() {
     const { item } = this.state;
-    const isEmpty = !item;
+    const isEmpty = !item.title;
     return  (
       <div >
         {isEmpty

@@ -19,7 +19,7 @@ class Single__Proper__ extends Base {
 
   render() {
     const { item } = this.props;
-    const isEmpty = !item;
+    const isEmpty = !item.title;
     console.log("isEmpty", isEmpty);
     return  (
       <div className="flex ">

@@ -19,7 +19,7 @@ class Create__Proper__ extends Base {
       , '_handleFormSubmit'
     );
   }
-  componentWillMount() {
+  componentDidMount() {
     const { dispatch } = this.props;
     dispatch(singleActions.setupNew__Proper__())
   }
