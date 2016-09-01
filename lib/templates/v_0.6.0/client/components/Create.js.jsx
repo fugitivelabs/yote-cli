@@ -50,7 +50,7 @@ class Create__Proper__ extends Base {
 
   render() {
     const { item } = this.state;
-    const isEmpty = !item;
+    const isEmpty = (item.title === null || item.title === undefined);
     return  (
       <div>
 

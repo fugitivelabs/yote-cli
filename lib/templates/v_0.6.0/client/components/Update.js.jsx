@@ -55,7 +55,7 @@ class Update__Proper__ extends Base {
 
   render() {
     const { item } = this.state;
-    const isEmpty = !item.title;
+    const isEmpty = (item.title === null || item.title === undefined);
     return  (
       <div >
         {isEmpty
