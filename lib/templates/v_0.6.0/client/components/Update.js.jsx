@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import _ from 'lodash';
 
 // import actions
@@ -50,7 +51,15 @@ class Update__Proper__ extends Base {
     e.preventDefault();
     // console.log("_handleFormSubmit");
     // console.log(e);
-    this.props.dispatch(singleActions.sendUpdate__Proper__(this.state.item));
+    this.props.dispatch(singleActions.sendUpdate__Proper__(this.state.item)).then((res) => {
+      if(res.success) {
+        browserHistory.push(`/__name__s/${json.__name__._id}`)
+      } else {
+        console.log("Response Error:");
+        console.log(res);
+        alert("ERROR - Check logs");
+      }
+    });
   }
 
   render() {
