@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import _ from 'lodash';
 
 // import actions
-import { singleActions } from '../actions';
+import { singleActions, listActions } from '../actions';
 
 // import components
 import __Proper__Form from './__Proper__Form.js.jsx';
@@ -53,7 +53,8 @@ class Update__Proper__ extends Base {
     // console.log(e);
     this.props.dispatch(singleActions.sendUpdate__Proper__(this.state.item)).then((res) => {
       if(res.success) {
-        browserHistory.push(`/__name__s/${json.__name__._id}`)
+        this.props.dispatch(listActions.invaldiateList());
+        browserHistory.push(`/__name__s/${res.__name__._id}`)
       } else {
         console.log("Response Error:");
         console.log(res);
