@@ -8,6 +8,15 @@ var fs        = require('fs')
 
 module.exports = function(program) {
 
+  //notes:
+  // must have gcloud installed
+  // does not change your gcloud current project. have to change the manually
+  // not sure how it will work with other peoples certs
+
+  //todos:
+  // restore backup
+  // create instance
+
   program
 
   .command("remote")
