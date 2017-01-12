@@ -21,6 +21,7 @@ program
   .option('-b,    --build     <buildNum>', 'Select which version of Yote to install')
   .option('-H,    --howl', '', howl)
 
+require('./tools/remote')(program);
 
 program
   .command('create <appName>')
