@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import _ from 'lodash';
 
 // import actions
-import { singleActions } from '../actions';
+import { singleActions, listActions } from '../actions';
 
 
 // import components
@@ -45,7 +46,16 @@ class Create__Proper__ extends Base {
     e.preventDefault();
     // console.log("_handleFormSubmit");
     // console.log(e);
-    this.props.dispatch(singleActions.sendCreate__Proper__(this.state.item));
+    this.props.dispatch(singleActions.sendCreate__Proper__(this.state.item)).then((res) => {
+      if(res.success) {
+        this.props.dispatch(listActions.invaldiateList());
+        browserHistory.push(`/__name__s/${res.__name__._id}`)
+      } else {
+        console.log("Response Error:");
+        console.log(res);
+        alert("ERROR - Check logs");
+      }
+    });
   }
 
   render() {
