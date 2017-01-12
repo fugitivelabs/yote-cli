@@ -39,7 +39,7 @@ module.exports = function(program) {
 
   function list(args) {
     console.log("LIST");
-    console.log(args);
+    // console.log(args);
     shell.exec("gcloud compute instances list");
   }
 
