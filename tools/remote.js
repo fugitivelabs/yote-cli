@@ -10,9 +10,10 @@ module.exports = function(program) {
 
   program
 
-  .command("remote <command>")
+  .command("remote")
   .action(function(...args) {
     console.log("REMOTE");
+    // console.log(args);
     // console.log(args.length);
     if(args.length == 1) {
       process.exit(0);
@@ -58,17 +59,18 @@ module.exports = function(program) {
       var outputRename = args[1];
     }
     // process.exit(0);
-    console.log(instanceName);
+    console.log("NAME: " + instanceName);
     // console.log(args);
     exec("gcloud compute instances list", function(err, stdout, stderr) {
-      // console.log("GOT INSTANCE LIST");
+      console.log("GOT INSTANCE LIST");
       // console.log(stdout);
       //string methods to extract the zone for this instance (required for ssh and backup)
       var split = stdout.split(/[\n\r\s]+/);
+      // console.log(split);
       var instanceIndex = split.indexOf(instanceName);
       // console.log(split[instanceIndex]);
       var zone = split[instanceIndex + 1];
-      console.log("ZONE: " + zone);
+      // console.log("ZONE: " + zone);
       //have name and zone, enough to ssh into instance
       //create fresh backup
       var nextCommand = `gcloud compute ssh grant@${instanceName} --zone ${zone} --command "`;
