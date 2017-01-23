@@ -31,7 +31,7 @@ class Update__Proper__ extends Base {
     const populate = false;
     // const populate = false;
     const { dispatch, params } = this.props;
-    dispatch(singleActions.fetchSingle__Proper__ById(params.__name__Id))
+    dispatch(__name__Actions.fetchSingle__Proper__ById(params.__name__Id))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,10 +55,10 @@ class Update__Proper__ extends Base {
     e.preventDefault();
     // console.log("_handleFormSubmit");
     // console.log(e);
-    this.props.dispatch(singleActions.sendUpdate__Proper__(this.state.item)).then((res) => {
+    this.props.dispatch(__name__Actions.sendUpdate__Proper__(this.state.item)).then((res) => {
       if(res.success) {
-        this.props.dispatch(listActions.invaldiateList());
-        browserHistory.push(`/__name__s/${res.__name__._id}`)
+        this.props.dispatch(__name__Actions.invaldiateList('all'));
+        browserHistory.push(`/__name__s/${res.item._id}`)
       } else {
         console.log("Response Error:");
         console.log(res);
@@ -95,8 +95,8 @@ Update__Proper__.propTypes = {
 
 const mapStoreToProps = (store) => {
   return {
-    selected: store.product.selected
-    , map: store.product.map
+    selected: store.__name__.selected
+    , map: store.__name__.map
   }
 }
 

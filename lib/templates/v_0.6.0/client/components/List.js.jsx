@@ -17,7 +17,7 @@ class __Proper__List extends Base {
 
   componentDidMount() {
     // console.log("list mounting");
-    this.props.dispatch(__name__ListActions.fetchListIfNeeded("all"));
+    this.props.dispatch(__name__Actions.fetchListIfNeeded("all"));
   }
 
   render() {

@@ -28,11 +28,11 @@ class Single__Proper__ extends Base {
           <div className="yt-container">
             <h3> Single __Proper__ Item </h3>
             {isEmpty
-              ? (item.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-                : <div style={{ opacity: item.isFetching ? 0.5 : 1 }}>
+              ? (selected.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+                : <div style={{ opacity: selected.isFetching ? 0.5 : 1 }}>
 
                   <h1> { map[selected.id].title }
-                    <Link className="yt-btn small u-pullRight" to={`/products/${map[selected.id]._id}/update`}> Update __Proper__ </Link>
+                    <Link className="yt-btn small u-pullRight" to={`/__name__s/${map[selected.id]._id}/update`}> Update __Proper__ </Link>
                   </h1>
                   <hr/>
                   <p> {map[selected.id].description }</p>
@@ -51,8 +51,8 @@ Single__Proper__.propTypes = {
 
 const mapStoreToProps = (store) => {
   return {
-    selected: store.product.selected
-    , map: store.product.map
+    selected: store.__name__.selected
+    , map: store.__name__.map
   }
 }
 

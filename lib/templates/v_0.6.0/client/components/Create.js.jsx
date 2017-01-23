@@ -37,10 +37,10 @@ class Create__Proper__ extends Base {
     e.preventDefault();
     // console.log("_handleFormSubmit");
     // console.log(e);
-    this.props.dispatch(singleActions.sendCreate__Proper__(this.state.item)).then((res) => {
+    this.props.dispatch(__name__Actions.sendCreate__Proper__(this.state.item)).then((res) => {
       if(res.success) {
-        this.props.dispatch(listActions.invaldiateList());
-        browserHistory.push(`/__name__s/${res.__name__._id}`)
+        this.props.dispatch(__name__Actions.invaldiateList('all'));
+        browserHistory.push(`/__name__s/${res.item._id}`)
       } else {
         console.log("Response Error:");
         console.log(res);
