@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 // import actions
-import { singleActions } from '../actions';
+import * as __name__Actions from '../__name__Actions';
+
 
 class Single__Proper__ extends Base {
   constructor(props) {
@@ -14,12 +15,12 @@ class Single__Proper__ extends Base {
   componentDidMount() {
     // console.log("Single item mounting");
     const { dispatch, params } = this.props;
-    dispatch(singleActions.fetchSingle__Proper__ById(params.__name__Id, true ))
+    dispatch(__name__Actions.fetchSingleIfNeeded(params.__name__Id))
   }
 
   render() {
-    const { item } = this.props;
-    const isEmpty = (item.title === null || item.title === undefined);
+    const { selected, map } = this.props;
+    const isEmpty = (!selected.id || !map[selected.id] || map[selected.id].title === undefined);
     console.log("isEmpty", isEmpty);
     return  (
       <div className="flex ">
@@ -30,11 +31,11 @@ class Single__Proper__ extends Base {
               ? (item.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
                 : <div style={{ opacity: item.isFetching ? 0.5 : 1 }}>
 
-                  <h1> { item.title }
-                    <Link className="yt-btn small u-pullRight" to={`/__name__s/${item._id}/update`}> Update __Proper__ </Link>
+                  <h1> { map[selected.id].title }
+                    <Link className="yt-btn small u-pullRight" to={`/products/${map[selected.id]._id}/update`}> Update __Proper__ </Link>
                   </h1>
                   <hr/>
-                  <p> {item.description }</p>
+                  <p> {map[selected.id].description }</p>
                 </div>
             }
           </div>
@@ -50,7 +51,8 @@ Single__Proper__.propTypes = {
 
 const mapStoreToProps = (store) => {
   return {
-    item: store.__name__.single.item
+    selected: store.product.selected
+    , map: store.product.map
   }
 }
 

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router';
 
 // import form components
-import { TextInput, TextAreaInput, CheckboxInput } from '../../../global/components/forms';
+import { TextInput, TextAreaInput } from '../../../global/components/forms';
 
 const __Proper__Form = ({__name__, formType, handleFormSubmit, handleFormChange,  cancelLink, formTitle }) => {
   const buttonText = formType === "create" ? "Create __Proper__" : "Update __Proper__";

@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import _ from 'lodash';
 
 // import actions
-import { singleActions, listActions } from '../actions';
+import * as __name__Actions from '../__name__Actions';
 
 // import components
 import __Proper__Form from './__Proper__Form.js.jsx';
@@ -13,7 +13,11 @@ import __Proper__Form from './__Proper__Form.js.jsx';
 class Update__Proper__ extends Base {
   constructor(props) {
     super(props);
-    this.state = this.props;
+    const { selected, map } = this.props;
+    this.state = {
+      item: map[selected.id] ? JSON.parse(JSON.stringify(map[selected.id])) : {}      
+      //we don't want to change the store, just make changes to a copy
+    }
     this._bind(
       '_handleFormChange'
       , '_handleFormSubmit'
@@ -27,15 +31,15 @@ class Update__Proper__ extends Base {
     const populate = false;
     // const populate = false;
     const { dispatch, params } = this.props;
-    if(params.__name__Id) {
-      dispatch(singleActions.fetchSingle__Proper__ById(params.__name__Id, populate ))
-    } else {
-      dispatch(singleActions.fetchSingle__Proper__BySlug(params.slug))
-    }
+    dispatch(singleActions.fetchSingle__Proper__ById(params.__name__Id))
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(nextProps);
+    const { selected, map } = nextProps;
+    this.state = {
+      item: map[selected.id] ? JSON.parse(JSON.stringify(map[selected.id])) : {}
+      //we don't want to actually change the store's item, just use a copy
+    }
   }
 
 
@@ -64,6 +68,7 @@ class Update__Proper__ extends Base {
   }
 
   render() {
+    const { selected, map } = this.props;
     const { item } = this.state;
     const isEmpty = (item.title === null || item.title === undefined);
     return  (
@@ -89,10 +94,9 @@ Update__Proper__.propTypes = {
 }
 
 const mapStoreToProps = (store) => {
-  // console.log("State");
-  // console.log(state);
   return {
-    item: store.__name__.single.item
+    selected: store.product.selected
+    , map: store.product.map
   }
 }
 
