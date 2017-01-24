@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 // import actions
-// import * as listActions from '../actions/__name__ListActions';
-import { listActions as __name__ListActions } from '../actions';
+import * as __name__Actions from '../__name__Actions';
 
 // import components
 import __Proper__ListItem from './__Proper__ListItem.js.jsx';
@@ -18,7 +17,7 @@ class __Proper__List extends Base {
 
   componentDidMount() {
     // console.log("list mounting");
-    this.props.dispatch(__name__ListActions.fetchListIfNeeded());
+    this.props.dispatch(__name__Actions.fetchListIfNeeded("all"));
   }
 
   render() {
@@ -36,8 +35,8 @@ class __Proper__List extends Base {
               ? (list.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
                 : <div style={{ opacity: list.isFetching ? 0.5 : 1 }}>
                   <ul>
-                    {Object.keys(list.itemMap).map((id, i) =>
-                      <__Proper__ListItem key={i} __name__={list.itemMap[id]} />
+                    {list.items.map((id, i) =>
+                      <__Proper__ListItem key={i} __name__={map[id]} />
                     )}
                   </ul>
                 </div>
@@ -55,7 +54,8 @@ __Proper__List.propTypes = {
 
 const mapStoreToProps = (store) => {
   return {
-    list: store.__name__.list
+    map: store.__name__.map
+    , list: store.__name__.lists.all
   }
 }
 

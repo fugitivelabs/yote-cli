@@ -5,8 +5,7 @@ import { browserHistory } from 'react-router';
 import _ from 'lodash';
 
 // import actions
-import { singleActions, listActions } from '../actions';
-
+import * as __name__Actions from '../__name__Actions';
 
 // import components
 import __Proper__Form from './__Proper__Form.js.jsx';
@@ -14,7 +13,10 @@ import __Proper__Form from './__Proper__Form.js.jsx';
 class Create__Proper__ extends Base {
   constructor(props) {
     super(props);
-    this.state = this.props;
+    this.state = {
+      item: JSON.parse(JSON.stringify(this.props.defaultItem))
+      //don't want to actually change the store's defaultItem, just use a copy
+    }
     this._bind(
       '_handleFormChange'
       , '_handleFormSubmit'
@@ -22,18 +24,7 @@ class Create__Proper__ extends Base {
   }
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(singleActions.setupNew__Proper__())
   }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps);
-    // console.log("NExt PROPs");
-    // console.log(nextProps);
-    if(nextProps.status === "error") {
-      alert(nextProps.error.message);
-    }
-  }
-
 
   _handleFormChange(e) {
     var newState = _.update( this.state.item, e.target.name, function() {
@@ -46,10 +37,10 @@ class Create__Proper__ extends Base {
     e.preventDefault();
     // console.log("_handleFormSubmit");
     // console.log(e);
-    this.props.dispatch(singleActions.sendCreate__Proper__(this.state.item)).then((res) => {
+    this.props.dispatch(__name__Actions.sendCreate__Proper__(this.state.item)).then((res) => {
       if(res.success) {
-        this.props.dispatch(listActions.invaldiateList());
-        browserHistory.push(`/__name__s/${res.__name__._id}`)
+        this.props.dispatch(__name__Actions.invaldiateList('all'));
+        browserHistory.push(`/__name__s/${res.item._id}`)
       } else {
         console.log("Response Error:");
         console.log(res);
@@ -88,8 +79,9 @@ const mapStoreToProps = (store) => {
   // console.log("State");
   // console.log(state);
   return {
-    item: store.__name__.single.item
-    , status: store.__name__.single.status
+    defaultItem: store.product.defaultItem
+    , selected: store.product.selected
+    , map: store.product.map
   }
 }
 

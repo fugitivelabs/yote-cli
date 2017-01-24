@@ -11,7 +11,7 @@ import Create from './components/Create__Proper__.js.jsx';
 import Update from './components/Update__Proper__.js.jsx';
 
 const __name__Routes =
-<Route path="/__name__s" component={Layout} >
+<Route key={Math.floor(Math.random()*1000)} path="/__name__s" component={Layout} >
   <IndexRoute component={List} />
   <Route path="/__name__s/new" component={Create} />
   <Route path="/__name__s/:__name__Id">
