@@ -21,6 +21,25 @@ program
   .option('-b,    --build     <buildNum>', 'Select which version of Yote to install')
   .option('-H,    --howl', '', howl)
 
+let init = (appName, options) => {
+  console.log("HERE");
+  console.log(appName);
+  console.log(options);
+  console.log(options.A);
+  console.log(options.all);
+  console.log(options.client);
+  console.log(options.c);
+}
+
+program
+  .command('init <appName>')
+  .description('Initialize a new Yote application called <appName>')
+  .option('-a', '--all', 'with Client, Server, and Mobile (default)')
+  .option('-c', '--client', 'with Client')
+  .option('-s', '--server', 'with Server')
+  .option('-m', '--mobile', 'with Mobile')
+  .action(init)
+
 require('./tools/remote')(program);
 
 program
