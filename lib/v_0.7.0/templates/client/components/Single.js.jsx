@@ -16,7 +16,7 @@ class Single__Proper__ extends Base {
 
   render() {
     const { selected__Proper__, __name__Map } = this.props;
-    const isEmpty = (!selected__Proper__.id || !__name__Map[selected__Proper__.id] || __name__Map[selected__Proper__.id].title === undefined || !selected__Proper__.didInvalidate);
+    const isEmpty = (!selected__Proper__.id || !__name__Map[selected__Proper__.id] || __name__Map[selected__Proper__.id].title === undefined || selected__Proper__.didInvalidate);
     console.log("isEmpty", isEmpty);
     return  (
       <div className="flex">

@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
+//reqs
 var program     = require('commander')
     , fs        = require('fs')
     , chalk     = require('chalk')
     , shell     = require('shelljs')
     , promptly  = require('promptly')
-    , builder   = require('./lib/yote-builder')
+    // , builder   = require('./lib/yote-builder')
     , config    = require('./package.json')
   ;
 
@@ -14,34 +15,64 @@ function howl() {
   shell.exec("say 'owooooooooooooooo'");
 }
 
+//building libraries - load current version
+let init = require('./lib/v_' + config['yote-version'] + '/init');
+let add = require('./lib/v_' + config['yote-version'] + '/add');
 
 program
   .version(config.version)
   .usage('<command> [options]')
-  .option('-b,    --build     <buildNum>', 'Select which version of Yote to install')
-  .option('-H,    --howl', '', howl)
-
-let init = (appName, options) => {
-  console.log("HERE");
-  console.log(appName);
-  console.log(options);
-  console.log(options.A);
-  console.log(options.all);
-  console.log(options.client);
-  console.log(options.c);
-}
+  //TODO: capture yote version from CWD and use appropriate library version - doesn't exist for versions other than 0.7 for now
+  // .option('-b,    --build     <buildNum>', 'Select which version of Yote to install')
+  // .option('-H,    --howl', '', howl)
 
 program
   .command('init <appName>')
+  .alias('I')
   .description('Initialize a new Yote application called <appName>')
   .option('-a', '--all', 'with Client, Server, and Mobile (default)')
   .option('-c', '--client', 'with Client')
   .option('-s', '--server', 'with Server')
   .option('-m', '--mobile', 'with Mobile')
+  .option('-i', '--install', 'and install packages')
   .action(init)
+  .on('--help', () => {
+    console.log('Initialize a new blank Yote app')
+    console.log('  Examples:');
+    console.log();
+    console.log('    $ yote init myApp');
+    console.log('    $ yote I myApp');
+    console.log();
+    console.log('-i: run "npm install" after cloning')
+    console.log('-c,s,m: install just client, server, and/or mobile')
+    console.log('    $ yote I -sm')
+    console.log('installs only the server and mobile components')
+  });
+program
+  .command('add <resourceName>')
+  .alias('A')
+  .description('Add a new Resource to the Yote application called <resourceName>')
+  // .option('-a', '--all', 'with Client, Server, and Mobile (default)')
+  // .option('-c', '--client', 'with Client')
+  // .option('-s', '--server', 'with Server')
+  // .option('-m', '--mobile', 'with Mobile')
+  .action(add)
+  .on('--help', () => {
+    console.log('Add a new resource to the Yote app')
+    console.log('NOTE: singular, camelcases names work best, like "product" or "book')
+    console.log('  Examples:');
+    console.log();
+    console.log('    $ yote add myResource');
+    console.log('    $ yote A myResource');
+  });
 
+//yote remote database tools. will be removed from package in the future
 require('./tools/remote')(program);
 
+//old commands, will break
+//preserving for the time being until we through the transition
+
+/**
 program
   .command('create <appName>')
   .alias('C')
@@ -205,6 +236,8 @@ program.on('--help', function() {
     console.log(chalk.dim('          - will generate a Yote API that can be hit by any client'));
     console.log();
   });
+
+**/
 
 program.parse(process.argv);
 
