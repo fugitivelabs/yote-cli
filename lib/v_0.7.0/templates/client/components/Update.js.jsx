@@ -18,14 +18,14 @@ import * as __name__Actions from '../__name__Actions';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 
 // import module components
-import __Proper__Form from './__Proper__Form.js.jsx';
+import __PascalName__Form from './__PascalName__Form.js.jsx';
 
-class Update__Proper__ extends Base {
+class Update__PascalName__ extends Base {
   constructor(props) {
     super(props);
-    const { selected__Proper__, __name__Map } = this.props;
+    const { selected__PascalName__, __name__Map } = this.props;
     this.state = {
-      __name__: __name__Map[selected__Proper__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__Proper__.id])) : {}
+      __name__: __name__Map[selected__PascalName__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__PascalName__.id])) : {}
       // NOTE: we don't want to change the store, just make changes to a copy
     }
     this._bind(
@@ -40,9 +40,9 @@ class Update__Proper__ extends Base {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { selected__Proper__, __name__Map } = nextProps;
+    const { selected__PascalName__, __name__Map } = nextProps;
     this.state = {
-      __name__: __name__Map[selected__Proper__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__Proper__.id])) : {}
+      __name__: __name__Map[selected__PascalName__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__PascalName__.id])) : {}
       //we don't want to actually change the store's __name__, just use a copy
     }
   }
@@ -56,7 +56,7 @@ class Update__Proper__ extends Base {
 
   _handleFormSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(__name__Actions.sendUpdate__Proper__(this.state.__name__)).then((action) => {
+    this.props.dispatch(__name__Actions.sendUpdate__PascalName__(this.state.__name__)).then((action) => {
       if(action.success) {
         browserHistory.push(`/__kebabName__s/${action.item._id}`)
       } else {
@@ -68,21 +68,21 @@ class Update__Proper__ extends Base {
   }
 
   render() {
-    const { selected__Proper__, __name__Map } = this.props;
+    const { selected__PascalName__, __name__Map } = this.props;
     const { __name__ } = this.state;
     const isEmpty = (!__name__ || __name__._id === null || __name__._id === undefined);
     return  (
       <div className="flex">
         <section className="section">
           {isEmpty
-            ? (selected__Proper__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-          : <__Proper__Form
+            ? (selected__PascalName__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+          : <__PascalName__Form
               __name__={__name__}
               formType="update"
               handleFormSubmit={this._handleFormSubmit}
               handleFormChange={this._handleFormChange}
               cancelLink={`/__name__s/${__name__._id}`}
-              formTitle="Update __Proper__"
+              formTitle="Update __PascalName__"
             />
           }
         </section>
@@ -91,7 +91,7 @@ class Update__Proper__ extends Base {
   }
 }
 
-Update__Proper__.propTypes = {
+Update__PascalName__.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
@@ -101,11 +101,11 @@ const mapStoreToProps = (store) => {
   * differentiated from the React component's internal state
   */
   return {
-    selected__Proper__: store.__name__.selected
+    selected__PascalName__: store.__name__.selected
     , __name__Map: store.__name__.byId
   }
 }
 
 export default connect(
   mapStoreToProps
-)(Update__Proper__);
+)(Update__PascalName__);
