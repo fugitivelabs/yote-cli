@@ -14,27 +14,38 @@ exports.checkIfExists = (path) => {
   return exists;
 }
 
-exports.getNormalizedName = (string) => {
-  //don't know what this does but we need a way to normalize user input names
-  // into something we can use.
-  // putting this in now and using it so that in the future we can
-  // change this method and have it work automatically
-  return string;
+exports.getNormalizedName = (str) => {
+  /**
+   * Regardless of input, use _.camelCase() to normalize the str.
+   *
+   * NOTE:
+   * _.camelCase('Foo Bar');
+   * // => 'fooBar'
+   *
+   * _.camelCase('--foo-bar--');
+   * // => 'fooBar'
+   *
+   * _.camelCase('__FOO_BAR__');
+   * // => 'fooBar'
+   */
+  str = _.camelCase(str);
+  return str;
 }
 
-exports.capitaliseFirstLetter = (string) => {
+exports.capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 exports.camelCase = (str) => {
-  if(str.indexOf('-') > -1) {
-    str = str.toLowerCase();
-    var parts = str.split(/[\-_ \s]/);
-    str = null;
-    for (var i = 0; i < parts.length; i++) {
-      str = (str ? str + capitaliseFirstLetter(parts[i]) : parts[i]);
-    }
-  }
+  // if(str.indexOf('-') > -1) {
+  //   str = str.toLowerCase();
+  //   var parts = str.split(/[\-_ \s]/);
+  //   str = null;
+  //   for (var i = 0; i < parts.length; i++) {
+  //     str = (str ? str + capitalizeFirstLetter(parts[i]) : parts[i]);
+  //   }
+  // }
+  str = _.camelCase(str);
   return str;
 }
 
@@ -80,5 +91,11 @@ exports.findAndReplaceYote = (path, file, appName) => {
 
 exports.kebabCase = (str) => {
   str = _.kebabCase(str);
+  return str;
+}
+
+exports.actionCase = (str) => {
+  str = _.snakeCase(str);
+  str = _.toUpper(str);
   return str;
 }
