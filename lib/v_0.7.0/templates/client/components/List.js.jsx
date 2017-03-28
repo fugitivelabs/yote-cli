@@ -44,7 +44,7 @@ class __Proper__List extends Base {
         <section className="section">
           <div className="yt-container">
             <h1> __Proper__ List
-              <Link className="yt-btn small u-pullRight" to={'/__name__s/new'}> NEW __allCaps__ </Link>
+              <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __allCaps__ </Link>
             </h1>
             <hr/>
             { isEmpty ?

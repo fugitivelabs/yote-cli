@@ -48,7 +48,7 @@ class Create__Proper__ extends Base {
     this.props.dispatch(__name__Actions.sendCreate__Proper__(this.state.__name__)).then((action) => {
       if(action.success) {
         this.props.dispatch(__name__Actions.invaldiateList());
-        browserHistory.push(`/__name__s/${action.item._id}`)
+        browserHistory.push(`/__kebabName__s/${action.item._id}`)
       } else {
         // console.log("Response Error:");
         // console.log(action);
@@ -59,21 +59,23 @@ class Create__Proper__ extends Base {
 
   render() {
     const { __name__ } = this.state;
-    const isEmpty = (__name__.title === null || __name__.title === undefined);
+    const isEmpty = (__name__.name === null || __name__.name === undefined);
     return (
-      <div>
-        {isEmpty ?
-          <h2> Loading...</h2>
-          :
-          <__Proper__Form
-            __name__={__name__}
-            formType="create"
-            handleFormSubmit={this._handleFormSubmit}
-            handleFormChange={this._handleFormChange}
-            cancelLink="/__name__s"
-            formTitle="Create __Proper__"
-          />
-        }
+      <div className="flex">
+        <section className="section">
+          {isEmpty ?
+            <h2> Loading...</h2>
+            :
+            <__Proper__Form
+              __name__={__name__}
+              formType="create"
+              handleFormSubmit={this._handleFormSubmit}
+              handleFormChange={this._handleFormChange}
+              cancelLink="/__kebabName__s"
+              formTitle="Create __Proper__"
+            />
+          }
+        </section>
       </div>
     )
   }

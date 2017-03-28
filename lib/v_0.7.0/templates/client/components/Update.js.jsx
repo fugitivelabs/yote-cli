@@ -58,7 +58,7 @@ class Update__Proper__ extends Base {
     e.preventDefault();
     this.props.dispatch(__name__Actions.sendUpdate__Proper__(this.state.__name__)).then((action) => {
       if(action.success) {
-        browserHistory.push(`/__name__s/${action.item._id}`)
+        browserHistory.push(`/__kebabName__s/${action.item._id}`)
       } else {
         // console.log("Response Error:");
         // console.log(action);
@@ -70,20 +70,22 @@ class Update__Proper__ extends Base {
   render() {
     const { selected__Proper__, __name__Map } = this.props;
     const { __name__ } = this.state;
-    const isEmpty = (!__name__ || __name__.title === null || __name__.title === undefined);
+    const isEmpty = (!__name__ || __name__._id === null || __name__._id === undefined);
     return  (
-      <div >
-        {isEmpty
-          ? (selected__Proper__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-        : <__Proper__Form
-            __name__={__name__}
-            formType="update"
-            handleFormSubmit={this._handleFormSubmit}
-            handleFormChange={this._handleFormChange}
-            cancelLink={`/__name__s/${__name__._id}`}
-            formTitle="Update __Proper__"
-          />
-        }
+      <div className="flex">
+        <section className="section">
+          {isEmpty
+            ? (selected__Proper__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+          : <__Proper__Form
+              __name__={__name__}
+              formType="update"
+              handleFormSubmit={this._handleFormSubmit}
+              handleFormChange={this._handleFormChange}
+              cancelLink={`/__name__s/${__name__._id}`}
+              formTitle="Update __Proper__"
+            />
+          }
+        </section>
       </div>
     )
   }

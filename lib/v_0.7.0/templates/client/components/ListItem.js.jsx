@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 function __Proper__ListItem({ __name__ }) {
   return (
     <li>
-      <Link to={`/__name__s/${__name__._id}`}> {__name__.title}</Link>
+      <Link to={`/__kebabName__s/${__camelName__._id}`}> {__name__.name}</Link>
     </li>
   )
 }

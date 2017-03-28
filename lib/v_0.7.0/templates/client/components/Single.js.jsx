@@ -26,7 +26,7 @@ class Single__Proper__ extends Base {
 
   render() {
     const { selected__Proper__, __name__Map } = this.props;
-    const isEmpty = (!selected__Proper__.id || !__name__Map[selected__Proper__.id] || __name__Map[selected__Proper__.id].title === undefined || selected__Proper__.didInvalidate);
+    const isEmpty = (!selected__Proper__.id || !__name__Map[selected__Proper__.id] || __name__Map[selected__Proper__.id].name === undefined || selected__Proper__.didInvalidate);
     return (
       <div className="flex">
         <section className="section">
@@ -36,11 +36,11 @@ class Single__Proper__ extends Base {
               (selected__Proper__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
               :
               <div style={{ opacity: selected__Proper__.isFetching ? 0.5 : 1 }}>
-                <h1> { __name__Map[selected__Proper__.id].title }
-                  <Link className="yt-btn small u-pullRight" to={`/__name__s/${__name__Map[selected__Proper__.id]._id}/update`}> UPDATE PRODUCT </Link>
+                <h1> { __name__Map[selected__Proper__.id].name }
+                  <Link className="yt-btn small u-pullRight" to={`/__kebabName__s/${__name__Map[selected__Proper__.id]._id}/update`}> UPDATE __allCaps__ </Link>
                 </h1>
                 <hr/>
-                <p> {__name__Map[selected__Proper__.id].description }</p>
+                <p> <em>Other characteristics about the __Proper__ would go here.</em></p>
               </div>
             }
           </div>
