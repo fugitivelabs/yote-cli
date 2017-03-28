@@ -1,7 +1,7 @@
-var fs = require('fs')
-  , shell = require('shelljs')
-  , chalk = require('chalk')
-  ;
+let _ = require('lodash');
+let chalk = require('chalk');
+let fs = require('fs');
+let shell = require('shelljs');
 
 exports.getYoteVersion = () => {
   var yoteProject = JSON.parse(fs.readFileSync('./yote-project.json', 'utf8'));
@@ -14,27 +14,38 @@ exports.checkIfExists = (path) => {
   return exists;
 }
 
-exports.getNormalizedName = (string) => {
-  //don't know what this does but we need a way to normalize user input names
-  // into something we can use.
-  // putting this in now and using it so that in the future we can 
-  // change this method and have it work automatically
-  return string;
+exports.getNormalizedName = (str) => {
+  /**
+   * Regardless of input, use _.camelCase() to normalize the str.
+   *
+   * NOTE:
+   * _.camelCase('Foo Bar');
+   * // => 'fooBar'
+   *
+   * _.camelCase('--foo-bar--');
+   * // => 'fooBar'
+   *
+   * _.camelCase('__FOO_BAR__');
+   * // => 'fooBar'
+   */
+  str = _.camelCase(str);
+  return str;
 }
 
-exports.capitaliseFirstLetter = (string) => {
+exports.capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 exports.camelCase = (str) => {
-  if(str.indexOf('-') > -1) {
-    str = str.toLowerCase();
-    var parts = str.split(/[\-_ \s]/);
-    str = null;
-    for (var i = 0; i < parts.length; i++) {
-      str = (str ? str + capitaliseFirstLetter(parts[i]) : parts[i]);
-    }
-  }
+  // if(str.indexOf('-') > -1) {
+  //   str = str.toLowerCase();
+  //   var parts = str.split(/[\-_ \s]/);
+  //   str = null;
+  //   for (var i = 0; i < parts.length; i++) {
+  //     str = (str ? str + capitalizeFirstLetter(parts[i]) : parts[i]);
+  //   }
+  // }
+  str = _.camelCase(str);
   return str;
 }
 
@@ -64,10 +75,27 @@ exports.readTemplate = (path) => {
 }
 
 exports.readTemplateAndReplace = (path, file, replacements) => {
-  console.log("Read and replace " + file);
+  console.log(chalk.dim("          Read and replace " + file));
   var template = fs.readFileSync(path + '/templates/' + file, 'utf8');
   for (var key in replacements) {
     template = template.split('__' + key + '__').join(replacements[key]);
   }
   return template;
+}
+
+exports.findAndReplaceYote = (path, file, appName) => {
+  var template = fs.readFileSync(path + file, 'utf8');
+  template = template.split('Yote').join(appName);
+  return template;
+}
+
+exports.kebabCase = (str) => {
+  str = _.kebabCase(str);
+  return str;
+}
+
+exports.actionCase = (str) => {
+  str = _.snakeCase(str);
+  str = _.toUpper(str);
+  return str;
 }

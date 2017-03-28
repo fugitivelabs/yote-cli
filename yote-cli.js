@@ -1,30 +1,34 @@
 #!/usr/bin/env node
 
-//reqs
-var program     = require('commander')
-    , fs        = require('fs')
-    , chalk     = require('chalk')
-    , shell     = require('shelljs')
-    , promptly  = require('promptly')
-    // , builder   = require('./lib/yote-builder')
-    , config    = require('./package.json')
-  ;
+// requirements
+let program   = require('commander');
+let fs        = require('fs');
+let chalk     = require('chalk');
+let shell     = require('shelljs');
+let promptly  = require('promptly');
+// let builder   = require('./lib/yote-builder')
+let config    = require('./package.json');
+
 
 function howl() {
   console.log(chalk.bgCyan("        test howl        "));
   shell.exec("say 'owooooooooooooooo'");
 }
 
-//building libraries - load current version
+// building libraries - load current version
 let init = require('./lib/v_' + config['yote-version'] + '/init');
 let add = require('./lib/v_' + config['yote-version'] + '/add');
 
 program
   .version(config.version)
   .usage('<command> [options]')
-  //TODO: capture yote version from CWD and use appropriate library version - doesn't exist for versions other than 0.7 for now
-  // .option('-b,    --build     <buildNum>', 'Select which version of Yote to install')
-  // .option('-H,    --howl', '', howl)
+  /**
+   * TODO: capture yote version from CWD and use appropriate library version - doesn't exist for versions other than 0.7 for now
+   *
+   */
+
+   // .option('-b,    --build     <buildNum>', 'Select which version of Yote to install') // old
+   .option('-H,    --howl', '', howl)
 
 program
   .command('init <appName>')
@@ -37,16 +41,22 @@ program
   .option('-i', '--install', 'and install packages')
   .action(init)
   .on('--help', () => {
-    console.log('Initialize a new blank Yote app')
+    console.log('  To initialize a new blank Yote app')
+    console.log(chalk.green('    $ yote I <appName>'))
+    console.log(chalk.dim('    # OR'))
+    console.log(chalk.green('    $ yote init <appName>'))
+    console.log();
     console.log('  Examples:');
     console.log();
     console.log('    $ yote init myApp');
     console.log('    $ yote I myApp');
     console.log();
-    console.log('-i: run "npm install" after cloning')
-    console.log('-c,s,m: install just client, server, and/or mobile')
+    console.log('  Options:');
+    console.log('    -i: run "npm install" after cloning')
+    console.log('    -c,s,m: install just client, server, and/or mobile')
+    console.log();
     console.log('    $ yote I -sm')
-    console.log('installs only the server and mobile components')
+    console.log(chalk.dim('    # installs only the server and mobile components'))
   });
 program
   .command('add <resourceName>')
@@ -58,12 +68,19 @@ program
   // .option('-m', '--mobile', 'with Mobile')
   .action(add)
   .on('--help', () => {
-    console.log('Add a new resource to the Yote app')
-    console.log('NOTE: singular, camelcases names work best, like "product" or "book')
-    console.log('  Examples:');
+    console.log('   To add a new resource to the Yote app')
+    console.log(chalk.green('     $ yote A <resourceName>'));
+    console.log(chalk.dim('     # OR'))
+    console.log(chalk.green('     $ yote add <resourceName>'));
+    console.log();
+    console.log('   Examples:');
     console.log();
     console.log('    $ yote add myResource');
     console.log('    $ yote A myResource');
+    console.log();
+    console.log(chalk.bgRed('   NOTE: singular, camelcase names work best, like "product" or "book'));
+    console.log();
+    console.log();
   });
 
 //yote remote database tools. will be removed from package in the future
@@ -79,10 +96,10 @@ program
   .description('Create a new Yote applicaion directory called <appName>')
   // .option('-b, --build [buildNum]', 'Select which version of Yote to install. Defaults to most recent stable.')
   .action(function(cmd, options){
-    // creating a new yote project might need to be done by 
-    // creating a fork through the github api in the future.  
+    // creating a new yote project might need to be done by
+    // creating a fork through the github api in the future.
     // right now all this does is setup a clean repo
-    // but it is up to the user to create the new upstream origin correctly. 
+    // but it is up to the user to create the new upstream origin correctly.
 
     // This method would be used to capture the github username
     // promptly.prompt('What is your github username: ', function(err, value){
@@ -98,7 +115,7 @@ program
 
     // set the repo with a clean origin
     shell.exec('git remote rename origin upstream');
-    
+
     // remove the upstream master to unlink yote master repo
     // shell.exec('git remote rm upstream');
 
@@ -106,8 +123,8 @@ program
     // *************  ALTERNATIVELY ********************
 
     // doing it this way creates a brand new git directory that is not associated
-    // with the fugitivelabs/yote-react.git upstream master at all.  
-    
+    // with the fugitivelabs/yote-react.git upstream master at all.
+
     // shell.exec("git clone --bare https://github.com/fugitivelabs/yote-react.git " + program.create);
     // shell.cd(program.create);
     // shell.exec("git init");
@@ -133,7 +150,7 @@ program
     console.log('');
     console.log(chalk.magenta("     Then you're good to go."))
 
-    // process.exit(0); 
+    // process.exit(0);
   }).on('--help', function() {
     console.log('  Examples:');
     console.log();
@@ -244,5 +261,3 @@ program.parse(process.argv);
 if(!program.args.length) {
   program.help();
 }
-
-

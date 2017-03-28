@@ -1,13 +1,11 @@
+// import primary libraries
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router';
 
-const __Proper__ListItem = ({ __name__ }) => {
-
+function __Proper__ListItem({ __name__ }) {
   return (
     <li>
-
-      <Link to={`/__name__s/${__name__._id}`}> {__name__.title}</Link>
-
+      <Link to={`/__kebabName__s/${__camelName__._id}`}> {__name__.name}</Link>
     </li>
   )
 }

@@ -1,6 +1,6 @@
 {
   "name": "yote",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "yote-version": "0.7.0",
   "description": "cli to generate yote apps",
   "main": "index.js",
@@ -42,9 +42,12 @@
   },
   "dependencies": {
     "chalk": "^0.5.1",
+    "cli-spinner": "^0.2.6",
     "commander": "^2.3.0",
+    "lodash": "^4.17.4",
     "prompt": "^0.2.13",
     "promptly": "^0.2.0",
+    "react-native-cli": "^2.0.1",
     "shelljs": "^0.3.0"
   }
 }
