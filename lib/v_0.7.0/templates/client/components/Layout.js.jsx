@@ -1,5 +1,5 @@
 /**
- * Wraps all __Proper__ components in a default view wrapper.
+ * Wraps all __PascalName__ components in a default view wrapper.
  * This is a class in case you want some extra special logic...
  */
 
@@ -11,7 +11,7 @@ import Base from "../../../global/components/BaseComponent.js.jsx";
 import DefaultLayout from "../../../global/components/DefaultLayout.js.jsx";
 
 
-class __Proper__Layout extends Base {
+class __PascalName__Layout extends Base {
   constructor(props) {
     super(props);
   }
@@ -25,4 +25,4 @@ class __Proper__Layout extends Base {
   }
 }
 
-export default __Proper__Layout;
+export default __PascalName__Layout;

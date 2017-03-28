@@ -17,13 +17,13 @@ import * as __name__Actions from '../__name__Actions';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 
 // import __name__ components
-import __Proper__Form from './__Proper__Form.js.jsx';
+import __PascalName__Form from './__PascalName__Form.js.jsx';
 
-class Create__Proper__ extends Base {
+class Create__PascalName__ extends Base {
   constructor(props) {
     super(props);
     this.state = {
-      __name__: JSON.parse(JSON.stringify(this.props.default__Proper__))
+      __name__: JSON.parse(JSON.stringify(this.props.default__PascalName__))
       // NOTE: We don't want to actually change the store's defaultItem, just use a copy
     }
     this._bind(
@@ -45,7 +45,7 @@ class Create__Proper__ extends Base {
 
   _handleFormSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(__name__Actions.sendCreate__Proper__(this.state.__name__)).then((action) => {
+    this.props.dispatch(__name__Actions.sendCreate__PascalName__(this.state.__name__)).then((action) => {
       if(action.success) {
         this.props.dispatch(__name__Actions.invaldiateList());
         browserHistory.push(`/__kebabName__s/${action.item._id}`)
@@ -66,13 +66,13 @@ class Create__Proper__ extends Base {
           {isEmpty ?
             <h2> Loading...</h2>
             :
-            <__Proper__Form
+            <__PascalName__Form
               __name__={__name__}
               formType="create"
               handleFormSubmit={this._handleFormSubmit}
               handleFormChange={this._handleFormChange}
               cancelLink="/__kebabName__s"
-              formTitle="Create __Proper__"
+              formTitle="Create __PascalName__"
             />
           }
         </section>
@@ -81,7 +81,7 @@ class Create__Proper__ extends Base {
   }
 }
 
-Create__Proper__.propTypes = {
+Create__PascalName__.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
@@ -91,10 +91,10 @@ const mapStoreToProps = (store) => {
   * differentiated from the React component's internal state
   */
   return {
-    default__Proper__: store.__name__.defaultItem
+    default__PascalName__: store.__name__.defaultItem
   }
 }
 
 export default connect(
   mapStoreToProps
-)(Create__Proper__);
+)(Create__PascalName__);

@@ -17,9 +17,9 @@ import * as __name__Actions from '../__name__Actions';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 
 // import __name__ components
-import __Proper__ListItem from './__Proper__ListItem.js.jsx';
+import __PascalName__ListItem from './__PascalName__ListItem.js.jsx';
 
-class __Proper__List extends Base {
+class __PascalName__List extends Base {
   constructor(props) {
     super(props);
   }
@@ -43,7 +43,7 @@ class __Proper__List extends Base {
       <div className="flex">
         <section className="section">
           <div className="yt-container">
-            <h1> __Proper__ List
+            <h1> __PascalName__ List
               <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __allCaps__ </Link>
             </h1>
             <hr/>
@@ -53,7 +53,7 @@ class __Proper__List extends Base {
               <div style={{ opacity: __name__List.isFetching ? 0.5 : 1 }}>
                 <ul>
                   {__name__List.items.map((id, i) =>
-                    <__Proper__ListItem key={id} __name__={__name__Map[id]} />
+                    <__PascalName__ListItem key={id} __name__={__name__Map[id]} />
                   )}
                 </ul>
               </div>
@@ -65,7 +65,7 @@ class __Proper__List extends Base {
   }
 }
 
-__Proper__List.propTypes = {
+__PascalName__List.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
@@ -82,4 +82,4 @@ const mapStoreToProps = (store) => {
 
 export default connect(
   mapStoreToProps
-)(__Proper__List);
+)(__PascalName__List);
