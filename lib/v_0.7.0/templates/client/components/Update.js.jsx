@@ -1,12 +1,23 @@
+/**
+ * Updates a single __name__ from a copy of the selcted __name__
+ * as defined in the __name__ reducer
+ */
+
+// import primary libraries
 import React, { PropTypes } from 'react';
-import Base from "../../../global/components/BaseComponent.js.jsx";
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+
+// import third-party libraries
 import _ from 'lodash';
 
+// import actions
 import * as __name__Actions from '../__name__Actions';
 
-// import components
+// import global components
+import Base from "../../../global/components/BaseComponent.js.jsx";
+
+// import module components
 import __Proper__Form from './__Proper__Form.js.jsx';
 
 class Update__Proper__ extends Base {
@@ -14,8 +25,8 @@ class Update__Proper__ extends Base {
     super(props);
     const { selected__Proper__, __name__Map } = this.props;
     this.state = {
-      item: __name__Map[selected__Proper__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__Proper__.id])) : {}      
-      //we don't want to change the store, just make changes to a copy
+      __name__: __name__Map[selected__Proper__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__Proper__.id])) : {}
+      // NOTE: we don't want to change the store, just make changes to a copy
     }
     this._bind(
       '_handleFormChange'
@@ -24,7 +35,6 @@ class Update__Proper__ extends Base {
   }
 
   componentDidMount() {
-    console.log("Single item mounting");
     const { dispatch, params } = this.props;
     dispatch(__name__Actions.fetchSingleIfNeeded(params.__name__Id))
   }
@@ -32,13 +42,13 @@ class Update__Proper__ extends Base {
   componentWillReceiveProps(nextProps) {
     const { selected__Proper__, __name__Map } = nextProps;
     this.state = {
-      item: __name__Map[selected__Proper__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__Proper__.id])) : {}
-      //we don't want to actually change the store's item, just use a copy
+      __name__: __name__Map[selected__Proper__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__Proper__.id])) : {}
+      //we don't want to actually change the store's __name__, just use a copy
     }
   }
 
   _handleFormChange(e) {
-    var newState = _.update( this.state.item, e.target.name, function() {
+    var newState = _.update( this.state.__name__, e.target.name, function() {
       return e.target.value;
     });
     this.setState(newState);
@@ -46,15 +56,12 @@ class Update__Proper__ extends Base {
 
   _handleFormSubmit(e) {
     e.preventDefault();
-    // console.log("_handleFormSubmit");
-    // console.log(e);
-    this.props.dispatch(__name__Actions.sendUpdate__Proper__(this.state.item)).then((action) => {
-      console.log(action);
+    this.props.dispatch(__name__Actions.sendUpdate__Proper__(this.state.__name__)).then((action) => {
       if(action.success) {
         browserHistory.push(`/__name__s/${action.item._id}`)
       } else {
-        console.log("Response Error:");
-        console.log(action);
+        // console.log("Response Error:");
+        // console.log(action);
         alert("ERROR - Check logs");
       }
     });
@@ -62,18 +69,18 @@ class Update__Proper__ extends Base {
 
   render() {
     const { selected__Proper__, __name__Map } = this.props;
-    const { item } = this.state;
-    const isEmpty = (!item || item.title === null || item.title === undefined);
+    const { __name__ } = this.state;
+    const isEmpty = (!__name__ || __name__.title === null || __name__.title === undefined);
     return  (
       <div >
         {isEmpty
           ? (selected__Proper__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
         : <__Proper__Form
-            __name__={item}
+            __name__={__name__}
             formType="update"
             handleFormSubmit={this._handleFormSubmit}
             handleFormChange={this._handleFormChange}
-            cancelLink={`/__name__s/${item._id}`}
+            cancelLink={`/__name__s/${__name__._id}`}
             formTitle="Update __Proper__"
           />
         }
@@ -87,6 +94,10 @@ Update__Proper__.propTypes = {
 }
 
 const mapStoreToProps = (store) => {
+  /**
+  * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
+  * differentiated from the React component's internal state
+  */
   return {
     selected__Proper__: store.__name__.selected
     , __name__Map: store.__name__.byId
