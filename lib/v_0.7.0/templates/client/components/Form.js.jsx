@@ -29,7 +29,7 @@ function __PascalName__Form({
       {header}
       <div className="yt-row center-horiz">
         <div className="form-container">
-          <form name="__name__Form" className="card __name__-form" onSubmit={handleFormSubmit}>
+          <form name="__name__Form" className="__name__-form" onSubmit={handleFormSubmit}>
             <TextInput
               name="name"
               label="Name"

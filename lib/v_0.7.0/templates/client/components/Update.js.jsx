@@ -74,9 +74,10 @@ class Update__PascalName__ extends Base {
     return  (
       <div className="flex">
         <section className="section">
-          {isEmpty
-            ? (selected__PascalName__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-          : <__PascalName__Form
+          {isEmpty ?
+            (selected__PascalName__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+            :
+            <__PascalName__Form
               __name__={__name__}
               formType="update"
               handleFormSubmit={this._handleFormSubmit}
