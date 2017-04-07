@@ -47,7 +47,7 @@ class Create__PascalName__ extends Base {
     e.preventDefault();
     this.props.dispatch(__name__Actions.sendCreate__PascalName__(this.state.__name__)).then((action) => {
       if(action.success) {
-        this.props.dispatch(__name__Actions.invaldiateList());
+        this.props.dispatch(__name__Actions.invalidateList());
         browserHistory.push(`/__kebabName__s/${action.item._id}`)
       } else {
         // console.log("Response Error:");
