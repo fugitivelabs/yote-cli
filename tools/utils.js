@@ -9,6 +9,12 @@ exports.getYoteVersion = () => {
   return yoteProject['yote-version'];
 }
 
+exports.getYoteMobileProjectName = () => {
+  var yoteProject = JSON.parse(fs.readFileSync('./yote-project.json', 'utf8'));
+  console.log("MOBILE APP NAME: " + yoteProject['yote-mobile-project-name']);
+  return yoteProject['yote-mobile-project-name'];
+}
+
 exports.checkIfExists = (path) => {
   var exists = fs.existsSync(path);
   return exists;
