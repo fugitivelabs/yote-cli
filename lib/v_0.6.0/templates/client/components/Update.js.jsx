@@ -57,7 +57,7 @@ class Update__Proper__ extends Base {
     // console.log(e);
     this.props.dispatch(__name__Actions.sendUpdate__Proper__(this.state.item)).then((res) => {
       if(res.success) {
-        this.props.dispatch(__name__Actions.invaldiateList('all'));
+        this.props.dispatch(__name__Actions.invalidateList('all'));
         browserHistory.push(`/__name__s/${res.item._id}`)
       } else {
         console.log("Response Error:");
