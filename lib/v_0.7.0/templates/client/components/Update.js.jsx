@@ -79,11 +79,11 @@ class Update__PascalName__ extends Base {
             :
             <__PascalName__Form
               __name__={__name__}
-              formType="update"
-              handleFormSubmit={this._handleFormSubmit}
-              handleFormChange={this._handleFormChange}
               cancelLink={`/__kebabName__s/${__name__._id}`}
               formTitle="Update __PascalName__"
+              formType="update"
+              handleFormChange={this._handleFormChange}
+              handleFormSubmit={this._handleFormSubmit}
             />
           }
         </section>

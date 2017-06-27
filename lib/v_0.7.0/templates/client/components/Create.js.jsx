@@ -68,11 +68,11 @@ class Create__PascalName__ extends Base {
             :
             <__PascalName__Form
               __name__={__name__}
-              formType="create"
-              handleFormSubmit={this._handleFormSubmit}
-              handleFormChange={this._handleFormChange}
               cancelLink="/__kebabName__s"
               formTitle="Create __PascalName__"
+              formType="create"
+              handleFormChange={this._handleFormChange}
+              handleFormSubmit={this._handleFormSubmit}
             />
           }
         </section>

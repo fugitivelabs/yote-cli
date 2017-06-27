@@ -31,12 +31,12 @@ function __PascalName__Form({
         <div className="form-container">
           <form name="__name__Form" className="__name__-form" onSubmit={handleFormSubmit}>
             <TextInput
-              name="name"
-              label="Name"
-              value={__name__.name}
               change={handleFormChange}
+              label="Name"
+              name="name"
               placeholder="Name (required)"
               required={true}
+              value={__name__.name}
             />
             <div className="input-group">
               <div className="yt-row space-between">
