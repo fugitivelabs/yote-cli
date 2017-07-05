@@ -36,10 +36,10 @@ class Create__PascalName__ extends Base {
     /**
      * This let's us change arbitrarily nested objects with one pass
      */
-    let newState = _.update( this.state.__name__, e.target.name, function() {
+    let new__PascalName__State = _.update( this.state.__name__, e.target.name, function() {
       return e.target.value;
     });
-    this.setState(newState);
+    this.setState({__name__ :new__PascalName__State});
   }
 
 
