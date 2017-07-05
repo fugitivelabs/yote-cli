@@ -88,7 +88,8 @@ module.exports = function(program) {
       console.log("Creating backup on remote instance");
       shell.exec(nextCommand); //actually creates the backup!!!!
       //now copy files locally
-      nextCommand = `gcloud compute copy-files grant@${instanceName}:/home/grant/backup/${dbName} ./ --zone ${zone}`;
+      nextCommand = `gcloud compute scp --recurse --compress grant@${instanceName}:/home/grant/backup/${dbName} ./ --zone ${zone}`;
+      console.log(nextCommand);
       shell.exec(nextCommand);
       console.log("Backup created in local folder.");
       if(outputRename) {
