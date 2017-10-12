@@ -23,7 +23,7 @@ class Create__PascalName__ extends Base {
   constructor(props) {
     super(props);
     this.state = {
-      __name__: JSON.parse(JSON.stringify(this.props.default__PascalName__))
+      __name__: { ...this.props.default__PascalName__ }
       // NOTE: We don't want to actually change the store's defaultItem, just use a copy
     }
     this._bind(
