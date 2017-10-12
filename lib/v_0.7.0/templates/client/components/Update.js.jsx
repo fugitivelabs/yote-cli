@@ -25,7 +25,7 @@ class Update__PascalName__ extends Base {
     super(props);
     const { selected__PascalName__, __name__Map } = this.props;
     this.state = {
-      __name__: __name__Map[selected__PascalName__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__PascalName__.id])) : {}
+      __name__: __name__Map[selected__PascalName__.id] ? { ...__name__Map[selected__PascalName__.id] } : {}
       // NOTE: we don't want to change the store, just make changes to a copy
     }
     this._bind(
@@ -42,7 +42,7 @@ class Update__PascalName__ extends Base {
   componentWillReceiveProps(nextProps) {
     const { selected__PascalName__, __name__Map } = nextProps;
     this.state = {
-      __name__: __name__Map[selected__PascalName__.id] ? JSON.parse(JSON.stringify(__name__Map[selected__PascalName__.id])) : {}
+      __name__: __name__Map[selected__PascalName__.id] ? { ...__name__Map[selected__PascalName__.id] } : {}
       //we don't want to actually change the store's __name__, just use a copy
     }
   }
