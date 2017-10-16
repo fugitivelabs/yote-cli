@@ -62,6 +62,17 @@ exports.mkdir = (path, fn) => {
   if (fn) fn();
 }
 
+exports.rmDir = (path, cb) => {
+  shell.rm('-rf', path);
+  console.log(chalk.cyan('   rm directory: '), path);
+  if(cb) { cb() }
+}
+
+exports.replaceInFile = (path, oldString, newString, cb) => {
+  shell.sed('-i', oldString, newString, path);
+  if(cb) { cb() }
+}
+
 exports.append = (path, str) => {
   fs.appendFile(path, str);
   console.log(chalk.magenta('   appending file: '), path);

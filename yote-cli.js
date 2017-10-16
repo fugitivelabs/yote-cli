@@ -18,6 +18,7 @@ function howl() {
 // building libraries - load current version
 let init = require('./lib/v_' + config['yote-version'] + '/init');
 let add = require('./lib/v_' + config['yote-version'] + '/add');
+let remove = require('./lib/v_' + config['yote-version'] + '/remove');
 
 program
   .version(config.version)
@@ -76,6 +77,31 @@ program
     console.log('   Examples:');
     console.log();
     console.log('    $ yote add myResource');
+    console.log('    $ yote A myResource');
+    console.log();
+    console.log(chalk.bgRed('   NOTE: singular, camelcase names work best, like "product" or "book'));
+    console.log();
+    console.log();
+  });
+
+  program
+  .command('remove <resourceName>')
+  .alias('R')
+  .description('Remove a Resource from the Yote application called <resourceName>')
+  // .option('-a', '--all', 'with Client, Server, and Mobile (default)')
+  // .option('-c', '--client', 'with Client')
+  // .option('-s', '--server', 'with Server')
+  // .option('-m', '--mobile', 'with Mobile')
+  .action(remove)
+  .on('--help', () => {
+    console.log('   To remove an existing resource from the Yote app')
+    console.log(chalk.green('     $ yote A <resourceName>'));
+    console.log(chalk.dim('     # OR'))
+    console.log(chalk.green('     $ yote remove <resourceName>'));
+    console.log();
+    console.log('   Examples:');
+    console.log();
+    console.log('    $ yote remove myResource');
     console.log('    $ yote A myResource');
     console.log();
     console.log(chalk.bgRed('   NOTE: singular, camelcase names work best, like "product" or "book'));
