@@ -39,8 +39,8 @@ class Update__PascalName__ extends Base {
   }
 
   componentDidMount() {
-    const { dispatch, params } = this.props;
-    dispatch(__camelName__Actions.fetchSingleIfNeeded(params.__camelName__Id))
+    const { dispatch, match } = this.props;
+    dispatch(__camelName__Actions.fetchSingleIfNeeded(match.params.__camelName__Id))
   }
 
   componentWillReceiveProps(nextProps) {

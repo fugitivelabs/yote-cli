@@ -39,7 +39,7 @@ class Single__PascalName__ extends Base {
 
     const isEmpty = (
       !selected__PascalName__
-      || !selected__PascalName__.id
+      || !selected__PascalName__._id
       || __camelName__Store.selected.didInvalidate
     );
 

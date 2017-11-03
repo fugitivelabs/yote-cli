@@ -8,6 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+// import utilities
+import Auth from '../../../global/utils/auth';
 
 // import global components
 import Base from "../../../global/components/BaseComponent.js.jsx";
