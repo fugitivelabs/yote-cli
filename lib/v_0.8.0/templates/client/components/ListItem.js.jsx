@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 // import __camelName__ css modules
 import __camelName__Styles from '../__camelName__ModuleStyles.css';
 
-
 function __PascalName__ListItem({ __camelName__ }) {
   return (
     <li>
