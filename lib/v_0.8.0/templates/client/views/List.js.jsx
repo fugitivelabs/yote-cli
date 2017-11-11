@@ -69,7 +69,7 @@ class __PascalName__List extends Base {
           <section className="section">
             <div className="yt-container">
               <h1> __PascalName__ List
-                <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __allCaps__ </Link>
+                <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __startName__ </Link>
               </h1>
               <hr/>
               { isEmpty ?

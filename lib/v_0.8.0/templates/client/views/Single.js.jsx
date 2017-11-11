@@ -59,7 +59,7 @@ class Single__PascalName__ extends Base {
                 :
                 <div style={{ opacity: __camelName__Store.isFetching ? 0.5 : 1 }}>
                   <h1> { selected__PascalName__.name }
-                    <Link className="yt-btn small u-pullRight" to={`${this.props.match.url}/update`}> UPDATE __allCaps__ </Link>
+                    <Link className="yt-btn small u-pullRight" to={`${this.props.match.url}/update`}> UPDATE __startName__ </Link>
                   </h1>
                   <hr/>
                   <p> <em>Other characteristics about the __PascalName__ would go here.</em></p>

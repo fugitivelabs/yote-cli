@@ -20,7 +20,7 @@ function __PascalName__Form({
 }) {
 
   // set the button text
-  const buttonText = formType === "create" ? "Create __PascalName__" : "Update __PascalName__";
+  const buttonText = formType === "create" ? "Create __startName__" : "Update __startName__";
 
   // set the form header
   const header = formTitle ? <div className="formHeader"><h2> {formTitle} </h2><hr/></div> : <div/>;

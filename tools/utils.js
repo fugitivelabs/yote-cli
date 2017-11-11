@@ -116,3 +116,8 @@ exports.actionCase = (str) => {
   str = _.toUpper(str);
   return str;
 }
+
+exports.startCase = (str) => {
+  str = _.startCase(str);
+  return str;
+}

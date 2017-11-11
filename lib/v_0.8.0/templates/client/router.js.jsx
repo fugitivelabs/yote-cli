@@ -27,9 +27,9 @@ class __PascalName__Router extends Base {
     return (
       <Switch>
         <Route exact path="/__kebabName__s" component={__PascalName__List} />
-        <Route exact path="/__kebabName__s/new" component={Create__PascalName__} />
+        <LoginRoute exact path="/__kebabName__s/new" component={Create__PascalName__} />
         <Route exact path="/__kebabName__s/:__camelName__Id" component={Single__PascalName__}/>
-        <Route exact path="/__kebabName__s/:__camelName__Id/update" component={Update__PascalName__}/>
+        <LoginRoute exact path="/__kebabName__s/:__camelName__Id/update" component={Update__PascalName__}/>
       </Switch>
     )
   }
