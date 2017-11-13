@@ -1,6 +1,6 @@
 /**
  * To be used with CSS Modules rendered by the webpack.config.
- * Any styles specific to the __PascalName__ module should live here.
+ * Any styles specific to the __startName__ module should live here.
  * Import as neede like so:
  * ...
  * import __camelName__Styles from '__camelName__ModuleStyles.css';
@@ -12,5 +12,5 @@
  */
 
 .__kebabName__-item {
-  
+
 }

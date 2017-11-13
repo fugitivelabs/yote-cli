@@ -68,7 +68,7 @@ class __PascalName__List extends Base {
         <div className="flex">
           <section className="section">
             <div className="yt-container">
-              <h1> __PascalName__ List
+              <h1> __startName__ List
                 <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __startName__ </Link>
               </h1>
               <hr/>
