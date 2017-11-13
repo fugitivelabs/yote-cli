@@ -53,7 +53,7 @@ class Single__PascalName__ extends Base {
         <div className="flex">
           <section className="section">
             <div className="yt-container">
-              <h3> Single __PascalName__ </h3>
+              <h3> Single __startName__ </h3>
               {isEmpty ?
                 (__camelName__Store.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
                 :

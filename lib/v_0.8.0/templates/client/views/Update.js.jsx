@@ -89,7 +89,7 @@ class Update__PascalName__ extends Base {
               <__PascalName__Form
                 __camelName__={__camelName__}
                 cancelLink={`/__kebabName__s/${__camelName__._id}`}
-                formTitle="Update __PascalName__"
+                formTitle="Update __startName__"
                 formType="update"
                 handleFormChange={this._handleFormChange}
                 handleFormSubmit={this._handleFormSubmit}
