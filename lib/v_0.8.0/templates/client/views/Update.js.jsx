@@ -1,4 +1,6 @@
 /**
+ * View component for /__kebabName__s/:__camelName__Id/update
+ *
  * Updates a single __camelName__ from a copy of the selcted __camelName__
  * as defined in the __camelName__ reducer
  */
@@ -19,7 +21,8 @@ import * as __camelName__Actions from '../__camelName__Actions';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 
 // import module components
-import __PascalName__Form from './__PascalName__Form.js.jsx';
+import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
+import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
 
 // import __camelName__ css modules
 import __camelName__Styles from '../__camelName__ModuleStyles.css';
@@ -77,22 +80,24 @@ class Update__PascalName__ extends Base {
     const { __camelName__ } = this.state;
     const isEmpty = (!__camelName__ || __camelName__._id === null || __camelName__._id === undefined);
     return  (
-      <div className="flex">
-        <section className="section">
-          {isEmpty ?
-            (selected__PascalName__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-            :
-            <__PascalName__Form
-              __camelName__={__camelName__}
-              cancelLink={`/__kebabName__s/${__camelName__._id}`}
-              formTitle="Update __PascalName__"
-              formType="update"
-              handleFormChange={this._handleFormChange}
-              handleFormSubmit={this._handleFormSubmit}
-            />
-          }
-        </section>
-      </div>
+      <__PascalName__Layout>
+        <div className="flex">
+          <section className="section">
+            {isEmpty ?
+              (selected__PascalName__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+              :
+              <__PascalName__Form
+                __camelName__={__camelName__}
+                cancelLink={`/__kebabName__s/${__camelName__._id}`}
+                formTitle="Update __PascalName__"
+                formType="update"
+                handleFormChange={this._handleFormChange}
+                handleFormSubmit={this._handleFormSubmit}
+              />
+            }
+          </section>
+        </div>
+      </__PascalName__Layout>
     )
   }
 }

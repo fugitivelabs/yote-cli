@@ -1,15 +1,17 @@
 /**
+ * View component for /__kebabName__s
+ *
  * Generic __camelName__ list view. Defaults to 'all' with:
  * this.props.dispatch(__camelName__Actions.fetchListIfNeeded());
  *
- * NOTE: See ProductList.js.jsx for more examples
+ * NOTE: See /product/views/ProductList.js.jsx for more examples
  */
 
- // import primary libraries
- import React from 'react';
- import PropTypes from 'prop-types';
- import { connect } from 'react-redux';
- import { Link, withRouter } from 'react-router-dom';
+// import primary libraries
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 
 // import actions
 import * as __camelName__Actions from '../__camelName__Actions';
@@ -18,11 +20,11 @@ import * as __camelName__Actions from '../__camelName__Actions';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 
 // import __camelName__ components
-import __PascalName__ListItem from './__PascalName__ListItem.js.jsx';
+import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
+import __PascalName__ListItem from '../components/__PascalName__ListItem.js.jsx';
 
 // import __camelName__ css modules
 import __camelName__Styles from '../__camelName__ModuleStyles.css';
-
 
 class __PascalName__List extends Base {
   constructor(props) {
@@ -62,27 +64,29 @@ class __PascalName__List extends Base {
     const isEmpty = !__camelName__ListItems || !__camelName__List;
 
     return (
-      <div className="flex">
-        <section className="section">
-          <div className="yt-container">
-            <h1> __PascalName__ List
-              <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __allCaps__ </Link>
-            </h1>
-            <hr/>
-            { isEmpty ?
-              (__camelName__List && __camelName__List.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-              :
-              <div style={{ opacity: __camelName__List.isFetching ? 0.5 : 1 }}>
-                <ul>
-                  {__camelName__List.items.map((id, i) =>
-                    <__PascalName__ListItem key={id} __camelName__={__camelName__Map[id]} />
-                  )}
-                </ul>
-              </div>
-            }
-          </div>
-        </section>
-      </div>
+      <__PascalName__Layout>
+        <div className="flex">
+          <section className="section">
+            <div className="yt-container">
+              <h1> __PascalName__ List
+                <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __startName__ </Link>
+              </h1>
+              <hr/>
+              { isEmpty ?
+                (__camelName__List && __camelName__List.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+                :
+                <div style={{ opacity: __camelName__List.isFetching ? 0.5 : 1 }}>
+                  <ul>
+                    {__camelName__List.items.map((id, i) =>
+                      <__PascalName__ListItem key={id} __camelName__={__camelName__Map[id]} />
+                    )}
+                  </ul>
+                </div>
+              }
+            </div>
+          </section>
+        </div>
+      </__PascalName__Layout>
     )
   }
 }

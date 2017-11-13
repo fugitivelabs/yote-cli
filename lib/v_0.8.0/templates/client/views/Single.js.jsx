@@ -1,4 +1,6 @@
 /**
+ * View component for /__kebabName__s/:__camelName__Id
+ *
  * Displays a single __name__ from the 'byId' map in the __name__ reducer
  * as defined by the 'selected' property
  */
@@ -14,6 +16,9 @@ import * as __name__Actions from '../__name__Actions';
 
 // import global components
 import Base from "../../../global/components/BaseComponent.js.jsx";
+
+// import __camelName__ components
+import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
 
 // import __camelName__ css modules
 import __camelName__Styles from '../__camelName__ModuleStyles.css';
@@ -44,24 +49,26 @@ class Single__PascalName__ extends Base {
     );
 
     return (
-      <div className="flex">
-        <section className="section">
-          <div className="yt-container">
-            <h3> Single __PascalName__ </h3>
-            {isEmpty ?
-              (__camelName__Store.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-              :
-              <div style={{ opacity: __camelName__Store.isFetching ? 0.5 : 1 }}>
-                <h1> { selected__PascalName__.name }
-                  <Link className="yt-btn small u-pullRight" to={`${this.props.match.url}/update`}> UPDATE __allCaps__ </Link>
-                </h1>
-                <hr/>
-                <p> <em>Other characteristics about the __PascalName__ would go here.</em></p>
-              </div>
-            }
-          </div>
-        </section>
-      </div>
+      <__PascalName__Layout>
+        <div className="flex">
+          <section className="section">
+            <div className="yt-container">
+              <h3> Single __PascalName__ </h3>
+              {isEmpty ?
+                (__camelName__Store.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+                :
+                <div style={{ opacity: __camelName__Store.isFetching ? 0.5 : 1 }}>
+                  <h1> { selected__PascalName__.name }
+                    <Link className="yt-btn small u-pullRight" to={`${this.props.match.url}/update`}> UPDATE __startName__ </Link>
+                  </h1>
+                  <hr/>
+                  <p> <em>Other characteristics about the __PascalName__ would go here.</em></p>
+                </div>
+              }
+            </div>
+          </section>
+        </div>
+      </__PascalName__Layout>
     )
   }
 }

@@ -1,4 +1,6 @@
 /**
+ * View component for /__kebabName__s/new
+ *
  * Creates a new __name__ from a copy of the defaultItem in the __name__ reducer
  */
 
@@ -18,7 +20,8 @@ import * as __name__Actions from '../__name__Actions';
 import Base from "../../../global/components/BaseComponent.js.jsx";
 
 // import __name__ components
-import __PascalName__Form from './__PascalName__Form.js.jsx';
+import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
+import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
 
 class Create__PascalName__ extends Base {
   constructor(props) {
@@ -63,22 +66,24 @@ class Create__PascalName__ extends Base {
     const { __name__ } = this.state;
     const isEmpty = (__name__.name === null || __name__.name === undefined);
     return (
-      <div className="flex">
-        <section className="section">
-          {isEmpty ?
-            <h2> Loading...</h2>
-            :
-            <__PascalName__Form
-              __name__={__name__}
-              cancelLink="/__kebabName__s"
-              formTitle="Create __PascalName__"
-              formType="create"
-              handleFormChange={this._handleFormChange}
-              handleFormSubmit={this._handleFormSubmit}
-            />
-          }
-        </section>
-      </div>
+      <__PascalName__Layout>
+        <div className="flex">
+          <section className="section">
+            {isEmpty ?
+              <h2> Loading...</h2>
+              :
+              <__PascalName__Form
+                __name__={__name__}
+                cancelLink="/__kebabName__s"
+                formTitle="Create __PascalName__"
+                formType="create"
+                handleFormChange={this._handleFormChange}
+                handleFormSubmit={this._handleFormSubmit}
+                />
+            }
+          </section>
+        </div>
+      </__PascalName__Layout>
     )
   }
 }
