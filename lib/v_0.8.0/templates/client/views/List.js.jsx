@@ -73,12 +73,12 @@ class __PascalName__List extends Base {
               </h1>
               <hr/>
               { isEmpty ?
-                (__camelName__List && __camelName__List.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+                (__camelName__ListItems && __camelName__List.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
                 :
                 <div style={{ opacity: __camelName__List.isFetching ? 0.5 : 1 }}>
                   <ul>
-                    {__camelName__List.items.map((id, i) =>
-                      <__PascalName__ListItem key={id} __camelName__={__camelName__Map[id]} />
+                    {__camelName__ListItems.map((__camelName__, i) =>
+                      <__PascalName__ListItem key={__camelName__.id + i} __camelName__={__camelName__} />
                     )}
                   </ul>
                 </div>

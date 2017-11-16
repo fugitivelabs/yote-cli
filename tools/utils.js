@@ -74,12 +74,12 @@ exports.replaceInFile = (path, oldString, newString, cb) => {
 }
 
 exports.append = (path, str) => {
-  fs.appendFile(path, str);
+  fs.appendFileSync(path, str);
   console.log(chalk.magenta('   appending file: '), path);
 }
 
 exports.write = (path, str) => {
-  fs.writeFile(path, str);
+  fs.writeFileSync(path, str);
   console.log(chalk.cyan('   create file: '), path);
 }
 
