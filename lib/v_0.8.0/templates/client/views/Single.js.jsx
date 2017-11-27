@@ -1,7 +1,7 @@
 /**
- * View component for /__kebabName__s/:__camelName__Id
+ * View component for /__kebabNamePlural__/:__camelName__Id
  *
- * Displays a single __name__ from the 'byId' map in the __name__ reducer
+ * Displays a single __camelName__ from the 'byId' map in the __camelName__ reducer
  * as defined by the 'selected' property
  */
 
@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 // import actions
-import * as __name__Actions from '../__name__Actions';
+import * as __camelName__Actions from '../__camelName__Actions';
 
 // import global components
 import Base from "../../../global/components/BaseComponent.js.jsx";
@@ -31,7 +31,7 @@ class Single__PascalName__ extends Base {
 
   componentDidMount() {
     const { dispatch, match } = this.props;
-    dispatch(__name__Actions.fetchSingleIfNeeded(match.params.__name__Id));
+    dispatch(__camelName__Actions.fetchSingleIfNeeded(match.params.__camelName__Id));
   }
 
   render() {
@@ -83,7 +83,7 @@ const mapStoreToProps = (store) => {
   * differentiated from the React component's internal state
   */
   return {
-    __camelName__Store: store.__name__
+    __camelName__Store: store.__camelName__
   }
 }
 

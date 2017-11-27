@@ -1,6 +1,7 @@
 let _ = require('lodash');
 let chalk = require('chalk');
 let fs = require('fs');
+let pluralize = require('pluralize');
 let shell = require('shelljs');
 
 exports.getYoteVersion = () => {
@@ -34,6 +35,7 @@ exports.getNormalizedName = (str) => {
    * _.camelCase('__FOO_BAR__');
    * // => 'fooBar'
    */
+  str = pluralize.singular(str);
   str = _.camelCase(str);
   return str;
 }
@@ -119,5 +121,15 @@ exports.actionCase = (str) => {
 
 exports.startCase = (str) => {
   str = _.startCase(str);
+  return str;
+}
+
+exports.pluralize = (str) => {
+  str = pluralize(str);
+  return str;
+}
+
+exports.singularize = (str) => {
+  str = pluralize.singular(str);
   return str;
 }

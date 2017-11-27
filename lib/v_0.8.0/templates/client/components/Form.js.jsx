@@ -16,7 +16,7 @@ function __PascalName__Form({
   , formType
   , handleFormChange
   , handleFormSubmit
-  , __name__
+  , __camelName__
 }) {
 
   // set the button text
@@ -29,7 +29,7 @@ function __PascalName__Form({
     <div className="yt-container">
       <div className="yt-row center-horiz">
         <div className="form-container -slim">
-          <form name="__name__Form" className="__name__-form" onSubmit={handleFormSubmit}>
+          <form name="__camelName__Form" className="__camelName__-form" onSubmit={handleFormSubmit}>
             {header}
             <TextInput
               change={handleFormChange}
@@ -37,7 +37,7 @@ function __PascalName__Form({
               name="name"
               placeholder="Name (required)"
               required={true}
-              value={__name__.name}
+              value={__camelName__.name}
             />
             <div className="input-group">
               <div className="yt-row space-between">
@@ -58,7 +58,7 @@ __PascalName__Form.propTypes = {
   , formType: PropTypes.string.isRequired
   , handleFormChange: PropTypes.func.isRequired
   , handleFormSubmit: PropTypes.func.isRequired
-  , __name__: PropTypes.object.isRequired
+  , __camelName__: PropTypes.object.isRequired
 }
 
 __PascalName__Form.defaultProps = {
