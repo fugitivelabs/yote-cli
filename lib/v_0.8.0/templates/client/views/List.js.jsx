@@ -1,5 +1,5 @@
 /**
- * View component for /__kebabName__s
+ * View component for /__kebabNamePlural__
  *
  * Generic __camelName__ list view. Defaults to 'all' with:
  * this.props.dispatch(__camelName__Actions.fetchListIfNeeded());
@@ -69,7 +69,7 @@ class __PascalName__List extends Base {
           <section className="section">
             <div className="yt-container">
               <h1> __startName__ List
-                <Link className="yt-btn small u-pullRight" to={'/__kebabName__s/new'}> NEW __startName__ </Link>
+                <Link className="yt-btn small u-pullRight" to={'/__kebabNamePlural__/new'}> NEW __startName__ </Link>
               </h1>
               <hr/>
               { isEmpty ?

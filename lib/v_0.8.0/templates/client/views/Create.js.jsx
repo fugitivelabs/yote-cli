@@ -1,7 +1,7 @@
 /**
- * View component for /__kebabName__s/new
+ * View component for /__kebabNamePlural__/new
  *
- * Creates a new __name__ from a copy of the defaultItem in the __name__ reducer
+ * Creates a new __camelName__ from a copy of the defaultItem in the __camelName__ reducer
  */
 
 // import primary libraries
@@ -14,12 +14,12 @@ import { history, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 // import actions
-import * as __name__Actions from '../__name__Actions';
+import * as __camelName__Actions from '../__camelName__Actions';
 
 // import global components
 import Base from "../../../global/components/BaseComponent.js.jsx";
 
-// import __name__ components
+// import __camelName__ components
 import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
 import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
 
@@ -27,7 +27,7 @@ class Create__PascalName__ extends Base {
   constructor(props) {
     super(props);
     this.state = {
-      __name__: { ...this.props.default__PascalName__ }
+      __camelName__: { ...this.props.default__PascalName__ }
       // NOTE: We don't want to actually change the store's defaultItem, just use a copy
     }
     this._bind(
@@ -40,20 +40,20 @@ class Create__PascalName__ extends Base {
     /**
      * This let's us change arbitrarily nested objects with one pass
      */
-    let new__PascalName__State = _.update( this.state.__name__, e.target.name, function() {
+    let new__PascalName__State = _.update( this.state.__camelName__, e.target.name, function() {
       return e.target.value;
     });
-    this.setState({__name__ :new__PascalName__State});
+    this.setState({__camelName__ :new__PascalName__State});
   }
 
 
   _handleFormSubmit(e) {
     const { dispatch, history } = this.props;
     e.preventDefault();
-    dispatch(__name__Actions.sendCreate__PascalName__(this.state.__name__)).then((action) => {
+    dispatch(__camelName__Actions.sendCreate__PascalName__(this.state.__camelName__)).then((action) => {
       if(action.success) {
-        dispatch(__name__Actions.invalidateList());
-        history.push(`/__kebabName__s/${action.item._id}`)
+        dispatch(__camelName__Actions.invalidateList());
+        history.push(`/__kebabNamePlural__/${action.item._id}`)
       } else {
         // console.log("Response Error:");
         // console.log(action);
@@ -63,8 +63,8 @@ class Create__PascalName__ extends Base {
   }
 
   render() {
-    const { __name__ } = this.state;
-    const isEmpty = (__name__.name === null || __name__.name === undefined);
+    const { __camelName__ } = this.state;
+    const isEmpty = (__camelName__.name === null || __camelName__.name === undefined);
     return (
       <__PascalName__Layout>
         <div className="flex">
@@ -73,8 +73,8 @@ class Create__PascalName__ extends Base {
               <h2> Loading...</h2>
               :
               <__PascalName__Form
-                __name__={__name__}
-                cancelLink="/__kebabName__s"
+                __camelName__={__camelName__}
+                cancelLink="/__kebabNamePlural__"
                 formTitle="Create __startName__"
                 formType="create"
                 handleFormChange={this._handleFormChange}
@@ -98,7 +98,7 @@ const mapStoreToProps = (store) => {
   * differentiated from the React component's internal state
   */
   return {
-    default__PascalName__: store.__name__.defaultItem
+    default__PascalName__: store.__camelName__.defaultItem
   }
 }
 

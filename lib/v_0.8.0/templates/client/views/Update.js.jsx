@@ -1,5 +1,5 @@
 /**
- * View component for /__kebabName__s/:__camelName__Id/update
+ * View component for /__kebabNamePlural__/:__camelName__Id/update
  *
  * Updates a single __camelName__ from a copy of the selcted __camelName__
  * as defined in the __camelName__ reducer
@@ -66,7 +66,7 @@ class Update__PascalName__ extends Base {
     e.preventDefault();
     dispatch(__camelName__Actions.sendUpdate__PascalName__(this.state.__camelName__)).then((action) => {
       if(action.success) {
-        history.push(`/__kebabName__s/${action.item._id}`)
+        history.push(`/__kebabNamePlural__/${action.item._id}`)
       } else {
         // console.log("Response Error:");
         // console.log(action);
@@ -88,7 +88,7 @@ class Update__PascalName__ extends Base {
               :
               <__PascalName__Form
                 __camelName__={__camelName__}
-                cancelLink={`/__kebabName__s/${__camelName__._id}`}
+                cancelLink={`/__kebabNamePlural__/${__camelName__._id}`}
                 formTitle="Update __startName__"
                 formType="update"
                 handleFormChange={this._handleFormChange}
