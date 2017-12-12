@@ -78,7 +78,7 @@ class __PascalName__List extends Base {
                 <div style={{ opacity: __camelName__List.isFetching ? 0.5 : 1 }}>
                   <ul>
                     {__camelName__ListItems.map((__camelName__, i) =>
-                      <__PascalName__ListItem key={__camelName__.id + i} __camelName__={__camelName__} />
+                      <__PascalName__ListItem key={__camelName__._id + i} __camelName__={__camelName__} />
                     )}
                   </ul>
                 </div>
