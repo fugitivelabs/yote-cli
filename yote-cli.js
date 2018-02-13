@@ -11,7 +11,7 @@ let config    = require('./package.json');
 
 
 function howl() {
-  console.log(chalk.bgCyan("        test howl   hello hhhhhhhhhh    "));
+  console.log(chalk.bgCyan("        test howl        "));
   shell.exec("say 'owooooooooooooooo'");
 }
 
