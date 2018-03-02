@@ -27,7 +27,7 @@ class Create__PascalName__ extends Base {
   constructor(props) {
     super(props);
     this.state = {
-      __camelName__: { ...this.props.default__PascalName__ }
+      __camelName__: _.cloneDeep(this.props.default__PascalName__)
       // NOTE: We don't want to actually change the store's defaultItem, just use a copy
     }
     this._bind(
