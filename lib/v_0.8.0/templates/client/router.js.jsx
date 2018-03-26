@@ -10,7 +10,7 @@ import { Route, Switch } from 'react-router-dom';
 
 // import global components
 import Base from "../../global/components/BaseComponent.js.jsx";
-import { LoginRoute, RoleRoute } from '../../global/components/routing';
+import YTRoute from '../../global/components/routing/YTRoute.js.jsx';
 
 // import __camelName__ views
 import Create__PascalName__ from './views/Create__PascalName__.js.jsx';
@@ -26,10 +26,10 @@ class __PascalName__Router extends Base {
   render() {
     return (
       <Switch>
-        <Route exact path="/__kebabNamePlural__" component={__PascalName__List} />
-        <LoginRoute exact path="/__kebabNamePlural__/new" component={Create__PascalName__} />
-        <Route exact path="/__kebabNamePlural__/:__camelName__Id" component={Single__PascalName__}/>
-        <LoginRoute exact path="/__kebabNamePlural__/:__camelName__Id/update" component={Update__PascalName__}/>
+        <YTRoute exact path="/__kebabNamePlural__" component={__PascalName__List} />
+        <YTRoute exact login={true} path="/__kebabNamePlural__/new" component={Create__PascalName__} />
+        <YTRoute exact path="/__kebabNamePlural__/:__camelName__Id" component={Single__PascalName__}/>
+        <YTRoute exact login={true} path="/__kebabNamePlural__/:__camelName__Id/update" component={Update__PascalName__}/>
       </Switch>
     )
   }
