@@ -12,6 +12,7 @@ import { TextInput } from '../../../global/components/forms';
 
 function __PascalName__Form({
   cancelLink
+  , formHelpers
   , formTitle
   , formType
   , handleFormChange
@@ -34,7 +35,7 @@ function __PascalName__Form({
             <TextInput
               change={handleFormChange}
               label="Name"
-              name="name"
+              name="__camelName__.name"
               placeholder="Name (required)"
               required={true}
               value={__camelName__.name}
@@ -54,6 +55,7 @@ function __PascalName__Form({
 
 __PascalName__Form.propTypes = {
   cancelLink: PropTypes.string.isRequired
+  , formHelpers: PropTypes.object
   , formTitle: PropTypes.string
   , formType: PropTypes.string.isRequired
   , handleFormChange: PropTypes.func.isRequired
@@ -62,7 +64,8 @@ __PascalName__Form.propTypes = {
 }
 
 __PascalName__Form.defaultProps = {
-  formTitle: ''
+  formHelpers: {}
+  , formTitle: ''
 }
 
 export default __PascalName__Form;

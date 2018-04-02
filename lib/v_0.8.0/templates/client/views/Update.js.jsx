@@ -32,8 +32,14 @@ class Update__PascalName__ extends Base {
     super(props);
     const { selected__PascalName__, __camelName__Map } = this.props;
     this.state = {
-      __camelName__: __camelName__Map[selected__PascalName__.id] ? { ...__camelName__Map[selected__PascalName__.id] } : {}
+      __camelName__: __camelName__Map[selected__PascalName__.id] ?  _.cloneDeep(__camelName__Map[selected__PascalName__.id]) : {}
       // NOTE: we don't want to change the store, just make changes to a copy
+      , formHelpers: {}
+      /**
+       * NOTE: formHelpers are useful for things like radio controls and other
+       * things that manipulate the form, but don't directly effect the state of
+       * the __camelName__
+       */
     }
     this._bind(
       '_handleFormChange'
@@ -49,16 +55,17 @@ class Update__PascalName__ extends Base {
   componentWillReceiveProps(nextProps) {
     const { selected__PascalName__, __camelName__Map } = nextProps;
     this.setState({
-      __camelName__: __camelName__Map[selected__PascalName__.id] ? { ...__camelName__Map[selected__PascalName__.id] } : {}
+      __camelName__: __camelName__Map[selected__PascalName__.id] ? _.cloneDeep(__camelName__Map[selected__PascalName__.id]) : {}
       //we don't want to actually change the store's __camelName__, just use a copy
+      , formHelpers: {}
     })
   }
 
   _handleFormChange(e) {
-    let new__PascalName__State = _.update( this.state.__camelName__, e.target.name, function() {
+    let newState = _.update( this.state, e.target.name, () => {
       return e.target.value;
     });
-    this.setState({__camelName__ :new__PascalName__State});
+    this.setState(newState);
   }
 
   _handleFormSubmit(e) {
@@ -77,7 +84,7 @@ class Update__PascalName__ extends Base {
 
   render() {
     const { selected__PascalName__, __camelName__Map } = this.props;
-    const { __camelName__ } = this.state;
+    const { __camelName__, formHelpers } = this.state;
     const isEmpty = (!__camelName__ || __camelName__._id === null || __camelName__._id === undefined);
     return  (
       <__PascalName__Layout>
@@ -89,6 +96,7 @@ class Update__PascalName__ extends Base {
               <__PascalName__Form
                 __camelName__={__camelName__}
                 cancelLink={`/__kebabNamePlural__/${__camelName__._id}`}
+                formHelpers={formHelpers}
                 formTitle="Update __startName__"
                 formType="update"
                 handleFormChange={this._handleFormChange}

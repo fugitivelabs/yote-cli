@@ -29,6 +29,12 @@ class Create__PascalName__ extends Base {
     this.state = {
       __camelName__: _.cloneDeep(this.props.default__PascalName__)
       // NOTE: We don't want to actually change the store's defaultItem, just use a copy
+      , formHelpers: {}
+      /**
+       * NOTE: formHelpers are useful for things like radio controls and other
+       * things that manipulate the form, but don't directly effect the state of
+       * the __camelName__
+       */
     }
     this._bind(
       '_handleFormChange'
@@ -40,10 +46,10 @@ class Create__PascalName__ extends Base {
     /**
      * This let's us change arbitrarily nested objects with one pass
      */
-    let new__PascalName__State = _.update( this.state.__camelName__, e.target.name, function() {
+    let newState = _.update( this.state, e.target.name, () => {
       return e.target.value;
     });
-    this.setState({__camelName__ :new__PascalName__State});
+    this.setState(newState);
   }
 
 
@@ -63,7 +69,7 @@ class Create__PascalName__ extends Base {
   }
 
   render() {
-    const { __camelName__ } = this.state;
+    const { __camelName__, formHelpers } = this.state;
     const isEmpty = (__camelName__.name === null || __camelName__.name === undefined);
     return (
       <__PascalName__Layout>
@@ -75,6 +81,7 @@ class Create__PascalName__ extends Base {
               <__PascalName__Form
                 __camelName__={__camelName__}
                 cancelLink="/__kebabNamePlural__"
+                formHelpers={formHelpers}
                 formTitle="Create __startName__"
                 formType="create"
                 handleFormChange={this._handleFormChange}
