@@ -34,7 +34,7 @@ class Create__PascalName__ extends Base {
        * NOTE: formHelpers are useful for things like radio controls and other
        * things that manipulate the form, but don't directly effect the state of
        * the __camelName__
-       */ 
+       */
     }
     this._bind(
       '_handleFormChange'
@@ -46,7 +46,7 @@ class Create__PascalName__ extends Base {
     /**
      * This let's us change arbitrarily nested objects with one pass
      */
-    let newState = _.update( this.state, e.target.name, function() {
+    let newState = _.update( this.state, e.target.name, () => {
       return e.target.value;
     });
     this.setState(newState);

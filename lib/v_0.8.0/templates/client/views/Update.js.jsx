@@ -62,7 +62,7 @@ class Update__PascalName__ extends Base {
   }
 
   _handleFormChange(e) {
-    let newState = _.update( this.state, e.target.name, function() {
+    let newState = _.update( this.state, e.target.name, () => {
       return e.target.value;
     });
     this.setState(newState);
