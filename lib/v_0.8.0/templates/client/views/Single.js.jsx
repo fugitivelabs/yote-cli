@@ -55,9 +55,9 @@ class Single__PascalName__ extends Base {
             <div className="yt-container">
               <h3> Single __startName__ </h3>
               {isEmpty ?
-                (__camelName__Store.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+                (__camelName__Store.selected.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
                 :
-                <div style={{ opacity: __camelName__Store.isFetching ? 0.5 : 1 }}>
+                <div style={{ opacity: __camelName__Store.selected.isFetching ? 0.5 : 1 }}>
                   <h1> { selected__PascalName__.name }
                     <Link className="yt-btn small u-pullRight" to={`${this.props.match.url}/update`}> UPDATE __startName__ </Link>
                   </h1>
