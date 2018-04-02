@@ -84,7 +84,7 @@ class Update__PascalName__ extends Base {
         <div className="flex">
           <section className="section">
             {isEmpty ?
-              (selected__PascalName__.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+              (selected__PascalName__.selected.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
               :
               <__PascalName__Form
                 __camelName__={__camelName__}
