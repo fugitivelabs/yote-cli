@@ -35,6 +35,11 @@ class Update__PascalName__ extends Base {
       __camelName__: __camelName__Map[selected__PascalName__.id] ?  _.cloneDeep(__camelName__Map[selected__PascalName__.id]) : {}
       // NOTE: we don't want to change the store, just make changes to a copy
       , formHelpers: {}
+      /**
+       * NOTE: formHelpers are useful for things like radio controls and other
+       * things that manipulate the form, but don't directly effect the state of
+       * the __camelName__
+       */
     }
     this._bind(
       '_handleFormChange'

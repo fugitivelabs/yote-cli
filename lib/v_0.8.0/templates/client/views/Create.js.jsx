@@ -30,6 +30,11 @@ class Create__PascalName__ extends Base {
       __camelName__: _.cloneDeep(this.props.default__PascalName__)
       // NOTE: We don't want to actually change the store's defaultItem, just use a copy
       , formHelpers: {}
+      /**
+       * NOTE: formHelpers are useful for things like radio controls and other
+       * things that manipulate the form, but don't directly effect the state of
+       * the __camelName__
+       */ 
     }
     this._bind(
       '_handleFormChange'
