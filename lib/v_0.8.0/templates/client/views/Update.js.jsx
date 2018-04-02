@@ -60,7 +60,7 @@ class Update__PascalName__ extends Base {
     let newState = _.update( this.state, e.target.name, function() {
       return e.target.value;
     });
-    this.setState({newState});
+    this.setState(newState);
   }
 
   _handleFormSubmit(e) {
