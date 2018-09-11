@@ -113,6 +113,7 @@ program
 
 //yote remote database tools. will be removed from package in the future
 require('./tools/remote')(program);
+require('./tools/run')(program);
 
 //old commands, will break
 //preserving for the time being until we through the transition
