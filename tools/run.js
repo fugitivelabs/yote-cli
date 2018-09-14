@@ -43,11 +43,11 @@ module.exports = function(program) {
     if(options.A || (!options.M && !options.S && !options.W)) {
       console.log('run all the things');
     } else if(options.W == undefined) {
-      installOptions.splice(installOptions.indexOf('web'), 1);
+      runOptions.splice(runOptions.indexOf('web'), 1);
     } else if(options.S == undefined) {
-      installOptions.splice(installOptions.indexOf('server'), 1);
+      runOptions.splice(runOptions.indexOf('server'), 1);
     } else if(options.M == undefined) {
-      installOptions.splice(installOptions.indexOf('mobile'), 1);
+      runOptions.splice(runOptions.indexOf('mobile'), 1);
     }
     console.log();
     console.log(chalk.cyan('      Run: '));
