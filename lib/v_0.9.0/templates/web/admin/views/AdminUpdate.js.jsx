@@ -1,5 +1,5 @@
 /**
- * View component for /__kebabNamePlural__/:__camelName__Id/update
+ * View component for /admin/__kebabNamePlural__/:__camelName__Id/update
  *
  * Updates a single __camelName__ from a copy of the selcted __camelName__
  * as defined in the __camelName__ reducer
@@ -15,16 +15,16 @@ import { history, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 // import actions
-import * as __camelName__Actions from '../__camelName__Actions';
+import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from "../../../global/BaseComponent.js.jsx";
+import Base from "../../../../global/BaseComponent.js.jsx";
 
 // import module components
-import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
-import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
+import Admin__PascalName__Form from '../components/Admin__PascalName__Form.js.jsx';
+import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
 
-class Update__PascalName__ extends Base {
+class AdminUpdate__PascalName__ extends Base {
   constructor(props) {
     super(props);
     const { match, __camelName__Store } = this.props;
@@ -97,13 +97,13 @@ class Update__PascalName__ extends Base {
     )
 
     return  (
-      <__PascalName__Layout>
+      <Admin__PascalName__Layout>
         { isEmpty ?
           (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
           :
-          <__PascalName__Form
+          <Admin__PascalName__Form
             __camelName__={__camelName__}
-            cancelLink={`/__kebabNamePlural__/${__camelName__._id}`}
+            cancelLink={`/admin/__kebabNamePlural__/${__camelName__._id}`}
             formHelpers={formHelpers}
             formTitle="Update __startName__"
             formType="update"
@@ -111,20 +111,21 @@ class Update__PascalName__ extends Base {
             handleFormSubmit={this._handleFormSubmit}
           />
         }
-      </__PascalName__Layout>
+      </Admin__PascalName__Layout>
     )
   }
 }
 
-Update__PascalName__.propTypes = {
+AdminUpdate__PascalName__.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
 const mapStoreToProps = (store) => {
   /**
-  * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
-  * differentiated from the React component's internal state
-  */
+   * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
+   * differentiated from the React component's internal state
+   */
+
   return {
     __camelName__Store: store.__camelName__
   }
@@ -133,5 +134,5 @@ const mapStoreToProps = (store) => {
 export default withRouter(
   connect(
     mapStoreToProps
-  )(Update__PascalName__)
+  )(AdminUpdate__PascalName__)
 );

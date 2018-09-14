@@ -1,5 +1,5 @@
 /**
- * View component for /__kebabNamePlural__/new
+ * View component for /admin/__kebabNamePlural__/new
  *
  * Creates a new __camelName__ from a copy of the defaultItem in the __camelName__ reducer
  */
@@ -14,16 +14,16 @@ import { history, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 // import actions
-import * as __camelName__Actions from '../__camelName__Actions';
+import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from "../../../global/BaseComponent.js.jsx";
+import Base from "../../../../global/BaseComponent.js.jsx";
 
 // import __camelName__ components
-import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
-import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
+import Admin__PascalName__Form from '../components/Admin__PascalName__Form.js.jsx';
+import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
 
-class Create__PascalName__ extends Base {
+class AdminCreate__PascalName__ extends Base {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +70,7 @@ class Create__PascalName__ extends Base {
     dispatch(__camelName__Actions.sendCreate__PascalName__(this.state.__camelName__)).then(__camelName__Res => {
       if(__camelName__Res.success) {
         dispatch(__camelName__Actions.invalidateList());
-        history.push(`/__kebabNamePlural__/${__camelName__Res.item._id}`)
+        history.push(`/admin/__kebabNamePlural__/${__camelName__Res.item._id}`)
       } else {
         alert("ERROR - Check logs");
       }
@@ -81,13 +81,13 @@ class Create__PascalName__ extends Base {
     const { __camelName__, formHelpers } = this.state;
     const isEmpty = (!__camelName__ || __camelName__.name === null || __camelName__.name === undefined);
     return (
-      <__PascalName__Layout>
+      <Admin__PascalName__Layout>
         { isEmpty ?
           <h2> Loading...</h2>
           :
-          <__PascalName__Form
+          <Admin__PascalName__Form
             __camelName__={__camelName__}
-            cancelLink="/__kebabNamePlural__"
+            cancelLink="/admin/__kebabNamePlural__"
             formHelpers={formHelpers}
             formTitle="Create __startName__"
             formType="create"
@@ -95,12 +95,12 @@ class Create__PascalName__ extends Base {
             handleFormSubmit={this._handleFormSubmit}
             />
         }
-      </__PascalName__Layout>
+      </Admin__PascalName__Layout>
     )
   }
 }
 
-Create__PascalName__.propTypes = {
+AdminCreate__PascalName__.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
@@ -111,7 +111,7 @@ const mapStoreToProps = (store) => {
    */
 
   // manipulate store items here
-  
+
   return {
     default__PascalName__: store.__camelName__.defaultItem
   }
@@ -120,5 +120,5 @@ const mapStoreToProps = (store) => {
 export default withRouter(
   connect(
     mapStoreToProps
-  )(Create__PascalName__)
+  )(AdminCreate__PascalName__)
 );

@@ -1,5 +1,5 @@
 /**
- * View component for /__kebabNamePlural__/:__camelName__Id
+ * View component for /admin/__kebabNamePlural__/:__camelName__Id
  *
  * Displays a single __camelName__ from the 'byId' map in the __camelName__ reducer
  * as defined by the 'selected' property
@@ -12,16 +12,16 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 // import actions
-import * as __camelName__Actions from '../__camelName__Actions';
+import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from "../../../global/BaseComponent.js.jsx";
+import Base from "../../../../global/BaseComponent.js.jsx";
 
 // import __camelName__ components
-import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
+import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
 
 
-class Single__PascalName__ extends Base {
+class AdminSingle__PascalName__ extends Base {
   constructor(props) {
     super(props);
   }
@@ -50,7 +50,7 @@ class Single__PascalName__ extends Base {
     )
 
     return (
-      <__PascalName__Layout>
+      <Admin__PascalName__Layout>
         <h3> Single __startName__ </h3>
         { isEmpty ?
           (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
@@ -64,20 +64,20 @@ class Single__PascalName__ extends Base {
             <Link to={`${this.props.match.url}/update`}> Update __startName__ </Link>
           </div>
         }
-      </__PascalName__Layout>
+      </Admin__PascalName__Layout>
     )
   }
 }
 
-Single__PascalName__.propTypes = {
+AdminSingle__PascalName__.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
 const mapStoreToProps = (store) => {
   /**
-  * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
-  * differentiated from the React component's internal state
-  */
+   * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
+   * differentiated from the React component's internal state
+   */
   return {
     __camelName__Store: store.__camelName__
   }
@@ -86,5 +86,5 @@ const mapStoreToProps = (store) => {
 export default withRouter(
   connect(
     mapStoreToProps
-  )(Single__PascalName__)
+  )(AdminSingle__PascalName__)
 );
