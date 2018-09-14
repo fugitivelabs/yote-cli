@@ -64,6 +64,7 @@ program
   .alias('A')
   .option('-n', '--nav', 'main navigation item')
   .option('-t', '--tab', 'tab bar item')
+  .option('-a', '--admin', 'admin directory')
   .description('Add a new Resource to the Yote application called <resourceName>')
   // .option('-a', '--all', 'with Client, Server, and Mobile (default)')
   // .option('-c', '--client', 'with Client')
