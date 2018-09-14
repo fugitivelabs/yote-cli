@@ -17,7 +17,8 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from "../../../../global/BaseComponent.js.jsx";
+import Base from '../../../../global/BaseComponent.js.jsx';
+import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
 
 // import __camelName__ components
 import Admin__PascalName__Form from '../components/Admin__PascalName__Form.js.jsx';
@@ -78,10 +79,11 @@ class AdminCreate__PascalName__ extends Base {
   }
 
   render() {
-    const { __camelName__, formHelpers } = this.state;
+    const { __camelName__, formHelpers, location } = this.state;
     const isEmpty = (!__camelName__ || __camelName__.name === null || __camelName__.name === undefined);
     return (
       <Admin__PascalName__Layout>
+        <Breadcrumbs links={location.state.breadcrumbs} />
         { isEmpty ?
           <h2> Loading...</h2>
           :

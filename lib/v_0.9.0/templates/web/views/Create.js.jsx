@@ -17,7 +17,7 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../__camelName__Actions';
 
 // import global components
-import Base from "../../../global/BaseComponent.js.jsx";
+import Base from '../../../global/BaseComponent.js.jsx';
 
 // import __camelName__ components
 import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
@@ -111,7 +111,7 @@ const mapStoreToProps = (store) => {
    */
 
   // manipulate store items here
-  
+
   return {
     default__PascalName__: store.__camelName__.defaultItem
   }

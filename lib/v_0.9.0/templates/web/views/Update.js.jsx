@@ -18,7 +18,7 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../__camelName__Actions';
 
 // import global components
-import Base from "../../../global/BaseComponent.js.jsx";
+import Base from '../../../global/BaseComponent.js.jsx';
 
 // import module components
 import __PascalName__Form from '../components/__PascalName__Form.js.jsx';

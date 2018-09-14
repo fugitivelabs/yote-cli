@@ -17,7 +17,7 @@ import { Link, withRouter } from 'react-router-dom';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from "../../../../global/BaseComponent.js.jsx";
+import Base from '../../../../global/BaseComponent.js.jsx';
 import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
 
 // import __camelName__ components
@@ -35,7 +35,7 @@ class __PascalName__List extends Base {
   }
 
   render() {
-    const { __camelName__Store } = this.props;
+    const { location, __camelName__Store } = this.props;
 
     /**
      * Retrieve the list information and the list items for the component here.

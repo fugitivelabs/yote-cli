@@ -18,7 +18,8 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from "../../../../global/BaseComponent.js.jsx";
+import Base from '../../../../global/BaseComponent.js.jsx';
+import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
 
 // import module components
 import Admin__PascalName__Form from '../components/Admin__PascalName__Form.js.jsx';
@@ -98,6 +99,7 @@ class AdminUpdate__PascalName__ extends Base {
 
     return  (
       <Admin__PascalName__Layout>
+        <Breadcrumbs links={location.state.breadcrumbs} />
         { isEmpty ?
           (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
           :

@@ -15,7 +15,8 @@ import { Link, withRouter } from 'react-router-dom';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from "../../../../global/BaseComponent.js.jsx";
+import Base from '../../../../global/BaseComponent.js.jsx';
+import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
 
 // import __camelName__ components
 import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
@@ -32,7 +33,7 @@ class AdminSingle__PascalName__ extends Base {
   }
 
   render() {
-    const { __camelName__Store } = this.props;
+    const { location, __camelName__Store } = this.props;
 
     /**
      * use the selected.getItem() utility to pull the actual __camelName__ object from the map
@@ -51,6 +52,7 @@ class AdminSingle__PascalName__ extends Base {
 
     return (
       <Admin__PascalName__Layout>
+        <Breadcrumbs links={location.state.breadcrumbs} />
         <h3> Single __startName__ </h3>
         { isEmpty ?
           (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
