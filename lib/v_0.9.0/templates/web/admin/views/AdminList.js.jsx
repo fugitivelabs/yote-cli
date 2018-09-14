@@ -92,7 +92,7 @@ class __PascalName__List extends Base {
                 </thead>
                 <tbody>
                   {__camelName__ListItems.map((__camelName__, i) =>
-                    <AdminProductListItem key={__camelName__._id + i} __camelName__={__camelName__} />
+                    <Admin__PascalName__ListItem key={__camelName__._id + i} __camelName__={__camelName__} />
                   )}
                 </tbody>
               </table>

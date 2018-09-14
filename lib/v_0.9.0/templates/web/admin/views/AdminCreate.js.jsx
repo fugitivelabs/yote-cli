@@ -79,7 +79,8 @@ class AdminCreate__PascalName__ extends Base {
   }
 
   render() {
-    const { __camelName__, formHelpers, location } = this.state;
+    const { location, match } = this.props;
+    const { __camelName__, formHelpers } = this.state;
     const isEmpty = (!__camelName__ || __camelName__.name === null || __camelName__.name === undefined);
     return (
       <Admin__PascalName__Layout>

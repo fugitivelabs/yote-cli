@@ -30,7 +30,7 @@ class AdminUpdate__PascalName__ extends Base {
     super(props);
     const { match, __camelName__Store } = this.props;
     this.state = {
-      __camelName__: __camelName__Map.byId[match.params.__camelName__Id] ?  _.cloneDeep(__camelName__Map.byId[match.params.__camelName__Id]) : {}
+      __camelName__: __camelName__Store.byId[match.params.__camelName__Id] ?  _.cloneDeep(__camelName__Store.byId[match.params.__camelName__Id]) : {}
       // NOTE: ^ we don't want to change the store, just make changes to a copy
       , formHelpers: {}
       /**
@@ -53,7 +53,7 @@ class AdminUpdate__PascalName__ extends Base {
   componentWillReceiveProps(nextProps) {
     const { match, __camelName__Store } = nextProps;
     this.setState({
-      __camelName__: __camelName__Map.byId[match.params.__camelName__Id] ?  _.cloneDeep(__camelName__Map.byId[match.params.__camelName__Id]) : {}
+      __camelName__: __camelName__Store.byId[match.params.__camelName__Id] ?  _.cloneDeep(__camelName__Store.byId[match.params.__camelName__Id]) : {}
       // NOTE: ^ we don't want to actually change the store's __camelName__, just use a copy
     })
   }
@@ -70,7 +70,7 @@ class AdminUpdate__PascalName__ extends Base {
     e.preventDefault();
     dispatch(__camelName__Actions.sendUpdate__PascalName__(this.state.__camelName__)).then(__camelName__Res => {
       if(__camelName__Res.success) {
-        history.push(`/__kebabNamePlural__/${__camelName__Res.item._id}`)
+        history.push(`/admin/__kebabNamePlural__/${__camelName__Res.item._id}`)
       } else {
         alert("ERROR - Check logs");
       }
