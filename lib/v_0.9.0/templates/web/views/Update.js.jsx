@@ -18,13 +18,13 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../__camelName__Actions';
 
 // import global components
-import Base from '../../../global/BaseComponent.js.jsx';
+import Binder from '../../../global/Binder.js.jsx';
 
 // import module components
 import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
 import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
 
-class Update__PascalName__ extends Base {
+class Update__PascalName__ extends Binder {
   constructor(props) {
     super(props);
     const { match, __camelName__Store } = this.props;

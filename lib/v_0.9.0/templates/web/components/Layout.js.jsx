@@ -8,10 +8,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // import global components
-import Base from "../../../global/BaseComponent.js.jsx";
+import Binder from '../../../global/Binder.js.jsx';
 import DefaultLayout from "../../../global/layouts/DefaultLayout.js.jsx";
 
-class __PascalName__Layout extends Base {
+class __PascalName__Layout extends Binder {
   constructor(props) {
     super(props);
   }
