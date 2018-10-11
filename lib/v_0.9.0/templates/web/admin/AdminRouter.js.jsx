@@ -16,8 +16,8 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 // import global components
-import Binder from '../../../global/Binder.js.jsx';
-import YTRoute from '../../../global/routing/YTRoute.js.jsx';
+import Binder from '../../../global/components/Binder.js.jsx';
+import YTRoute from '../../../global/components/routing/YTRoute.js.jsx';
 
 // import __camelName__ views
 import AdminCreate__PascalName__ from './views/AdminCreate__PascalName__.js.jsx';

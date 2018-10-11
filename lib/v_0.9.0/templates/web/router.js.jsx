@@ -9,8 +9,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // import global components
-import Binder from '../../global/Binder.js.jsx';
-import YTRoute from '../../global/routing/YTRoute.js.jsx';
+import Binder from '../../global/components/Binder.js.jsx';
+import YTRoute from '../../global/components/routing/YTRoute.js.jsx';
 
 // import __camelName__ views
 import Create__PascalName__ from './views/Create__PascalName__.js.jsx';

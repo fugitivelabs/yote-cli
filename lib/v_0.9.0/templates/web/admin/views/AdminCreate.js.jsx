@@ -17,10 +17,10 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Binder from '../../../../global/Binder.js.jsx';
-import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
+import Binder from '../../../../global/components/Binder.js.jsx';
+import Breadcrumbs from '../../../../global/components/navigation/Breadcrumbs.js.jsx';
 
-// import __camelName__ components
+// import resource components
 import Admin__PascalName__Form from '../components/Admin__PascalName__Form.js.jsx';
 import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
 

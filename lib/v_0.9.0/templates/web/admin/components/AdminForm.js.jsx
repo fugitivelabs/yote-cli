@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // import form components
-import { TextInput } from '../../../../global/forms';
+import { TextInput } from '../../../../global/components/forms';
 
 const  Admin__PascalName__Form = ({
   cancelLink
