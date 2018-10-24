@@ -61,6 +61,7 @@ module.exports = function(program) {
       shell.exec(`ttab -w -d web npm run debug`);
     }
     if(runOptions.indexOf('mobile') > -1) {
+      shell.exec(`ttab -w -d mobile/${mobileProjectName} npm start`);
       shell.exec(`ttab -w -d mobile/${mobileProjectName} react-native run-ios`);
     }
   }

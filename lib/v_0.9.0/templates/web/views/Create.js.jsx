@@ -50,9 +50,9 @@ class Create__PascalName__ extends Binder {
   componentWillReceiveProps(nextProps) {
     this.setState({
       __camelName__: _.cloneDeep(nextProps.default__PascalName__.obj)
-
     })
   }
+
   _handleFormChange(e) {
     /**
      * This let's us change arbitrarily nested objects with one pass
