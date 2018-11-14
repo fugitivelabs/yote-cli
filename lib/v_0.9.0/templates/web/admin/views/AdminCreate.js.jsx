@@ -17,18 +17,18 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from '../../../../global/BaseComponent.js.jsx';
-import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
+import Binder from '../../../../global/components/Binder.js.jsx';
+import Breadcrumbs from '../../../../global/components/navigation/Breadcrumbs.js.jsx';
 
-// import __camelName__ components
+// import resource components
 import Admin__PascalName__Form from '../components/Admin__PascalName__Form.js.jsx';
 import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
 
-class AdminCreate__PascalName__ extends Base {
+class AdminCreate__PascalName__ extends Binder {
   constructor(props) {
     super(props);
     this.state = {
-      __camelName__: _.cloneDeep(this.props.default__PascalName__.getItem())
+      __camelName__: _.cloneDeep(this.props.default__PascalName__.obj)
       // NOTE: We don't want to actually change the store's defaultItem, just use a copy
       , formHelpers: {}
       /**
@@ -50,7 +50,7 @@ class AdminCreate__PascalName__ extends Base {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      __camelName__: _.cloneDeep(nextProps.default__PascalName__.getItem())
+      __camelName__: _.cloneDeep(nextProps.default__PascalName__.obj)
 
     })
   }

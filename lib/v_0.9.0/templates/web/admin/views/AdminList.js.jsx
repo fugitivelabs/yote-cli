@@ -17,14 +17,14 @@ import { Link, withRouter } from 'react-router-dom';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from '../../../../global/BaseComponent.js.jsx';
-import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
+import Binder from '../../../../global/components/Binder.js.jsx';
+import Breadcrumbs from '../../../../global/components/navigation/Breadcrumbs.js.jsx';
 
-// import __camelName__ components
+// import resource components
 import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
 import Admin__PascalName__ListItem from '../components/Admin__PascalName__ListItem.js.jsx';
 
-class __PascalName__List extends Base {
+class __PascalName__List extends Binder {
   constructor(props) {
     super(props);
   }

@@ -9,8 +9,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // import global components
-import Base from "../../global/BaseComponent.js.jsx";
-import YTRoute from '../../global/routing/YTRoute.js.jsx';
+import Binder from '../../global/components/Binder.js.jsx';
+import YTRoute from '../../global/components/routing/YTRoute.js.jsx';
 
 // import __camelName__ views
 import Create__PascalName__ from './views/Create__PascalName__.js.jsx';
@@ -18,7 +18,7 @@ import __PascalName__List from './views/__PascalName__List.js.jsx';
 import Single__PascalName__ from './views/Single__PascalName__.js.jsx';
 import Update__PascalName__ from './views/Update__PascalName__.js.jsx';
 
-class __PascalName__Router extends Base {
+class __PascalName__Router extends Binder {
   constructor(props) {
     super(props);
   }

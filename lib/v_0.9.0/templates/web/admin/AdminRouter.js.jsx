@@ -16,8 +16,8 @@ import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
 // import global components
-import Base from '../../../global/BaseComponent.js.jsx';
-import YTRoute from '../../../global/routing/YTRoute.js.jsx';
+import Binder from '../../../global/components/Binder.js.jsx';
+import YTRoute from '../../../global/components/routing/YTRoute.js.jsx';
 
 // import __camelName__ views
 import AdminCreate__PascalName__ from './views/AdminCreate__PascalName__.js.jsx';
@@ -25,7 +25,7 @@ import Admin__PascalName__List from './views/Admin__PascalName__List.js.jsx';
 import AdminSingle__PascalName__ from './views/AdminSingle__PascalName__.js.jsx';
 import AdminUpdate__PascalName__ from './views/AdminUpdate__PascalName__.js.jsx';
 
-class __PascalName__AdminRouter extends Base {
+class __PascalName__AdminRouter extends Binder {
   constructor(props) {
     super(props);
   }

@@ -18,14 +18,14 @@ import _ from 'lodash';
 import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from '../../../../global/BaseComponent.js.jsx';
-import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
+import Binder from '../../../../global/components/Binder.js.jsx';
+import Breadcrumbs from '../../../../global/components/navigation/Breadcrumbs.js.jsx';
 
-// import module components
+// import resource components
 import Admin__PascalName__Form from '../components/Admin__PascalName__Form.js.jsx';
 import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
 
-class AdminUpdate__PascalName__ extends Base {
+class AdminUpdate__PascalName__ extends Binder {
   constructor(props) {
     super(props);
     const { match, __camelName__Store } = this.props;
