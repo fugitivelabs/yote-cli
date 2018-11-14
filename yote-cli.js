@@ -24,7 +24,7 @@ program
   .version(config.version)
   .usage('<command> [options]')
   /**
-   * TODO: capture yote version from CWD and use appropriate library version - doesn't exist for versions other than 0.7 for now
+   * TODO: capture yote version from CWD and use appropriate library version - doesn't exist for versions older than v0.7
    *
    */
 
@@ -37,6 +37,7 @@ program
   .description('Initialize a new Yote application called <appName>')
   .option('-a', '--all', 'with Client, Server, and Mobile (default)')
   .option('-c', '--client', 'with Client')
+  .option('-w', '--web', 'with web client')
   .option('-s', '--server', 'with Server')
   .option('-m', '--mobile', 'with Mobile')
   .option('-i', '--install', 'and install packages')
@@ -53,8 +54,7 @@ program
     console.log('    $ yote I myApp');
     console.log();
     console.log('  Options:');
-    console.log('    -i: run "npm install" after cloning')
-    console.log('    -c,s,m: install just client, server, and/or mobile')
+    console.log('    -w,s,m: install just web, server, and/or mobile')
     console.log();
     console.log('    $ yote I -sm')
     console.log(chalk.dim('    # installs only the server and mobile components'))
@@ -62,6 +62,9 @@ program
 program
   .command('add <resourceName>')
   .alias('A')
+  .option('-n', '--nav', 'main navigation item')
+  .option('-t', '--tab', 'tab bar item')
+  .option('-a', '--admin', 'admin directory')
   .description('Add a new Resource to the Yote application called <resourceName>')
   // .option('-a', '--all', 'with Client, Server, and Mobile (default)')
   // .option('-c', '--client', 'with Client')
@@ -111,6 +114,7 @@ program
 
 //yote remote database tools. will be removed from package in the future
 require('./tools/remote')(program);
+require('./tools/run')(program);
 
 //old commands, will break
 //preserving for the time being until we through the transition

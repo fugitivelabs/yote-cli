@@ -71,7 +71,9 @@ exports.rmDir = (path, cb) => {
 }
 
 exports.replaceInFile = (path, oldString, newString, cb) => {
+  console.log('in path', path, 'replace', oldString, 'with', newString);
   shell.sed('-i', oldString, newString, path);
+  // shell.sed(oldString, newString, path);
   if(cb) { cb() }
 }
 

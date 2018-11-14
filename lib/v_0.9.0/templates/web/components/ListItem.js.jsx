@@ -3,9 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// import __camelName__ css modules
-import __camelName__Styles from '../__camelName__ModuleStyles.css';
-
 const __PascalName__ListItem = ({
   __camelName__
 }) => {
