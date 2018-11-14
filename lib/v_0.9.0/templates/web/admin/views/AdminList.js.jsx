@@ -1,5 +1,5 @@
 /**
- * View component for /__kebabNamePlural__
+ * View component for /admin/__kebabNamePlural__
  *
  * Generic __camelName__ list view. Defaults to 'all' with:
  * this.props.dispatch(__camelName__Actions.fetchListIfNeeded());
@@ -14,14 +14,15 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 // import actions
-import * as __camelName__Actions from '../__camelName__Actions';
+import * as __camelName__Actions from '../../__camelName__Actions';
 
 // import global components
-import Base from '../../../global/BaseComponent.js.jsx';
+import Base from '../../../../global/BaseComponent.js.jsx';
+import Breadcrumbs from '../../../../global/navigation/Breadcrumbs.js.jsx';
 
 // import __camelName__ components
-import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
-import __PascalName__ListItem from '../components/__PascalName__ListItem.js.jsx';
+import Admin__PascalName__Layout from '../components/Admin__PascalName__Layout.js.jsx';
+import Admin__PascalName__ListItem from '../components/Admin__PascalName__ListItem.js.jsx';
 
 class __PascalName__List extends Base {
   constructor(props) {
@@ -34,7 +35,7 @@ class __PascalName__List extends Base {
   }
 
   render() {
-    const { __camelName__Store } = this.props;
+    const { location, __camelName__Store } = this.props;
 
     /**
      * Retrieve the list information and the list items for the component here.
@@ -70,23 +71,35 @@ class __PascalName__List extends Base {
     )
 
     return (
-      <__PascalName__Layout>
+      <Admin__PascalName__Layout>
+        <Breadcrumbs links={location.state.breadcrumbs} />
         <h1> __startName__ List </h1>
         <hr/>
-        <Link to={'/__kebabNamePlural__/new'}> New __startName__ </Link>
         <br/>
         { isEmpty ?
           (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
           :
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <ul>
-              {__camelName__ListItems.map((__camelName__, i) =>
-                <__PascalName__ListItem key={__camelName__._id + i} __camelName__={__camelName__} />
-              )}
-            </ul>
+            <div className="admin-table-wrapper">
+              <Link to={'/admin/__kebabNamePlural__/new'}> New __startName__</Link>
+              <table className="yt-table striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Last modified</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {__camelName__ListItems.map((__camelName__, i) =>
+                    <Admin__PascalName__ListItem key={__camelName__._id + i} __camelName__={__camelName__} />
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         }
-      </__PascalName__Layout>
+      </Admin__PascalName__Layout>
     )
   }
 }
@@ -97,9 +110,12 @@ __PascalName__List.propTypes = {
 
 const mapStoreToProps = (store) => {
   /**
-  * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
-  * differentiated from the React component's internal state
-  */
+   * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
+   * differentiated from the React component's internal state
+   */
+
+  // manipulate store items here
+
   return {
     __camelName__Store: store.__camelName__
   }
