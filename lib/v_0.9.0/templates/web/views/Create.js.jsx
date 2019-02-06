@@ -53,7 +53,7 @@ class Create__PascalName__ extends Binder {
     /**
      * This let's us change arbitrarily nested objects with one pass
      */
-    let newState = _.update(this.state, e.target.name, function() {
+    let newState = _.update(this.state, e.target.name, () => {
       return e.target.value;
     });
     this.setState({newState});
@@ -66,7 +66,7 @@ class Create__PascalName__ extends Binder {
     dispatch(__camelName__Actions.sendCreate__PascalName__(this.state.__camelName__)).then(__camelName__Res => {
       if(__camelName__Res.success) {
         dispatch(__camelName__Actions.invalidateList("all"));
-        history.push(`/__camelName__s/${__camelName__Res.item._id}`)
+        history.push(`/__kebabNamePlural__/${__camelName__Res.item._id}`)
       } else {
         alert("ERROR - Check logs");
       }
