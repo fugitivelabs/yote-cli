@@ -81,7 +81,7 @@ class AdminCreate__PascalName__ extends Binder {
   render() {
     const { location, match } = this.props;
     const { __camelName__, formHelpers } = this.state;
-    const isEmpty = (!__camelName__ || __camelName__.name === null || __camelName__.name === undefined);
+    const isEmpty = !__camelName__;
     return (
       <Admin__PascalName__Layout>
         <Breadcrumbs links={location.state.breadcrumbs} />
