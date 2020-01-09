@@ -47,7 +47,7 @@ class __PascalName__List extends Binder {
      */
 
     // get the __camelName__List meta info here so we can reference 'isFetching'
-    const __camelName__List = __camelName__Store.lists ? __camelName__Store.lists.all : null;
+    const __camelName__List = __camelName__Store.util.getListInfo("all");
 
     /**
      * use the reducer getList utility to convert the all.items array of ids
