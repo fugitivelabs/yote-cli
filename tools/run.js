@@ -54,15 +54,15 @@ module.exports = function(program) {
     console.log(chalk.magenta('     ',runOptions));
     console.log();
     if(runOptions.indexOf('server') > -1) {
-      shell.exec(`ttab -w -d server nodemon`);
+      shell.exec(`ttab -d server nodemon`);
     }
 
     if(runOptions.indexOf('web') > -1) {
-      shell.exec(`ttab -w -d web npm run debug`);
+      shell.exec(`ttab -d web npm run debug`);
     }
     if(runOptions.indexOf('mobile') > -1) {
-      shell.exec(`ttab -w -d mobile/${mobileProjectName} yarn start`);
-      shell.exec(`ttab -w -d mobile/${mobileProjectName} react-native run-ios`);
+      shell.exec(`ttab -d mobile/${mobileProjectName} yarn start`);
+      shell.exec(`ttab -d mobile/${mobileProjectName} react-native run-ios`);
     }
   }
 }
