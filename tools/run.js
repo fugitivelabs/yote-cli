@@ -16,6 +16,7 @@ module.exports = function(program) {
   .option('-m', '--mobile', 'run ios simulator')
   .option('-w', '--web', 'run web client')
   .option('-s', '--server', 'run yote server')
+  .option('-t', '--tabs', 'run in new tabs')
   .on('--help', () => {
     console.log('   To add a new resource to the Yote app')
     console.log(chalk.green('     $ yote A <resourceName>'));
@@ -35,34 +36,40 @@ module.exports = function(program) {
 
   function run(options) {
     console.log("RUN YOTE");
-    let runOptions = ["web","server","mobile"];
+    let runOptions = [];
     // let PascalName =utils.capitalizeFirstLetter(appName);
     const mobileProjectName = utils.getYoteMobileProjectName();
     console.log(mobileProjectName);
-    // console.log(options);
-    if(options.A || (!options.M && !options.S && !options.W)) {
-      console.log('run all the things');
-    } else if(options.W == undefined) {
-      runOptions.splice(runOptions.indexOf('web'), 1);
-    } else if(options.S == undefined) {
-      runOptions.splice(runOptions.indexOf('server'), 1);
-    } else if(options.M == undefined) {
-      runOptions.splice(runOptions.indexOf('mobile'), 1);
+    if(options.A) {
+      runOptions = ["web","server","mobile", "tabs"];
+    } 
+    if(options.W) {
+      runOptions.push("web"); 
+    } 
+    if(options.S) {
+      runOptions.push("server");
+    } 
+    if(options.M) {
+      runOptions.push("mobile");
+    }
+    if(options.T) {
+      runOptions.push("tabs"); 
     }
     console.log();
     console.log(chalk.cyan('      Run: '));
     console.log(chalk.magenta('     ',runOptions));
     console.log();
+    const tabCmd = runOptions.indexOf('tabs') > -1 ? 'ttab' : 'ttab -w'; 
     if(runOptions.indexOf('server') > -1) {
-      shell.exec(`ttab -d server nodemon`);
+      shell.exec(`${tabCmd} -d server nodemon`);
     }
 
     if(runOptions.indexOf('web') > -1) {
-      shell.exec(`ttab -d web npm run debug`);
+      shell.exec(`${tabCmd} -d web npm run debug`);
     }
     if(runOptions.indexOf('mobile') > -1) {
-      shell.exec(`ttab -d mobile/${mobileProjectName} yarn start`);
-      shell.exec(`ttab -d mobile/${mobileProjectName} react-native run-ios`);
+      shell.exec(`${tabCmd} -d mobile/${mobileProjectName} yarn start`);
+      shell.exec(`${tabCmd} -d mobile/${mobileProjectName} react-native run-ios`);
     }
   }
 }
