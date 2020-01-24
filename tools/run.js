@@ -16,6 +16,7 @@ module.exports = function(program) {
   .option('-m', '--mobile', 'run ios simulator')
   .option('-w', '--web', 'run web client')
   .option('-s', '--server', 'run yote server')
+  .option('-t', '--tabs', 'run in new tabs')
   .on('--help', () => {
     console.log('   To add a new resource to the Yote app')
     console.log(chalk.green('     $ yote A <resourceName>'));
@@ -35,34 +36,38 @@ module.exports = function(program) {
 
   function run(options) {
     console.log("RUN YOTE");
-    let runOptions = ["web","server","mobile"];
+    let runOptions = [];
     // let PascalName =utils.capitalizeFirstLetter(appName);
     const mobileProjectName = utils.getYoteMobileProjectName();
     console.log(mobileProjectName);
-    // console.log(options);
-    if(options.A || (!options.M && !options.S && !options.W)) {
-      console.log('run all the things');
-    } else if(options.W == undefined) {
-      runOptions.splice(runOptions.indexOf('web'), 1);
-    } else if(options.S == undefined) {
-      runOptions.splice(runOptions.indexOf('server'), 1);
-    } else if(options.M == undefined) {
-      runOptions.splice(runOptions.indexOf('mobile'), 1);
+    let tabCmd = options.T ? 'ttab' : 'ttab -w'; 
+    if(options.A || (!options.W && !options.S && !options.M)) {
+      runOptions = ["web","server","mobile"];
+      tabCmd = 'ttab'; 
+    } 
+    if(options.W) {
+      runOptions.push("web"); 
+    } 
+    if(options.S) {
+      runOptions.push("server");
+    } 
+    if(options.M) {
+      runOptions.push("mobile");
     }
     console.log();
     console.log(chalk.cyan('      Run: '));
     console.log(chalk.magenta('     ',runOptions));
     console.log();
-    if(runOptions.indexOf('server') > -1) {
-      shell.exec(`ttab -w -d server nodemon`);
+    if(utils.checkIfExists('./server') && runOptions.indexOf('server') > -1) {
+      shell.exec(`${tabCmd} -d server nodemon`);
     }
 
-    if(runOptions.indexOf('web') > -1) {
-      shell.exec(`ttab -w -d web npm run debug`);
+    if(utils.checkIfExists('./web') && runOptions.indexOf('web') > -1) {
+      shell.exec(`${tabCmd} -d web npm run debug`);
     }
-    if(runOptions.indexOf('mobile') > -1) {
-      shell.exec(`ttab -w -d mobile/${mobileProjectName} yarn start`);
-      shell.exec(`ttab -w -d mobile/${mobileProjectName} react-native run-ios`);
+    if(utils.checkIfExists('./mobile') && runOptions.indexOf('mobile') > -1) {
+      shell.exec(`${tabCmd} -d mobile/${mobileProjectName} yarn start`);
+      shell.exec(`${tabCmd} -d mobile/${mobileProjectName} react-native run-ios`);
     }
   }
 }
