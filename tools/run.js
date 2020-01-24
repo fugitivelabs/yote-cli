@@ -40,8 +40,10 @@ module.exports = function(program) {
     // let PascalName =utils.capitalizeFirstLetter(appName);
     const mobileProjectName = utils.getYoteMobileProjectName();
     console.log(mobileProjectName);
-    if(options.A) {
-      runOptions = ["web","server","mobile", "tabs"];
+    let tabCmd = options.T ? 'ttab' : 'ttab -w'; 
+    if(options.A || (!options.W && !options.S && !options.M)) {
+      runOptions = ["web","server","mobile"];
+      tabCmd = 'ttab'; 
     } 
     if(options.W) {
       runOptions.push("web"); 
@@ -52,22 +54,18 @@ module.exports = function(program) {
     if(options.M) {
       runOptions.push("mobile");
     }
-    if(options.T) {
-      runOptions.push("tabs"); 
-    }
     console.log();
     console.log(chalk.cyan('      Run: '));
     console.log(chalk.magenta('     ',runOptions));
     console.log();
-    const tabCmd = runOptions.indexOf('tabs') > -1 ? 'ttab' : 'ttab -w'; 
-    if(runOptions.indexOf('server') > -1) {
+    if(utils.checkIfExists('./server') && runOptions.indexOf('server') > -1) {
       shell.exec(`${tabCmd} -d server nodemon`);
     }
 
-    if(runOptions.indexOf('web') > -1) {
+    if(utils.checkIfExists('./web') && runOptions.indexOf('web') > -1) {
       shell.exec(`${tabCmd} -d web npm run debug`);
     }
-    if(runOptions.indexOf('mobile') > -1) {
+    if(utils.checkIfExists('./mobile') && runOptions.indexOf('mobile') > -1) {
       shell.exec(`${tabCmd} -d mobile/${mobileProjectName} yarn start`);
       shell.exec(`${tabCmd} -d mobile/${mobileProjectName} react-native run-ios`);
     }
