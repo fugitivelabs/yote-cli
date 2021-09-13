@@ -18,8 +18,8 @@ const __PascalName__ListItem = ({ id }) => {
   if(!__camelName__) return <ListItem>No __camelName__ found</ListItem>
 
   return (
-    <ListItem className={__camelName__Query.isFetching ? 'opacity-50' : ''}>
-      <Link to={`/__camelName__s/${__camelName__._id}`}>{__camelName__.name}</Link>
+    <ListItem className={__camelName__Query.isFetching ? "opacity-50" : ""}>
+      <Link to={`/__kebabNamePlural__/${__camelName__._id}`}>{__camelName__.name}</Link>
     </ListItem>
   )
 }

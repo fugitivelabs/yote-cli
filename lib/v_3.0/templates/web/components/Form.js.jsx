@@ -3,14 +3,14 @@
  */
 
 // import primary libraries
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 // import global components
-import Button from '../../../global/components/base/Button';
+import Button from '../../../global/components/base/Button'
 
 // import hooks
-import { useFormState } from '../../../global/utils/customHooks';
+import { useFormState } from '../../../global/utils/customHooks'
 
 // import form components
 import { TextInput } from '../../../global/components/forms'
@@ -28,7 +28,7 @@ const __PascalName__Form = ({
   const [updated__PascalName__, handleChange] = useFormState(__camelName__) // pass __camelName__ as initialState
 
   // set the button text
-  const buttonText = formType === "create" ? "Create __startName__" : "Update __startName__"
+  const buttonText = formType === 'create' ? 'Create __startName__' : 'Update __startName__'
 
   // set the form header
   const header = formTitle ? <div className=""><h2> {formTitle} </h2><hr /></div> : <div />
@@ -40,12 +40,12 @@ const __PascalName__Form = ({
 
   return (
     <div className="">
-      <form name="__camelName__Form" className="" onSubmit={handleSubmit}>
+      <form name='__camelName__Form' className="" onSubmit={handleSubmit}>
         {header}
         <TextInput
-          name="name"
-          label="Name"
-          value={updated__PascalName__.name || ""}
+          name='name'
+          label='Name'
+          value={updated__PascalName__.name || ''}
           change={handleChange}
           disabled={disabled}
           required={true}
@@ -55,13 +55,13 @@ const __PascalName__Form = ({
             <Button
               disabled={disabled}
               link={cancelLink}
-              skin="white"
+              skin='white'
             >
               Cancel
             </Button>
             <Button
               disabled={disabled}
-              type="submit"
+              type='submit'
             >
               {buttonText}
             </Button>

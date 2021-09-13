@@ -1,137 +1,57 @@
 /**
  * View component for /__kebabNamePlural__/:__camelName__Id/update
  *
- * Updates a single __camelName__ from a copy of the selcted __camelName__
- * as defined in the __camelName__ reducer
+ * Updates a single __camelName__ from a copy of  the __camelName__ from the __camelName__ reducer
  */
 
 // import primary libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { history, withRouter } from 'react-router-dom';
-
-// import third-party libraries
-import _ from 'lodash';
-
-// import actions
-import * as __camelName__Actions from '../__camelName__Actions';
+import React from 'react'
+// import PropTypes from 'prop-types'; // this component gets no props
+import { useParams, useHistory } from 'react-router-dom'
 
 // import global components
-import Binder from '../../../global/components/Binder.js.jsx';
+import WaitOn from '../../../global/components/helpers/WaitOn'
 
 // import resource components
-import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
-import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
+import __PascalName__Layout from '../components/__PascalName__Layout.jsx'
+import __PascalName__Form from '../components/__PascalName__Form.jsx'
 
-class Update__PascalName__ extends Binder {
-  constructor(props) {
-    super(props);
-    const { match, __camelName__Store } = this.props;
-    this.state = {
-      __camelName__: __camelName__Store.byId[match.params.__camelName__Id] ?  _.cloneDeep(__camelName__Store.byId[match.params.__camelName__Id]) : {}
-      // NOTE: ^ we don't want to change the store, just make changes to a copy
-      , formHelpers: {}
-      /**
-       * NOTE: formHelpers are useful for things like radio controls and other
-       * things that manipulate the form, but don't directly effect the state of
-       * the __camelName__
-       */
-    }
-    this._bind(
-      '_handleFormChange'
-      , '_handleFormSubmit'
-    );
+// import services
+import { useGetUpdatable__PascalName__ } from '../__camelName__Service'
+
+const Update__PascalName__ = () => {
+  const history = useHistory() // get history object
+  const { __camelName__Id } = useParams() // replaces match.params.__camelName__Id
+
+  // fetches and returns the __camelName__ and the update action wrapped in dispatch.
+  // another benefit of using this version is that __camelName__Query.isFetching will be true while the update is being processed by the server.
+  const { sendUpdate__PascalName__, data: __camelName__, ...__camelName__Query } = useGetUpdatable__PascalName__(__camelName__Id)
+
+  const handleFormSubmit = updated__PascalName__ => {
+    // send the updated__PascalName__ to the server
+    sendUpdate__PascalName__(updated__PascalName__)
+    // back to single __camelName__ view. We don't have to wait for the update to finish. It's okay if the __camelName__ is still updating when the user gets to the single __camelName__ view.
+    history.push(`/__kebabNamePlural__/${updated__PascalName__._id}`)
   }
 
-  componentDidMount() {
-    const { dispatch, match } = this.props;
-    dispatch(__camelName__Actions.fetchSingleIfNeeded(match.params.__camelName__Id))
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { match, __camelName__Store } = nextProps;
-    this.setState({
-      __camelName__: __camelName__Store.byId[match.params.__camelName__Id] ?  _.cloneDeep(__camelName__Store.byId[match.params.__camelName__Id]) : {}
-      // NOTE: ^ we don't want to actually change the store's __camelName__, just use a copy
-    })
-  }
-
-  _handleFormChange(e) {
-    const newState = _.update(_.cloneDeep(this.state), e.target.name, () => {
-      return e.target.value;
-    });
-    this.setState(newState);
-  }
-
-  _handleFormSubmit(e) {
-    const { dispatch, history } = this.props;
-    e.preventDefault();
-    dispatch(__camelName__Actions.sendUpdate__PascalName__(this.state.__camelName__)).then(__camelName__Res => {
-      if(__camelName__Res.success) {
-        history.push(`/__kebabNamePlural__/${__camelName__Res.item._id}`)
-      } else {
-        alert("ERROR - Check logs");
-      }
-    });
-  }
-
-  render() {
-    const {
-      location
-      , match
-      , __camelName__Store
-    } = this.props;
-    const { __camelName__, formHelpers } = this.state;
-
-    const selected__PascalName__ = __camelName__Store.selected.getItem();
-
-    const isEmpty = (
-      !__camelName__
-      || !__camelName__._id
-    );
-
-    const isFetching = (
-      !__camelName__Store.selected.id
-      || __camelName__Store.selected.isFetching
-    )
-
-    return  (
-      <__PascalName__Layout>
-        { isEmpty ?
-          (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-          :
+  return (
+    <__PascalName__Layout title={'Update __PascalName__'}>
+      <WaitOn query={__camelName__Query}>
+        { __camelName__ &&
+          // we have the __camelName__, render the form
           <__PascalName__Form
             __camelName__={__camelName__}
-            cancelLink={`/__kebabNamePlural__/${__camelName__._id}`}
-            formHelpers={formHelpers}
-            formTitle="Update __startName__"
+            cancelLink={`/__kebabNamePlural__/${__camelName__Id}`}
+            disabled={__camelName__Query.isFetching}
             formType="update"
-            handleFormChange={this._handleFormChange}
-            handleFormSubmit={this._handleFormSubmit}
+            handleFormSubmit={handleFormSubmit}
           />
         }
-      </__PascalName__Layout>
-    )
-  }
+      </WaitOn>
+    </__PascalName__Layout>
+  )
 }
 
-Update__PascalName__.propTypes = {
-  dispatch: PropTypes.func.isRequired
-}
+export default Update__PascalName__
 
-const mapStoreToProps = (store) => {
-  /**
-  * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
-  * differentiated from the React component's internal state
-  */
-  return {
-    __camelName__Store: store.__camelName__
-  }
-}
 
-export default withRouter(
-  connect(
-    mapStoreToProps
-  )(Update__PascalName__)
-);

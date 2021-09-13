@@ -2,89 +2,61 @@
  * View component for /__kebabNamePlural__/:__camelName__Id
  *
  * Displays a single __camelName__ from the 'byId' map in the __camelName__ reducer
- * as defined by the 'selected' property
  */
 
 // import primary libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
-
-// import actions
-import * as __camelName__Actions from '../__camelName__Actions';
+import React from 'react'
+// import PropTypes from 'prop-types'; // this component gets no props
+import { useLocation, useParams } from 'react-router-dom'
 
 // import global components
-import Binder from '../../../global/components/Binder.js.jsx';
+import Button from '../../../global/components/base/Button'
+import WaitOn from '../../../global/components/helpers/WaitOn'
+
+// import services
+import { useGet__PascalName__ById } from '../__camelName__Service'
 
 // import resource components
-import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
+import __PascalName__Layout from '../components/__PascalName__Layout.jsx'
 
+const Single__PascalName__ = () => {
+  // get location. Below is equivalent to const location = this.props.location
+  const location = useLocation()
 
-class Single__PascalName__ extends Binder {
-  constructor(props) {
-    super(props);
-  }
+  // get the __camelName__ id from the url. Below is equivalent to const { __camelName__Id } = this.props.match.params
+  const { __camelName__Id } = useParams()
 
-  componentDidMount() {
-    const { dispatch, match } = this.props;
-    dispatch(__camelName__Actions.fetchSingleIfNeeded(match.params.__camelName__Id));
-  }
+  // get the __camelName__ from the store (or fetch it from the server)
+  const { data: __camelName__, ...__camelName__Query } = useGet__PascalName__ById(__camelName__Id)
 
-  render() {
-    const { __camelName__Store } = this.props;
-
-    /**
-     * use the selected.getItem() utility to pull the actual __camelName__ object from the map
-     */
-    const selected__PascalName__ = __camelName__Store.selected.getItem();
-
-    const isEmpty = (
-      !selected__PascalName__
-      || !selected__PascalName__._id
-      || __camelName__Store.selected.didInvalidate
-    );
-
-    const isFetching = (
-      __camelName__Store.selected.isFetching
-    )
-
-    return (
-      <__PascalName__Layout>
-        <h3> Single __startName__ </h3>
-        { isEmpty ?
-          (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
-          :
-          <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <h1> { selected__PascalName__.name }
-            </h1>
-            <hr/>
-            <p> <em>Other characteristics about the __PascalName__ would go here.</em></p>
-            <br/>
-            <Link to={`${this.props.match.url}/update`}> Update __startName__ </Link>
-          </div>
-        }
-      </__PascalName__Layout>
-    )
-  }
+  return (
+    <__PascalName__Layout title={'Single __PascalName__'}>
+      <WaitOn query={__camelName__Query} fallback={<Skeleton />}>
+        <div className={__camelName__Query.isFetching ? "opacity-50" : ""}>
+          <h1> {__camelName__?.name} </h1>
+        </div>
+      </WaitOn>
+      <Button
+        disabled={!__camelName__ || __camelName__Query.isFetching}
+        link={`${location.pathname}/update`}
+        size='sm'
+        skin='secondary'
+      >
+        Update __PascalName__
+      </Button>
+    </__PascalName__Layout>
+  )
 }
 
-Single__PascalName__.propTypes = {
-  dispatch: PropTypes.func.isRequired
+const Skeleton = () => {
+  return (
+    <div className="animate-pulse">
+      <p className="w-48 h-5 bg-gray-400"/>
+      <p className="h-1"/>
+      <p className="w-64 h-5 bg-gray-400" />
+      <p className="h-1"/>
+    </div>
+  )
 }
 
-const mapStoreToProps = (store) => {
-  /**
-  * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
-  * differentiated from the React component's internal state
-  */
-  return {
-    __camelName__Store: store.__camelName__
-  }
-}
-
-export default withRouter(
-  connect(
-    mapStoreToProps
-  )(Single__PascalName__)
-);
+export default Single__PascalName__

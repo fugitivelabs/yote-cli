@@ -1,118 +1,55 @@
 /**
  * View component for /__kebabNamePlural__/new
  *
- * Creates a new __camelName__ from a copy of the defaultItem in the __camelName__ reducer
+ * Creates a new __camelName__ from a copy of the defaultItem in the __camelName__ store
  */
 
 // import primary libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-
-// import third-party libraries
-import _ from 'lodash';
-
-// import actions
-import * as __camelName__Actions from '../__camelName__Actions';
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 // import global components
-import Binder from '../../../global/components/Binder.js.jsx';
-import Breadcrumbs from '../../../global/components/navigation/Breadcrumbs.js.jsx';
+import WaitOn from '../../../global/components/helpers/WaitOn'
 
-// import __camelName__ components
-import __PascalName__Form from '../components/__PascalName__Form.js.jsx';
-import __PascalName__Layout from '../components/__PascalName__Layout.js.jsx';
+// import resource components
+import __PascalName__Form from '../components/__PascalName__Form.jsx'
+import __PascalName__Layout from '../components/__PascalName__Layout.jsx'
 
-class Create__PascalName__ extends Binder {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formHelpers: {}
-      , __camelName__: _.cloneDeep(this.props.default__PascalName__.obj)
-      // NOTE: ^ We don't want to actually change the store's defaultItem, just use a copy
-    }
-    this._bind(
-      '_handleFormChange'
-      , '_handleFormSubmit'
-    );
+// import services
+import { useCreate__PascalName__ } from '../__camelName__Service'
+
+const Create__PascalName__ = () => {
+  const history = useHistory()
+  const { data: default__PascalName__, sendCreate__PascalName__, ...default__PascalName__Query } = useCreate__PascalName__()
+
+  // this useState call is equivalent to this.state = { isCreating: false } and setIsCreating(boolean) is this.setState({isCreating: boolean})
+  const [isCreating, setIsCreating] = useState(false)
+
+  const handleFormSubmit = async (new__PascalName__) => {
+    // set isCreating true to disable the form while wait for the new __camelName__ to get returned
+    setIsCreating(true)
+    const { payload: __camelName__ } = await sendCreate__PascalName__(new__PascalName__) // replaces dispatch(__camelName__Actions.sendCreate__PascalName__(new__PascalName__)).then(__camelName__Res => ...)
+    setIsCreating(false)
+    history.push(`/__kebabNamePlural__/${__camelName__._id}`)
   }
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(__camelName__Actions.fetchDefault__PascalName__());
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      __camelName__: _.cloneDeep(nextProps.default__PascalName__.obj)
-    })
-  }
-
-  _handleFormChange(e) {
-    /**
-     * This let's us change arbitrarily nested objects with one pass
-     */
-    const newState = _.update(_.cloneDeep(this.state), e.target.name, () => {
-      return e.target.value;
-    });
-    this.setState(newState);
-  }
-
-
-  _handleFormSubmit(e) {
-    const { dispatch, history } = this.props;
-    e.preventDefault();
-    dispatch(__camelName__Actions.sendCreate__PascalName__(this.state.__camelName__)).then(__camelName__Res => {
-      if(__camelName__Res.success) {
-        dispatch(__camelName__Actions.invalidateList("all"));
-        history.push(`/__kebabNamePlural__/${__camelName__Res.item._id}`)
-      } else {
-        alert("ERROR - Check logs");
+  // render UI based on data and loading state
+  return (
+    <__PascalName__Layout title={'New __PascalName__'}>
+      <WaitOn query={default__PascalName__Query}>
+      { default__PascalName__ &&
+        // we have the default__PascalName__, render the form
+        <__PascalName__Form
+          __camelName__={default__PascalName__}
+          cancelLink='/__kebabNamePlural__'
+          disabled={default__PascalName__Query.isFetching || isCreating}
+          formType='create'
+          handleFormSubmit={handleFormSubmit}
+        />
       }
-    });
-  }
-
-  render() {
-    const { location } = this.props;
-    const { __camelName__ } = this.state;
-    const isEmpty = !__camelName__;
-    return (
-      <__PascalName__Layout>
-        <Breadcrumbs links={location.state.breadcrumbs} />
-        {isEmpty ?
-          <h2> Loading...</h2>
-          :
-          <__PascalName__Form
-            __camelName__={__camelName__}
-            cancelLink="/__camelName__s"
-            formTitle="Create __PascalName__"
-            formType="create"
-            handleFormChange={this._handleFormChange}
-            handleFormSubmit={this._handleFormSubmit}
-          />
-        }
-      </__PascalName__Layout>
-    )
-  }
+      </WaitOn>
+    </__PascalName__Layout>
+  )
 }
 
-Create__PascalName__.propTypes = {
-  dispatch: PropTypes.func.isRequired
-}
-
-const mapStoreToProps = (store) => {
-  /**
-  * NOTE: Yote refer's to the global Redux 'state' as 'store' to keep it mentally
-  * differentiated from the React component's internal state
-  */
-  return {
-    default__PascalName__: store.__camelName__.defaultItem
-  }
-}
-
-export default withRouter(
-  connect(
-    mapStoreToProps
-  )(Create__PascalName__)
-);
+export default Create__PascalName__
