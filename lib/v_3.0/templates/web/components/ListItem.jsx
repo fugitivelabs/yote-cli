@@ -28,9 +28,7 @@ const __PascalName__ListItem = ({ id }) => {
 const Skeleton = () => {
   return (
     <ListItem className="animate-pulse">
-      <p className="w-6/12 h-4 bg-gray-500"></p>
-      <p className="h-4"></p>
-      <p className="w-8/12 h-4 bg-gray-500"></p>
+      <div className="w-6/12 h-4 bg-gray-500"></div>
     </ListItem>
   )
 }
