@@ -31,9 +31,7 @@ const __PascalName__List = () => {
   return (
     <__PascalName__Layout title={'__PascalName__ List'}>
        <h1>__PascalName__ List</h1>
-        <div className="">
-          <Link to="/__camelNamePlural__/new">New __PascalName__</Link>
-        </div>
+        <Link to="/__camelNamePlural__/new">New __PascalName__</Link>
         <PaginatedList
           pagination={pagination}
           className={`${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
