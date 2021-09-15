@@ -7,7 +7,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // import global components
-import Button from '../../../global/components/base/Button'
 
 // import hooks
 import { useFormState } from '../../../global/utils/customHooks'
@@ -52,19 +51,19 @@ const __PascalName__Form = ({
         />
         <div className="">
           <div className="">
-            <Button
+            <button
               disabled={disabled}
               link={cancelLink}
-              skin='white'
+              type='button'
             >
               Cancel
-            </Button>
-            <Button
+            </button>
+            <button
               disabled={disabled}
               type='submit'
             >
               {buttonText}
-            </Button>
+            </button>
           </div>
         </div>
       </form>

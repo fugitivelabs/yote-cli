@@ -10,7 +10,6 @@ import React from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 
 // import global components
-import Button from '../../../global/components/base/Button'
 import WaitOn from '../../../global/components/helpers/WaitOn'
 
 // import services
@@ -33,17 +32,11 @@ const Single__PascalName__ = () => {
     <__PascalName__Layout title={'Single __PascalName__'}>
       <WaitOn query={__camelName__Query} fallback={<Skeleton />}>
         <div className={__camelName__Query.isFetching ? "opacity-50" : ""}>
+          <h2>__PascalName__ details</h2>
           <h1> {__camelName__?.name} </h1>
         </div>
       </WaitOn>
-      <Button
-        disabled={!__camelName__ || __camelName__Query.isFetching}
-        link={`${location.pathname}/update`}
-        size='sm'
-        skin='secondary'
-      >
-        Update __PascalName__
-      </Button>
+      <Link to={`${location.pathname}/update`}>Update __PascalName__</Link>
     </__PascalName__Layout>
   )
 }
@@ -51,7 +44,10 @@ const Single__PascalName__ = () => {
 const Skeleton = () => {
   return (
     <div className="animate-pulse">
-      <div className="w-48 h-5 bg-gray-400"/>
+      <p className="w-48 h-5 bg-gray-400"/>
+      <p className="h-1"/>
+      <p className="w-64 h-5 bg-gray-400" />
+      <p className="h-1"/>
     </div>
   )
 }
