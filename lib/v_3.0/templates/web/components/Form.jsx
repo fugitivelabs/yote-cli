@@ -5,6 +5,7 @@
 // import primary libraries
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 // import global components
 
@@ -49,23 +50,17 @@ const __PascalName__Form = ({
           disabled={disabled}
           required={true}
         />
-        <div className="">
-          <div className="">
-            <button
-              disabled={disabled}
-              link={cancelLink}
-              type='button'
-            >
-              Cancel
-            </button>
-            <button
-              disabled={disabled}
-              type='submit'
-            >
-              {buttonText}
-            </button>
-          </div>
-        </div>
+        <Link
+          to={cancelLink}
+        >
+          Cancel
+        </Link>
+        <button
+          disabled={disabled}
+          type='submit'
+        >
+          {buttonText}
+        </button>
       </form>
     </div>
   )
