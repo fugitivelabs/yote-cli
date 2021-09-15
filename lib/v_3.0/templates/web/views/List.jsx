@@ -10,8 +10,6 @@ import React from 'react'
 // import PropTypes from 'prop-types'; // this component gets no props
 
 // import global components
-import Button from '../../../global/components/base/Button'
-import List from '../../../global/components/base/List'
 import WaitOn from '../../../global/components/helpers/WaitOn'
 
 // import resource components
@@ -32,24 +30,19 @@ const __PascalName__List = () => {
   
   return (
     <__PascalName__Layout title={'__PascalName__ List'}>
-      <div className="flex w-full mb-4 justify-end">
-        <Button
-          link='/__kebabNamePlural__/new'
-          size="sm"
-          skin="secondary"
+       <h1>__PascalName__ List</h1>
+        <div className="">
+          <Link to="/__camelNamePlural__/new">New __PascalName__</Link>
+        </div>
+        <PaginatedList
+          pagination={pagination}
+          className={`${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
         >
-          New __PascalName__
-        </Button>
-      </div>
-      <List
-        pagination={pagination}
-        className={`${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
-      >
-        <WaitOn query={__camelName__Query} fallback={<Skeleton count={pagination?.per} />}>
-          {__camelNamePlural__?.map(__camelName__ => <__PascalName__ListItem key={__camelName__._id} id={__camelName__._id} />)}
-          {/* {ids?.map(__camelName__Id => <__PascalName__ListItem key={__camelName__Id} id={__camelName__Id} />)} */}
-        </WaitOn>
-      </List>
+          <WaitOn query={__camelName__Query} fallback={<Skeleton count={pagination.per} />}>
+            {__camelNamePlural__?.map(__camelName__ => <__PascalName__ListItem key={__camelName__._id} id={__camelName__._id} />)}
+            {/* {ids?.map(__camelName__Id => <__PascalName__ListItem key={__camelName__Id} id={__camelName__Id} />)} */}
+          </WaitOn>
+        </PaginatedList>
     </__PascalName__Layout>
   )
 }
