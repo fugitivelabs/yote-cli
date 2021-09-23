@@ -7,9 +7,11 @@
  */
 // import primary libraries
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import PropTypes from 'prop-types'; // this component gets no props
 
 // import global components
+import PaginatedList from '../../../global/components/base/PaginatedList';
 import WaitOn from '../../../global/components/helpers/WaitOn'
 
 // import resource components
@@ -31,7 +33,7 @@ const __PascalName__List = () => {
   return (
     <__PascalName__Layout title={'__PascalName__ List'}>
        <h1>__PascalName__ List</h1>
-        <Link to="/__camelNamePlural__/new">New __PascalName__</Link>
+        <Link to="/__kebabNamePlural__/new">New __PascalName__</Link>
         <PaginatedList
           pagination={pagination}
           className={`${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
