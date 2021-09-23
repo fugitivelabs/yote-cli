@@ -6,8 +6,8 @@
 
 // import primary libraries
 import React from 'react'
+import { useLocation, useParams, Link } from 'react-router-dom'
 // import PropTypes from 'prop-types'; // this component gets no props
-import { useLocation, useParams } from 'react-router-dom'
 
 // import global components
 import WaitOn from '../../../global/components/helpers/WaitOn'
