@@ -28,9 +28,14 @@ const Create__PascalName__ = () => {
   const handleFormSubmit = async (new__PascalName__) => {
     // set isCreating true to disable the form while wait for the new __camelName__ to get returned
     setIsCreating(true)
-    const { payload: __camelName__ } = await sendCreate__PascalName__(new__PascalName__) // replaces dispatch(__camelName__Actions.sendCreate__PascalName__(new__PascalName__)).then(__camelName__Res => ...)
+    const { payload: __camelName__, error } = await sendCreate__PascalName__(new__PascalName__) // replaces dispatch(__camelName__Actions.sendCreate__PascalName__(new__PascalName__)).then(__camelName__Res => ...)
     setIsCreating(false)
-    history.push(`/__kebabNamePlural__/${__camelName__._id}`)
+    if(error) {
+      alert(error.message || "An error occurred.")
+      history.push(`/__kebabNamePlural__`)
+    } else {
+      history.push(`/__kebabNamePlural__/${__camelName__._id}`)
+    }
   }
 
   // render UI based on data and loading state
