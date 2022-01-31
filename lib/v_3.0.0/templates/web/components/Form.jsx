@@ -9,9 +9,6 @@ import { Link } from 'react-router-dom'
 
 // import global components
 
-// import hooks
-import { useFormState } from '../../../global/utils/customHooks'
-
 // import form components
 import { TextInput } from '../../../global/components/forms'
 
@@ -20,33 +17,26 @@ const __PascalName__Form = ({
   , disabled
   , formTitle
   , formType
+  , handleFormChange
   , handleFormSubmit
   , __camelName__
 }) => {
-
-  // use the helper to handle __camelName__ state
-  const [updated__PascalName__, handleChange] = useFormState(__camelName__) // pass __camelName__ as initialState
 
   // set the button text
   const buttonText = formType === 'create' ? 'Create __startName__' : 'Update __startName__'
 
   // set the form header
   const header = formTitle ? <div className=""><h2> {formTitle} </h2><hr /></div> : <div />
-  
-  const handleSubmit = e => {
-    e.preventDefault()
-    handleFormSubmit(updated__PascalName__)
-  }
 
   return (
     <div className="">
-      <form name='__camelName__Form' className="" onSubmit={handleSubmit}>
+      <form name='__camelName__Form' className="" onSubmit={handleFormSubmit}>
         {header}
         <TextInput
           name='name'
           label='Name'
-          value={updated__PascalName__.name || ''}
-          change={handleChange}
+          value={__camelName__.name || ''}
+          change={handleFormChange}
           disabled={disabled}
           required={true}
         />
@@ -71,6 +61,7 @@ __PascalName__Form.propTypes = {
   , disabled: PropTypes.bool
   , formTitle: PropTypes.string
   , formType: PropTypes.string.isRequired
+  , handleFormChange: PropTypes.func.isRequired
   , handleFormSubmit: PropTypes.func.isRequired
   , __camelName__: PropTypes.object.isRequired
 }
