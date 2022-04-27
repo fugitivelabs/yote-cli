@@ -44,10 +44,10 @@ const Single__PascalName__ = () => {
 const Skeleton = () => {
   return (
     <div className="animate-pulse">
-      <p className="w-48 h-5 bg-gray-400"/>
-      <p className="h-1"/>
+      <p className="w-48 h-5 bg-gray-400" />
+      <p className="h-1" />
       <p className="w-64 h-5 bg-gray-400" />
-      <p className="h-1"/>
+      <p className="h-1" />
     </div>
   )
 }

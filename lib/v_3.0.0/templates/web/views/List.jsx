@@ -29,27 +29,27 @@ const __PascalName__List = () => {
     //, name: "some specific name"
   }
   const { data: __camelNamePlural__, ids, pagination, ...__camelName__Query } = useGet__PascalName__List(queryArgs)
-  
+
   return (
     <__PascalName__Layout title={'__PascalName__ List'}>
-       <h1>__PascalName__ List</h1>
-        <Link to="/__kebabNamePlural__/new">New __PascalName__</Link>
-        <PaginatedList
-          pagination={pagination}
-          className={`${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
-        >
-          <WaitOn query={__camelName__Query} fallback={<Skeleton count={pagination.per} />}>
-            {__camelNamePlural__?.map(__camelName__ => <__PascalName__ListItem key={__camelName__._id} id={__camelName__._id} />)}
-            {/* {ids?.map(__camelName__Id => <__PascalName__ListItem key={__camelName__Id} id={__camelName__Id} />)} */}
-          </WaitOn>
-        </PaginatedList>
+      <h1>__PascalName__ List</h1>
+      <Link to="/__kebabNamePlural__/new">New __PascalName__</Link>
+      <PaginatedList
+        pagination={pagination}
+        className={`${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
+      >
+        <WaitOn query={__camelName__Query} fallback={<Skeleton count={pagination.per} />}>
+          {__camelNamePlural__?.map(__camelName__ => <__PascalName__ListItem key={__camelName__._id} id={__camelName__._id} />)}
+          {/* {ids?.map(__camelName__Id => <__PascalName__ListItem key={__camelName__Id} id={__camelName__Id} />)} */}
+        </WaitOn>
+      </PaginatedList>
     </__PascalName__Layout>
   )
 }
 
 const Skeleton = ({ count = 5 }) => {
-  const items = new Array(count).fill('some-non-empty-value')
-  return items.map(() => <__PascalName__ListItem.Skeleton key={Math.random()}/>)
+  const items = new Array(count).fill('list-item-skeleton');
+  return items.map((name, index) => <__PascalName__ListItem.Skeleton key={`${name} ${index}`} />)
 }
 
 
