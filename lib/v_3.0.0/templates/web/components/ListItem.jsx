@@ -15,7 +15,7 @@ const __PascalName__ListItem = ({ id }) => {
 
   if(!__camelName__) return <Skeleton />;
   return (
-    <li className={__camelName__Query.isFetching ? 'opacity-50' : ''}>
+    <li>
       <Link to={`/__kebabNamePlural__/${__camelName__?._id}`}>{__camelName__?.name}</Link>
     </li>
   )
