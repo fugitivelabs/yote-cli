@@ -48,7 +48,7 @@ const __PascalName__List = () => {
 }
 
 const Skeleton = ({ count = 5 }) => {
-  const items = new Array(count).fill('list-item-skeleton');
+  const items = new Array(count).fill('__kebabName__-list-item-skeleton');
   return items.map((name, index) => <__PascalName__ListItem.Skeleton key={`${name} ${index}`} />)
 }
 

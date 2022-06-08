@@ -25,7 +25,7 @@ const __PascalName__ListItem = ({ id }) => {
 const Skeleton = () => {
   return (
     <li className="animate-pulse">
-      <p>...</p>
+      <p className='bg-gray-600 h-4 w-48 mt-1'></p>
     </li>
   )
 }
