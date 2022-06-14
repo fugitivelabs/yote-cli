@@ -5,18 +5,18 @@
  */
 
 // import primary libraries
-import React from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 // import global components
-import WaitOn from '../../../global/components/helpers/WaitOn'
+import WaitOn from '../../../global/components/helpers/WaitOn';
 
 // import resource components
-import __PascalName__Form from '../components/__PascalName__Form.jsx'
-import __PascalName__Layout from '../components/__PascalName__Layout.jsx'
+import __PascalName__Form from '../components/__PascalName__Form.jsx';
+import __PascalName__Layout from '../components/__PascalName__Layout.jsx';
 
 // import services
-import { useCreate__PascalName__ } from '../__camelName__Service'
+import { useCreate__PascalName__ } from '../__camelName__Service';
 
 const Create__PascalName__ = () => {
   const history = useHistory();
@@ -29,10 +29,10 @@ const Create__PascalName__ = () => {
     // optional, callback function to run when the server returns the new __camelName__
     , onResponse: (new__PascalName__, error) => {
       if(error || !new__PascalName__) {
-        alert(error?.message || 'An error occurred.')
-        history.replace('__kebabNamePlural__', location.state)
+        alert(error || 'An error occurred.')
+        history.replace('/__kebabNamePlural__', location.state);
       } else {
-        history.replace(`__kebabNamePlural__/${new__PascalName__._id}`, location.state)
+        history.replace(`/__kebabNamePlural__/${new__PascalName__._id}`, location.state);
       }
     }
   });
@@ -54,4 +54,4 @@ const Create__PascalName__ = () => {
   )
 }
 
-export default Create__PascalName__
+export default Create__PascalName__;

@@ -22,12 +22,12 @@ import { useGetUpdatable__PascalName__ } from '../__camelName__Service';
 const Update__PascalName__ = () => {
   const history = useHistory();
   const location = useLocation();
-  const { __camelName__Id } = useParams() // replaces match.params.__camelName__Id
+  const { __camelName__Id } = useParams();
   const { data: __camelName__, handleFormChange, handleFormSubmit, ...__camelName__Query } = useGetUpdatable__PascalName__(__camelName__Id, {
     // optional, callback function to run after the request is complete
     onResponse: (updated__PascalName__, error) => {
       if(error || !updated__PascalName__) {
-        alert(error?.message || 'An error occurred.');
+        alert(error || 'An error occurred.');
       }
       history.replace(`/__kebabNamePlural__/${__camelName__Id}`, location.state);
     }
