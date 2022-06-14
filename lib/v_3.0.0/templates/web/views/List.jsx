@@ -28,7 +28,7 @@ const __PascalName__List = () => {
     // add other key:value pairs here to narrow the query
     //, name: "some specific name"
   }
-  const { data: __camelNamePlural__, ids, pagination, ...__camelName__Query } = useGet__PascalName__List(queryArgs)
+  const { data: __camelNamePlural__, ids, pagination, ...__camelName__Query } = useGet__PascalName__List(queryArgs);
 
   return (
     <__PascalName__Layout title={'__PascalName__ List'}>
