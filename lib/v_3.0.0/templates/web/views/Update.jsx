@@ -7,7 +7,7 @@
 // import primary libraries
 import React from 'react';
 // import PropTypes from 'prop-types'; // this component gets no props
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 
 // import global components
 import WaitOn from '../../../global/components/helpers/WaitOn';
@@ -20,15 +20,16 @@ import __PascalName__Form from '../components/__PascalName__Form.jsx';
 import { useGetUpdatable__PascalName__ } from '../__camelName__Service';
 
 const Update__PascalName__ = () => {
-  const history = useHistory()
-  const { __camelName__Id } = useParams() // replaces match.params.__camelName__Id
+  const history = useHistory();
+  const location = useLocation();
+  const { __camelName__Id } = useParams();
   const { data: __camelName__, handleFormChange, handleFormSubmit, ...__camelName__Query } = useGetUpdatable__PascalName__(__camelName__Id, {
     // optional, callback function to run after the request is complete
     onResponse: (updated__PascalName__, error) => {
       if(error || !updated__PascalName__) {
-        alert(error?.message || 'An error occurred.');
+        alert(error || 'An error occurred.');
       }
-      history.push(`/__kebabNamePlural__/${__camelName__Id}`)
+      history.replace(`/__kebabNamePlural__/${__camelName__Id}`, location.state);
     }
   });
 

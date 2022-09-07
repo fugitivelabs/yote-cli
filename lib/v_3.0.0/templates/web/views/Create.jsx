@@ -5,34 +5,34 @@
  */
 
 // import primary libraries
-import React from 'react'
-import { useHistory } from 'react-router-dom'
+import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 // import global components
-import WaitOn from '../../../global/components/helpers/WaitOn'
+import WaitOn from '../../../global/components/helpers/WaitOn';
 
 // import resource components
-import __PascalName__Form from '../components/__PascalName__Form.jsx'
-import __PascalName__Layout from '../components/__PascalName__Layout.jsx'
+import __PascalName__Form from '../components/__PascalName__Form.jsx';
+import __PascalName__Layout from '../components/__PascalName__Layout.jsx';
 
 // import services
-import { useCreate__PascalName__ } from '../__camelName__Service'
+import { useCreate__PascalName__ } from '../__camelName__Service';
 
 const Create__PascalName__ = () => {
-  const history = useHistory()
-
+  const history = useHistory();
+  const location = useLocation();
   const { data: __camelName__, handleFormChange, handleFormSubmit, ...__camelName__Query } = useCreate__PascalName__({
     // optional, anything we want to add to the default object
     initialState: {
       // someKey: someValue
     }
-    // optional, callback function to run after the request is complete
+    // optional, callback function to run when the server returns the new __camelName__
     , onResponse: (new__PascalName__, error) => {
       if(error || !new__PascalName__) {
-        alert(error?.message || 'An error occurred.')
-        history.push('__kebabNamePlural__')
+        alert(error || 'An error occurred.')
+        history.replace('/__kebabNamePlural__', location.state);
       } else {
-        history.push(`__kebabNamePlural__/${new__PascalName__._id}`)
+        history.replace(`/__kebabNamePlural__/${new__PascalName__._id}`, location.state);
       }
     }
   });
@@ -54,4 +54,4 @@ const Create__PascalName__ = () => {
   )
 }
 
-export default Create__PascalName__
+export default Create__PascalName__;
