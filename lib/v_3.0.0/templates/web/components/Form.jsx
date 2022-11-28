@@ -17,8 +17,8 @@ const __PascalName__Form = ({
   , disabled
   , formTitle
   , formType
-  , handleFormChange
-  , handleFormSubmit
+  , handleChange
+  , handleSubmit
   , __camelName__
 }) => {
 
@@ -30,13 +30,13 @@ const __PascalName__Form = ({
 
   return (
     <div className="">
-      <form name='__camelName__Form' className="" onSubmit={handleFormSubmit}>
+      <form name='__camelName__Form' className="" onSubmit={handleSubmit}>
         {header}
         <TextInput
           name='name'
           label='Name'
           value={__camelName__.name || ''}
-          change={handleFormChange}
+          change={handleChange}
           disabled={disabled}
           required={true}
         />
@@ -61,8 +61,8 @@ __PascalName__Form.propTypes = {
   , disabled: PropTypes.bool
   , formTitle: PropTypes.string
   , formType: PropTypes.string.isRequired
-  , handleFormChange: PropTypes.func.isRequired
-  , handleFormSubmit: PropTypes.func.isRequired
+  , handleChange: PropTypes.func.isRequired
+  , handleSubmit: PropTypes.func.isRequired
   , __camelName__: PropTypes.object.isRequired
 }
 

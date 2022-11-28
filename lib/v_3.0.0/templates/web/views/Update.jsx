@@ -23,7 +23,7 @@ const Update__PascalName__ = () => {
   const history = useHistory();
   const location = useLocation();
   const { __camelName__Id } = useParams();
-  const { data: __camelName__, handleFormChange, handleFormSubmit, ...__camelName__Query } = useGetUpdatable__PascalName__(__camelName__Id, {
+  const { data: __camelName__, handleChange, handleSubmit, ...__camelName__Query } = useGetUpdatable__PascalName__(__camelName__Id, {
     // optional, callback function to run after the request is complete
     onResponse: (updated__PascalName__, error) => {
       if(error || !updated__PascalName__) {
@@ -42,8 +42,8 @@ const Update__PascalName__ = () => {
           cancelLink={`/__kebabNamePlural__/${__camelName__Id}`}
           disabled={__camelName__Query.isFetching}
           formType='update'
-          handleFormChange={handleFormChange}
-          handleFormSubmit={handleFormSubmit}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
         />
       </WaitOn>
     </__PascalName__Layout>
