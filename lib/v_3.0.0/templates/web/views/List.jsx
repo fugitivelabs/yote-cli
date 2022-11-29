@@ -20,14 +20,10 @@ import __PascalName__Layout from '../components/__PascalName__Layout.jsx'
 
 // import services
 import { useGet__PascalName__List } from '../__camelName__Service'
+import { useURLSearchParams } from '../../../global/utils/customHooks';
 
 const __PascalName__List = () => {
-  const initialPagination = { page: 1, per: 5 }
-  const queryArgs = {
-    ...initialPagination
-    // add other key:value pairs here to narrow the query
-    //, name: "some specific name"
-  }
+  const [queryArgs, handleChange] = useURLSearchParams({page: 1, per: 25});
   const { data: __camelNamePlural__, ids, pagination, ...__camelName__Query } = useGet__PascalName__List(queryArgs);
 
   return (
@@ -35,8 +31,10 @@ const __PascalName__List = () => {
       <h1>__PascalName__ List</h1>
       <Link to="/__kebabNamePlural__/new">New __PascalName__</Link>
       <PaginatedList
-        pagination={pagination}
-        className={`${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
+        as='div'
+        className={`scroll-mt-4 ${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
+        {...pagination}
+        setPage={(newPage) => handleChange('page', newPage)}
       >
         <WaitOn query={__camelName__Query} fallback={<Skeleton count={pagination.per} />}>
           {__camelNamePlural__?.map(__camelName__ => <__PascalName__ListItem key={__camelName__._id} id={__camelName__._id} />)}
