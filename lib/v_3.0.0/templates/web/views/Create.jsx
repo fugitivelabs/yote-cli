@@ -1,5 +1,5 @@
 /**
- * View component for __kebabNamePlural__/new
+ * View component for /__kebabNamePlural__/new
  *
  * Creates a new __camelName__ from a copy of the defaultItem in the __camelName__ store
  */
@@ -43,7 +43,7 @@ const Create__PascalName__ = () => {
       <WaitOn query={__camelName__Query}>
         <__PascalName__Form
           __camelName__={__camelName__}
-          cancelLink='__kebabNamePlural__'
+          cancelLink='/__kebabNamePlural__'
           disabled={__camelName__Query.isFetching}
           formType='create'
           handleChange={handleChange}
