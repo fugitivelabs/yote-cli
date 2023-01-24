@@ -45,7 +45,7 @@ const __PascalName__Router = () => {
         breadcrumbs={[{display: 'All __camelNamePlural__', path: '/__kebabNamePlural__'}, {display: '__PascalName__ Details', path: `/__kebabNamePlural__/${__camelName__Id}`}, {display: 'Update', path: null}]}
         component={Update__PascalName__}
         exact
-        // login={true}
+        login={true}
         path='/__kebabNamePlural__/:__camelName__Id/update'
         // admin='admin'
       />

@@ -8,16 +8,28 @@
 
 // import primary libraries
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // import global components
 import DefaultLayout from '../../../global/components/layouts/DefaultLayout.jsx'
 
-const __PascalName__Layout = ({ ...props }) => {
+const __PascalName__Layout = ({ children, className, title }) => {
   return (
-    <DefaultLayout title={props.title}>
-      {props.children}
+    <DefaultLayout title={title} className={className}>
+      {children}
     </DefaultLayout>
   )
 }
 
-export default __PascalName__Layout
+__PascalName__Layout.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node)
+    , PropTypes.node
+  ]).isRequired
+  , className: PropTypes.string
+  , title: PropTypes.string
+}
+
+__PascalName__Layout.Skeleton = DefaultLayout.Skeleton;
+
+export default __PascalName__Layout;

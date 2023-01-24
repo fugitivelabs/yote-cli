@@ -33,9 +33,10 @@ const __PascalName__Form = ({
       <form name='__camelName__Form' className="" onSubmit={handleSubmit}>
         {header}
         <TextInput
+          autoFocus={true}
           name='name'
           label='Name'
-          value={__camelName__.name || ''}
+          value={__camelName__?.name || ''}
           change={handleChange}
           disabled={disabled}
           required={true}
