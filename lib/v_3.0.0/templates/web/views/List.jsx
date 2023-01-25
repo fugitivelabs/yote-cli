@@ -35,6 +35,7 @@ const __PascalName__List = () => {
         className={`scroll-mt-4 ${__camelName__Query.isFetching ? 'opacity-50' : ''}`}
         {...pagination}
         setPage={(newPage) => handleChange('page', newPage)}
+        setPer={(e) => handleChange('per', e.target.value)}
       >
         <WaitOn query={__camelName__Query} fallback={<Skeleton count={pagination.per} />}>
           {__camelNamePlural__?.map(__camelName__ => <__PascalName__ListItem key={__camelName__._id} id={__camelName__._id} />)}
