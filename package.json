@@ -48,6 +48,6 @@
     "promptly": "^0.2.0",
     "react-native-cli": "^2.0.1",
     "shelljs": "^0.8.2",
-    "ttab": "^0.6.1"
+    "ttab": "^0.8.0"
   }
 }
