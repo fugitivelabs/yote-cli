@@ -81,7 +81,7 @@ function runApp(app, runMethod) {
   }
   switch (app) {
     case WEB:
-      runMethod('web', 'npm run', app)
+      runMethod('web', 'npm start', app)
       break; 
     case SERVER:
       runMethod('server', 'nodemon', app)
